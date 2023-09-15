@@ -21,6 +21,9 @@ class BaggedDisc(db.Model):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
+    bag = db.relationship('Bag', back_populates='discs')
+    disc = db.relationship('Disc', back_populates='bagged_disc')
+
     def to_dict(self):
         return {
             'id': self.id,

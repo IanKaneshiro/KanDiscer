@@ -19,6 +19,9 @@ class CourseImage(db.Model):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
+    owner = db.relationship('User', back_populates='images')
+    course = db.relationship('Course', back_populates='images')
+
     def to_dict(self):
         return {
             'id': self.id,

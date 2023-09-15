@@ -20,6 +20,8 @@ class Basket(db.Model):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
+    course = db.relationship('Course', back_populates='baskets')
+
     def to_dict(self):
         return {
             'id': self.id,

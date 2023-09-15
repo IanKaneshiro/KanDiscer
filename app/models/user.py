@@ -25,6 +25,12 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
+    bags = db.relationship('User', back_populates='user',
+                           cascade='all, delete-orphan')
+    images = db.relationship('CourseImage', back_populates='owner')
+    courses = db.relationship(
+        'Course', back_populates='owner', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
