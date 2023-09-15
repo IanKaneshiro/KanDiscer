@@ -18,7 +18,7 @@ class Bag(db.Model):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
-    user = db.relationship('Bag', back_populates='bags')
+    user = db.relationship('User', back_populates='bags')
     discs = db.relationship(
         'BaggedDisc', back_populates='bag', cascade='all, delete-orphan')
 

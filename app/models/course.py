@@ -31,9 +31,9 @@ class Course(db.Model):
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
     baskets = db.relationship(
-        'Basket', back_populates='baskets', cascade='all, delete-orphan')
+        'Basket', back_populates='course', cascade='all, delete-orphan')
     images = db.relationship(
-        'CourseImage', back_populates='course', cascade='all delete-orphan')
+        'CourseImage', back_populates='course', cascade='all, delete-orphan')
     owner = db.relationship('User', back_populates='courses')
 
     def to_dict(self):
