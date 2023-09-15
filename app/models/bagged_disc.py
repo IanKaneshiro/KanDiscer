@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class BaggedDisc(db.Model):
-    __tablename__ = 'bagged_disc'
+    __tablename__ = 'bagged_discs'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
