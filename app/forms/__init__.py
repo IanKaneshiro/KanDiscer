@@ -6,3 +6,5 @@ from .course_images_form import CourseImageForm
 from .course_form import CourseForm
 from .disc_form import DiscForm
 from .bagged_disc_form import BaggedDiscForm
+from .update_user_form import UpdateUserForm
+from .make_admin_form import MakeAdminForm

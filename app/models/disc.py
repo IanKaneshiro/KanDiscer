@@ -50,6 +50,4 @@ class Disc(db.Model):
             'rimWidth': self.rim_width,
             "imageUrl": self.image_url,
             'approved': self.approved,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at
         }

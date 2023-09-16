@@ -42,7 +42,7 @@ def create_disc():
     if form.validate_on_submit():
         disc = Disc(
             manufacture=form.data['manufacture'],
-            name=form.data['data'],
+            name=form.data['name'],
             description=form.data['description'],
             type=form.data['type'],
             purchase_link=form.data['purchase_link'],
@@ -82,7 +82,7 @@ def update_disc(id):
 
     if form.validate_on_submit():
         disc.manufacture = form.data['manufacture']
-        disc.name = form.data['data']
+        disc.name = form.data['name']
         disc.description = form.data['description']
         disc.type = form.data['type']
         disc.purchase_link = form.data['purchase_link']
@@ -97,7 +97,7 @@ def update_disc(id):
         disc.rim_width = form.data['rim_width']
         disc.image_url = form.data['image_url']
         if current_user.admin:
-            disc.approved = True
+            disc.approved = form.data['approved']
         db.session.commit()
         return disc.to_dict()
     return validation_errors_to_error_messages(form.errors), 400
