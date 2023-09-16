@@ -13,7 +13,16 @@ def all_disc():
     """
     Returns all discs
     """
-    discs = Disc.query.all()
+    discs = Disc.query.filter_by(approved=True).all()
+    return {"Discs": [disc.to_dict() for disc in discs]}
+
+
+@disc_routes.route('/awaiting_approval')
+def discs_awaiting_approval():
+    """
+    Returns all discs with the admin status of false
+    """
+    discs = Disc.query.filter_by(approved=False).all()
     return {"Discs": [disc.to_dict() for disc in discs]}
 
 

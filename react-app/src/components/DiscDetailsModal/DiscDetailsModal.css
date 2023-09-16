@@ -1,0 +1,27 @@
+.disc_details__main {
+  width: 80dvw;
+  height: 80dvh;
+  display: flex;
+  background-color: #faf9f9;
+}
+
+.disc_details__main > section {
+  width: 100%;
+  margin: 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.disc_details__left {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disc_details__right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

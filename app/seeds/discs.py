@@ -20,7 +20,7 @@ def seed_discs():
         rim_depth=1.3,
         rim_width=1.2,
         image_url='https://otbdiscs.b-cdn.net/wp-content/uploads/2022/09/PNG-image-F3693DDF63E1-1.png',
-        approved=True,
+        approved=False,
 
     )
 
