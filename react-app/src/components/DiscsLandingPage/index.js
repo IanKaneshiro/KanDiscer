@@ -18,7 +18,7 @@ const DiscsLandingPage = () => {
     <div>
       {discs.map((disc) => (
         <OpenModalButton
-          className="disc-landing__modal"
+          className="disc-landing__title"
           key={disc.id}
           buttonText={<DiscTile disc={disc} />}
           modalComponent={<DiscDetailsModal disc={disc} />}

@@ -43,7 +43,7 @@ def seed_bagged_discs():
 def undo_bagged_discs():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.bagged_discs RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM bagged_discs"))
 

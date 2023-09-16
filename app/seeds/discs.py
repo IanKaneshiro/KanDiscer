@@ -119,7 +119,7 @@ def seed_discs():
 def undo_discs():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.discs RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM discs"))
 

@@ -24,7 +24,7 @@ def seed_course_images():
 def undo_course_images():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.course_images RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM course_images"))
 
