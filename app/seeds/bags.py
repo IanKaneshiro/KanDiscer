@@ -24,7 +24,7 @@ def seed_bags():
 def undo_bags():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.bags RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM bags"))
 

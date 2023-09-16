@@ -215,7 +215,7 @@ def seed_baskets():
 def undo_baskets():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.baskets RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM baskets"))
 
