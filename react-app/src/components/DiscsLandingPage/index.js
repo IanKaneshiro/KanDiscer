@@ -15,7 +15,7 @@ const DiscsLandingPage = () => {
     dispatch(getAllDiscs());
   }, [dispatch]);
   return (
-    <div>
+    <div className="disc_landing__main">
       {discs.map((disc) => (
         <OpenModalButton
           className="disc-landing__title"

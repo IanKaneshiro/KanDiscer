@@ -1,3 +1,4 @@
-.disc-landing__title {
-  background-color: #ffffff;
+.disc_landing__main {
+  display: flex;
+  gap: 20px;
 }
