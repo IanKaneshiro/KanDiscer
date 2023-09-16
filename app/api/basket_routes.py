@@ -34,7 +34,7 @@ def update_basket(id):
     basket = Basket.query.get(id)
 
     if not basket:
-        return {"message": "Basket doesn't exist"}, 404
+        return {"message": "Basket couldn't be found"}, 404
 
     course = Course.query.get(int(basket.course_id))
 
@@ -42,6 +42,7 @@ def update_basket(id):
         return {'message': "You don't have authorization to update this basket"}, 403
 
     if form.validate_on_submit():
+        basket.hole_number = form.data['hole_number']
         basket.lat = form.data['lat']
         basket.lng = form.data['lng']
         basket.distance = form.data['distance']

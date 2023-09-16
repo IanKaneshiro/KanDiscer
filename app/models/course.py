@@ -31,7 +31,7 @@ class Course(db.Model):
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
     baskets = db.relationship(
-        'Basket', back_populates='course', cascade='all, delete-orphan')
+        'Basket', back_populates='course', order_by="Basket.hole_number", cascade='all, delete-orphan')
     images = db.relationship(
         'CourseImage', back_populates='course', cascade='all, delete-orphan')
     owner = db.relationship('User', back_populates='courses')

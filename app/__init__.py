@@ -12,6 +12,7 @@ from .api.bag_routes import bag_routes
 from .api.course_routes import course_routes
 from .api.basket_routes import basket_routes
 from .api.bagged_disc_routes import bagged_disc_routes
+from .api.course_image_routes import course_image_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -38,6 +39,7 @@ app.register_blueprint(bag_routes, url_prefix='/api/bags')
 app.register_blueprint(bagged_disc_routes, url_prefix='/api/bagged_discs')
 app.register_blueprint(course_routes, url_prefix='/api/courses')
 app.register_blueprint(basket_routes, url_prefix='/api/baskets')
+app.register_blueprint(course_image_routes, url_prefix='/api/course_images')
 
 
 db.init_app(app)
