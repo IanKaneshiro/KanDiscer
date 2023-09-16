@@ -27,9 +27,11 @@ class BaggedDisc(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name,
-            'description': self.description,
-            'notes': self.notes,
+            'weight': self.weight,
+            'color': self.color,
+            'plastic': self.plastic,
+            'image_url': self.image_url,
+            'info': self.disc.to_dict(),
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
         }

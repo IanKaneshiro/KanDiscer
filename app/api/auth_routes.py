@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
@@ -11,11 +11,11 @@ def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
     """
-    errorMessages = []
+    errorMessages = {}
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
+            errorMessages[field] = error
+    return {"errors": errorMessages}
 
 
 @auth_routes.route('/')
@@ -25,7 +25,7 @@ def authenticate():
     """
     if current_user.is_authenticated:
         return current_user.to_dict()
-    return {'errors': ['Unauthorized']}
+    return {'errors': ['Unauthorized']}, 401
 
 
 @auth_routes.route('/login', methods=['POST'])
@@ -42,7 +42,7 @@ def login():
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return validation_errors_to_error_messages(form.errors), 401
 
 
 @auth_routes.route('/logout')
@@ -60,18 +60,26 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
+    # Get the csrf_token from the request cookie and put it into the
+    # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
-            username=form.data['username'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
             email=form.data['email'],
-            password=form.data['password']
+            username=form.data['username'],
+            image_url=form.data['image_url'],
+            pdga_number=form.data['pdga_number'],
+            skill_level=form.data['skill_level'],
+            throwing_preference=form.data['throwing_preference'],
+            password=form.data['password'],
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return user.to_dict(), 201
+    return validation_errors_to_error_messages(form.errors), 400
 
 
 @auth_routes.route('/unauthorized')

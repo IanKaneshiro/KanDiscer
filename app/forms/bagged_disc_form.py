@@ -3,7 +3,7 @@ from wtforms import FloatField, StringField
 from wtforms.validators import DataRequired, ValidationError
 
 
-class BagForm(FlaskForm):
+class BaggedDiscForm(FlaskForm):
     weight = FloatField('weight')
     color = StringField('color')
     plastic = StringField('plastic')
