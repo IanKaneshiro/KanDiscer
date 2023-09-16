@@ -33,7 +33,7 @@ def update_bagged_disc(id):
     bagged_disc = BaggedDisc.query.get(id)
 
     if not bagged_disc:
-        return {"message": "Bagged disc doesn't exist"}, 404
+        return {"message": "Bagged disc couldn't be found"}, 404
 
     if form.validate_on_submit():
         bagged_disc.weight = form.data['weight']
@@ -47,18 +47,19 @@ def update_bagged_disc(id):
 
 @bagged_disc_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def delete_bag(id):
+def delete_bagged_disc(id):
     """
-    Delete bag by id
+    Delete bagged by id
     """
 
-    bag = Bag.query.get(id)
+    bagged_disc = BaggedDisc.query.get(id)
+    bag = Bag.query.get(int(bagged_disc.bag_id))
 
     if bag.owner_id != current_user.id:
-        return {'message': "You don't have permisson to delete this bag"}, 403
+        return {'message': "You don't have permisson to delete this disc"}, 403
 
     if not bag:
-        return {'message': "Bag couldn't be found"}, 404
-    db.session.delete(bag)
+        return {'message': "Bagged disc couldn't be found"}, 404
+    db.session.delete(bagged_disc)
     db.session.commit()
     return {'message': 'Successfully deleted'}
