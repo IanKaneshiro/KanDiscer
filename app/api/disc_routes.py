@@ -27,14 +27,13 @@ def disc_by_id(id):
         return {"message": "Disc couldn't be found"}, 404
     return disc.to_dict()
 
-# Create
-
 
 @disc_routes.route('/new', methods=['POST'])
 @login_required
 def create_disc():
     """
     Create a new disc
+    if user is admin, disc get approved upon creation
     """
     form = DiscForm()
     # Get the csrf_token from the request cookie and put it into the

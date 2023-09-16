@@ -9,6 +9,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.disc_routes import disc_routes
 from .api.bag_routes import bag_routes
+from .api.course_routes import course_routes
+from .api.basket_routes import basket_routes
 from .api.bagged_disc_routes import bagged_disc_routes
 from .seeds import seed_commands
 from .config import Config
@@ -34,6 +36,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(disc_routes, url_prefix='/api/discs')
 app.register_blueprint(bag_routes, url_prefix='/api/bags')
 app.register_blueprint(bagged_disc_routes, url_prefix='/api/bagged_discs')
+app.register_blueprint(course_routes, url_prefix='/api/courses')
+app.register_blueprint(basket_routes, url_prefix='/api/baskets')
 
 
 db.init_app(app)

@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class BasketForm(FlaskForm):
+    hole_number = IntegerField('hole_number', validators=[DataRequired()])
     lat = FloatField('lat', validators=[DataRequired()])
     lng = FloatField('lng', validators=[DataRequired()])
     distance = IntegerField('distance', validators=[DataRequired()])

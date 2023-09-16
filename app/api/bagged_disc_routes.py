@@ -20,37 +20,13 @@ def bagged_disc_by_id(id):
     return bagged_disc.to_dict()
 
 
-@bagged_disc_routes.route('/new', methods=['POST'])
-@login_required
-def create_bagged_disc():
-    """
-    Create a new bagged disc
-    """
-    form = BaggedDisc()
-    # Get the csrf_token from the request cookie and put it into the
-    # form manually to validate_on_submit can be used
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        bagged_disc = BaggedDisc(
-            weight=form.data['weight'],
-            color=form.data['color'],
-            plastic=form.data['plastic'],
-            image_url=form.data['image_url'],
-        )
-
-        db.session.add(bagged_disc)
-        db.session.commit()
-        return bagged_disc.to_dict(), 201
-    return validation_errors_to_error_messages(form.errors), 400
-
-
 @bagged_disc_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_bagged_disc(id):
     """
     Update a bagged disc by id
     """
-    form = BaggedDisc()
+    form = BaggedDiscForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
