@@ -11,6 +11,7 @@ class Basket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('courses.id')), nullable=False)
+    hole_number = db.Column(db.Integer, nullable=False)
     lat = db.Column(db.Float, nullable=False)
     lng = db.Column(db.Float, nullable=False)
     distance = db.Column(db.Integer, nullable=False)
@@ -25,6 +26,7 @@ class Basket(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'holeNumber': self.hole_number,
             'lat': self.lat,
             'lng': self.lng,
             'distance': self.distance,

@@ -5,6 +5,7 @@ from sqlalchemy.sql import text
 def seed_baskets():
     basket1 = Basket(
         id=1,
+        hole_number=1,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -14,6 +15,7 @@ def seed_baskets():
 
     basket2 = Basket(
         id=2,
+        hole_number=2,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -23,6 +25,7 @@ def seed_baskets():
 
     basket3 = Basket(
         id=3,
+        hole_number=3,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -32,6 +35,7 @@ def seed_baskets():
 
     basket4 = Basket(
         id=4,
+        hole_number=4,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -42,6 +46,7 @@ def seed_baskets():
 
     basket5 = Basket(
         id=5,
+        hole_number=5,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -51,6 +56,7 @@ def seed_baskets():
 
     basket6 = Basket(
         id=6,
+        hole_number=6,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -60,6 +66,7 @@ def seed_baskets():
 
     basket7 = Basket(
         id=7,
+        hole_number=7,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -69,6 +76,7 @@ def seed_baskets():
 
     basket8 = Basket(
         id=8,
+        hole_number=8,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -78,6 +86,7 @@ def seed_baskets():
 
     basket9 = Basket(
         id=9,
+        hole_number=9,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -87,6 +96,7 @@ def seed_baskets():
 
     basket10 = Basket(
         id=10,
+        hole_number=10,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -96,6 +106,7 @@ def seed_baskets():
 
     basket11 = Basket(
         id=11,
+        hole_number=11,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -105,6 +116,7 @@ def seed_baskets():
 
     basket12 = Basket(
         id=12,
+        hole_number=12,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -114,6 +126,7 @@ def seed_baskets():
 
     basket13 = Basket(
         id=13,
+        hole_number=13,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -123,6 +136,7 @@ def seed_baskets():
 
     basket14 = Basket(
         id=14,
+        hole_number=14,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -132,6 +146,7 @@ def seed_baskets():
 
     basket15 = Basket(
         id=15,
+        hole_number=15,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -141,6 +156,7 @@ def seed_baskets():
 
     basket16 = Basket(
         id=16,
+        hole_number=16,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -150,6 +166,7 @@ def seed_baskets():
 
     basket17 = Basket(
         id=17,
+        hole_number=17,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,
@@ -159,6 +176,7 @@ def seed_baskets():
 
     basket18 = Basket(
         id=18,
+        hole_number=18,
         course_id=1,
         lat=44.050948,
         lng=-123.091639,

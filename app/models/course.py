@@ -55,5 +55,8 @@ class Course(db.Model):
             'cost': self.cost,
             'approved': self.approved,
             'createdAt': self.created_at,
-            'updatedAt': self.updated_at
+            'updatedAt': self.updated_at,
+            'baskets': [basket.to_dict() for basket in self.baskets],
+            'owner': self.owner.to_dict(),
+            'images': [image.to_dict() for image in self.images]
         }
