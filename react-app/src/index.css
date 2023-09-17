@@ -8,7 +8,6 @@
 body {
   max-width: 1920px;
   margin: 0 auto;
-  padding: 20px;
   background-color: #faf9f9;
 }
 
@@ -22,6 +21,7 @@ li {
 }
 
 button {
+  cursor: pointer;
   border: none;
   background-color: #ffffff;
 }

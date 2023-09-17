@@ -2,6 +2,7 @@
 const LOAD_DISCS = "discs/LOAD_DISCS";
 const LOAD_DISC = "discs/LOAD_DISC";
 const LOAD_ADMIN_DISCS = "discs/LOAD_ADMIN_DISCS";
+const ADD_DISC = "discs/ADD_DISC";
 
 // ----------------------- Action Creators -----------------------
 const loadDiscs = (discs) => ({
@@ -17,6 +18,11 @@ const loadDisc = (disc) => ({
 const loadAdminDiscs = (discs) => ({
   type: LOAD_ADMIN_DISCS,
   payload: discs,
+});
+
+const addDisc = (disc) => ({
+  type: ADD_DISC,
+  payload: disc,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -61,6 +67,29 @@ export const getDiscsAwaitingApproval = () => async (dispatch) => {
   }
 };
 
+export const createNewDisc = (disc) => async (dispatch) => {
+  console.log(disc);
+  const res = await fetch("/api/discs/new", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(disc),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(addDisc(data));
+    return null;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occured. Please try again."];
+  }
+};
+
 // ---------------------- State Selectors -------------------------
 export const allDiscs = (state) => Object.values(state.discs.allDiscs);
 export const currentDisc = (state) => state.discs.currentDisc;
@@ -98,6 +127,14 @@ export default function reducer(state = initalState, action) {
       return {
         ...newState,
         currentDisc: action.payload,
+      };
+    case ADD_DISC:
+      return {
+        ...newState,
+        allDiscs: {
+          ...newState.allDiscs,
+          [action.payload.id]: action.payload,
+        },
       };
     default:
       return state;

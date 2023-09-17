@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDiscs } from "../../store/discs";
 import { allDiscs } from "../../store/discs";
 import DiscTile from "../DiscTile";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalDiv from "../OpenModalDiv";
 import DiscDetailsModal from "../DiscDetailsModal";
+import OpenModalButton from "../OpenModalButton";
+import CreateDiscForm from "../CreateDiscForm";
 import "./DiscsLandingPage.css";
 
 const DiscsLandingPage = () => {
@@ -15,16 +17,31 @@ const DiscsLandingPage = () => {
     dispatch(getAllDiscs());
   }, [dispatch]);
   return (
-    <div className="disc_landing__main">
-      {discs.map((disc) => (
-        <OpenModalButton
-          className="disc-landing__title"
-          key={disc.id}
-          buttonText={<DiscTile disc={disc} />}
-          modalComponent={<DiscDetailsModal disc={disc} />}
-        />
-      ))}
-    </div>
+    <>
+      <input className="disc_landing__search" type="text" />
+      <main className="disc_landing__container">
+        <div className="disc_landing__filters">
+          <h1>Filters will go here</h1>
+          <div className="disc_landing__submit">
+            <h3>Don't see your disc?</h3>
+            <OpenModalButton
+              modalComponent={<CreateDiscForm />}
+              buttonText={"Request Disc"}
+            />
+          </div>
+        </div>
+        <div className="disc_landing__main">
+          {discs.map((disc) => (
+            <OpenModalDiv
+              className="disc-landing__title"
+              key={disc.id}
+              component={<DiscTile disc={disc} />}
+              modalComponent={<DiscDetailsModal disc={disc} />}
+            />
+          ))}
+        </div>
+      </main>
+    </>
   );
 };
 
