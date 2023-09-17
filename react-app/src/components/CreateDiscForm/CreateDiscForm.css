@@ -1,13 +1,14 @@
 .create_disc__main {
-  width: 500px;
-  height: 80dvh;
+  width: 60vw;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 10px;
 }
-.create_disc__main > textarea,
+
+.create_disc__main textarea,
 input,
 select {
   color: #757575;
@@ -22,6 +23,29 @@ select {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.create_disc__main > textarea {
+.create_disc__main textarea {
   height: 100px;
+}
+
+.create_disc__info {
+  grid-column: 1/ 5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create_disc__flight {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: 5 / 10;
+  grid-row: 1;
+}
+
+.create_disc__dimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: 5 / 10;
+  grid-row: 2;
 }

@@ -17,14 +17,14 @@ const CreateDiscForm = () => {
   const [description, setDescription] = useState("");
   const [purchase_link, setPurchaseLink] = useState("");
   const [plastics, setPlastics] = useState("");
-  const [speed, setSpeed] = useState("");
-  const [glide, setGlide] = useState("");
-  const [turn, setTurn] = useState("");
-  const [fade, setFade] = useState("");
-  const [height, setHeight] = useState("");
-  const [rim_depth, setRimDepth] = useState("");
-  const [rim_width, setRimWidth] = useState("");
-  const [image_url, setImageUrl] = useState("");
+  const [speed, setSpeed] = useState(0);
+  const [glide, setGlide] = useState(0);
+  const [turn, setTurn] = useState(null);
+  const [fade, setFade] = useState(0);
+  const [height, setHeight] = useState(0.0);
+  const [rim_depth, setRimDepth] = useState(0.0);
+  const [rim_width, setRimWidth] = useState(0.0);
+  const [image_url, setImageUrl] = useState(0.0);
 
   const [errors, setErrors] = useState({});
 
@@ -60,8 +60,8 @@ const CreateDiscForm = () => {
   };
 
   return (
-    <>
-      <form className="create_disc__main" onSubmit={handleSubmit}>
+    <form className="create_disc__main" onSubmit={handleSubmit}>
+      <div class="create_disc__info">
         <select
           required
           value={manufacture}
@@ -118,6 +118,8 @@ const CreateDiscForm = () => {
           required
         />
         {errors.plastics && <p>{errors.plastics}</p>}
+      </div>
+      <div class="create_disc__flight">
         <span>
           Speed: {speed} Glide: {glide} Turn: {turn} Fade: {fade}
         </span>
@@ -161,6 +163,8 @@ const CreateDiscForm = () => {
           required
         />
         {errors.fade && <p>{errors.fade}</p>}
+      </div>
+      <div class="create_disc__dimensions">
         <input
           value={height}
           type="number"
@@ -189,11 +193,11 @@ const CreateDiscForm = () => {
           onChange={(e) => setImageUrl(e.target.value)}
         />
         {errors.image_url && <p>{errors.image_url}</p>}
-        <button type="submit">
-          {sessionUser.admin ? "Create Disc" : "Request Disc"}
-        </button>
-      </form>
-    </>
+      </div>
+      <button type="submit">
+        {sessionUser.admin ? "Create Disc" : "Request Disc"}
+      </button>
+    </form>
   );
 };
 

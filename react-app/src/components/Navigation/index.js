@@ -19,6 +19,9 @@ function Navigation({ isLoaded }) {
         <li>
           <NavLink to="/discs">Discs</NavLink>
         </li>
+        <li>
+          <NavLink to="/bags">Bags</NavLink>
+        </li>
         {isLoaded && (
           <li>
             <ProfileButton user={sessionUser} />

@@ -2,10 +2,9 @@
   display: flex;
   gap: 20px;
   padding: 0 60px;
-  width: 1920px;
 }
 .disc_landing__filters {
-  min-width: 300px;
+  width: 350px;
   height: 75dvh;
   display: flex;
   flex-direction: column;
@@ -35,6 +34,7 @@
 .disc_landing__main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   width: 100%;
 }
 
@@ -45,6 +45,8 @@
 .disc_landing__search {
   height: 50px;
   margin: 20px 0;
+  width: 90%;
+  margin: 10px auto;
   border-radius: 40px;
   background-color: #ffffff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
