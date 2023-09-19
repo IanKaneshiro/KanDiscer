@@ -13,7 +13,8 @@ def all_disc():
     """
     Returns all discs
     """
-    discs = Disc.query.filter_by(approved=True).all()
+    discs = Disc.query.filter_by(
+        approved=True).all()
     return {"Discs": [disc.to_dict() for disc in discs]}
 
 
@@ -106,7 +107,7 @@ def update_disc(id):
         disc.rim_width = form.data['rim_width']
         disc.image_url = form.data['image_url']
         if current_user.admin:
-            disc.approved = form.data['approved']
+            disc.approved = True
         db.session.commit()
         return disc.to_dict()
     return validation_errors_to_error_messages(form.errors), 400

@@ -3,27 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { discTypes, manufactures } from "../../utils/seederData";
-import { createNewDisc } from "../../store/discs";
-import "./CreateDiscForm.css";
+import { updateDisc } from "../../store/discs";
 
-const CreateDiscForm = () => {
+const UpdateDiscModal = ({ disc, approve }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-  const [manufacture, setManufacture] = useState("");
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [description, setDescription] = useState("");
-  const [purchase_link, setPurchaseLink] = useState("");
-  const [plastics, setPlastics] = useState("");
-  const [speed, setSpeed] = useState(0);
-  const [glide, setGlide] = useState(0);
-  const [turn, setTurn] = useState(0.0);
-  const [fade, setFade] = useState(0);
-  const [height, setHeight] = useState(0.0);
-  const [rim_depth, setRimDepth] = useState(0.0);
-  const [rim_width, setRimWidth] = useState(0.0);
-  const [image_url, setImageUrl] = useState(0.0);
+  const [manufacture, setManufacture] = useState(disc?.manufacture);
+  const [name, setName] = useState(disc?.name);
+  const [type, setType] = useState(disc?.type);
+  const [description, setDescription] = useState(disc?.description);
+  const [purchase_link, setPurchaseLink] = useState(disc?.purchaseLink);
+  const [plastics, setPlastics] = useState(disc?.plastics);
+  const [speed, setSpeed] = useState(disc?.speed);
+  const [glide, setGlide] = useState(disc?.glide);
+  const [turn, setTurn] = useState(disc?.turn);
+  const [fade, setFade] = useState(disc?.fade);
+  const [height, setHeight] = useState(disc?.height);
+  const [rim_depth, setRimDepth] = useState(disc?.rimDepth);
+  const [rim_width, setRimWidth] = useState(disc?.rimWidth);
+  const [image_url, setImageUrl] = useState(disc?.imageUrl);
 
   const [errors, setErrors] = useState({});
 
@@ -34,7 +33,7 @@ const CreateDiscForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const disc = {
+    const updatedDisc = {
       manufacture,
       name,
       type,
@@ -50,7 +49,7 @@ const CreateDiscForm = () => {
       rim_width,
       image_url,
     };
-    const data = await dispatch(createNewDisc(disc));
+    const data = await dispatch(updateDisc(updatedDisc, disc.id, approve));
     if (data) {
       setErrors(data);
     } else {
@@ -60,7 +59,7 @@ const CreateDiscForm = () => {
 
   return (
     <form className="create_disc__main" onSubmit={handleSubmit}>
-      <div class="create_disc__info">
+      <div className="create_disc__info">
         <select
           required
           value={manufacture}
@@ -193,11 +192,9 @@ const CreateDiscForm = () => {
         />
         {errors.image_url && <p>{errors.image_url}</p>}
       </div>
-      <button type="submit">
-        {sessionUser.admin ? "Create Disc" : "Request Disc"}
-      </button>
+      <button type="submit">{approve ? "Approve" : "Save Changes"}</button>
     </form>
   );
 };
 
-export default CreateDiscForm;
+export default UpdateDiscModal;

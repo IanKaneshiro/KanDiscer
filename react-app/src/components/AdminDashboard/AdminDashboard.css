@@ -1,0 +1,21 @@
+.admin__container {
+  max-width: 1920px;
+  margin: 20px;
+}
+
+.admin__main {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.admin__main > div {
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+  overflow-y: auto;
+  padding: 10px;
+}

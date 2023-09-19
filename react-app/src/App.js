@@ -7,8 +7,9 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import DiscsLandingPage from "./components/DiscsLandingPage";
 import HomePage from "./components/HomePage";
-import AdminPortal from "./components/AdminPortal";
 import BagsLandingPage from "./components/BagsLandingPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/admin">
-            <AdminPortal />
+            <AdminDashboard />
           </Route>
           <Route path="/login">
             <LoginFormPage />
@@ -37,9 +38,11 @@ function App() {
           <Route path="/discs">
             <DiscsLandingPage />
           </Route>
-          <Route path="/bags">
-            <BagsLandingPage />
-          </Route>
+          <ProtectedRoute>
+            <Route path="/bags">
+              <BagsLandingPage />
+            </Route>
+          </ProtectedRoute>
         </Switch>
       )}
     </>

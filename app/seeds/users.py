@@ -7,7 +7,7 @@ def seed_users():
     demo = User(
         first_name='Demo', last_name='Man', username='Demo', email='demo@aa.io', pdga_number=123456, skill_level='amateur', throwing_preference='right-hand backhand', admin=True, password='password')
     Paul = User(
-        first_name='Paul', last_name='Mcbeth', username='goat', email='goat@discgolf.io', pdga_number=12345, skill_level='pro', throwing_preference='right-hand, backhand', admin=True,  password='password')
+        first_name='Paul', last_name='Mcbeth', username='goat', email='goat@discgolf.io', pdga_number=12345, skill_level='pro', throwing_preference='right-hand, backhand', admin=False,  password='password')
     Kristen = User(
         first_name='Kristen', last_name='Tattar', username='champion', email='champion@discgolf.io', pdga_number=54342, skill_level='pro', throwing_preference='right-hand, backhand', admin=True,  password='password')
 
