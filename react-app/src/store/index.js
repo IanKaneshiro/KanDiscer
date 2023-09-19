@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import discs from "./discs";
 import bags from "./bags";
+import baggedDiscs from "./baggedDiscs";
 
 const rootReducer = combineReducers({
   session,
   discs,
   bags,
+  baggedDiscs,
 });
 
 let enhancer;

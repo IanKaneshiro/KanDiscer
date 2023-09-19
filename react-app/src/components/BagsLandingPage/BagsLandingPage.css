@@ -1,0 +1,45 @@
+.bags__container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
+}
+
+.bags__main {
+  display: flex;
+  gap: 10px;
+}
+
+.bags__search {
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.bags__main > div {
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+.bags__in_bag {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.bags__add_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #284b63;
+}
+
+.bags__flight_chart {
+  height: 600px;
+}

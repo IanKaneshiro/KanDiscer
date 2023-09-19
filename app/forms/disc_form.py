@@ -12,7 +12,7 @@ class DiscForm(FlaskForm):
     plastics = StringField('plastics', validators=[DataRequired()])
     speed = IntegerField('speed', validators=[DataRequired()])
     glide = IntegerField('glide', validators=[DataRequired()])
-    turn = FloatField('turn', validators=[DataRequired()])
+    turn = FloatField('turn')
     fade = FloatField('fade', validators=[DataRequired()])
     diameter = FloatField('diameter')
     height = FloatField('height')

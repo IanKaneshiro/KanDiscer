@@ -6,6 +6,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import DiscsLandingPage from "./components/DiscsLandingPage";
+import HomePage from "./components/HomePage";
+import BagsLandingPage from "./components/BagsLandingPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +23,12 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/admin">
+            <AdminDashboard />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -28,6 +38,11 @@ function App() {
           <Route path="/discs">
             <DiscsLandingPage />
           </Route>
+          <ProtectedRoute>
+            <Route path="/bags">
+              <BagsLandingPage />
+            </Route>
+          </ProtectedRoute>
         </Switch>
       )}
     </>
