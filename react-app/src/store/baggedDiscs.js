@@ -41,10 +41,13 @@ export const getBaggedDiscById = (id) => async (dispatch) => {
     return ["An error occured. Please try again"];
   }
 };
+// ---------------------- State Selectors -------------------------
+export const selectAllBaggedDiscs = (state) =>
+  Object.values(state.baggedDiscs.allDiscs);
 
 // ---------------------- Initial State ---------------------------
 const initalState = {
-  baggedDiscs: {},
+  allDiscs: {},
   currentDisc: {},
 };
 
@@ -53,13 +56,11 @@ export default function reducer(state = initalState, action) {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_BAGGED_DISCS:
-      const baggedDiscs = {};
-      action.payload.BaggedDiscs.forEach(
-        (disc) => (baggedDiscs[disc.id] = disc)
-      );
+      const allDiscs = {};
+      action.payload.BaggedDiscs.forEach((disc) => (allDiscs[disc.id] = disc));
       return {
         ...newState,
-        baggedDiscs,
+        allDiscs,
       };
     case LOAD_BAGGED_DISC:
       return {

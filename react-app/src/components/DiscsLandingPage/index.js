@@ -12,6 +12,7 @@ import "./DiscsLandingPage.css";
 const DiscsLandingPage = () => {
   const dispatch = useDispatch();
   const discs = useSelector(allDiscs);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getAllDiscs());
@@ -23,10 +24,10 @@ const DiscsLandingPage = () => {
         <div className="disc_landing__filters">
           <h1>Filters will go here</h1>
           <div className="disc_landing__submit">
-            <h3>Don't see your disc?</h3>
+            {!sessionUser?.admin && <h3>Don't see your disc?</h3>}
             <OpenModalButton
               modalComponent={<CreateDiscForm />}
-              buttonText={"Request Disc"}
+              buttonText={sessionUser?.admin ? "Add Disc" : "Request "}
             />
           </div>
         </div>
