@@ -20,7 +20,7 @@ const AdminDiscTile = ({ disc, approve }) => {
     <div className="admin-disc__main">
       <h2>{disc.name}</h2>
       <OpenModalButton
-        buttonText={"Update"}
+        buttonText={approve ? "Review" : "Update"}
         modalComponent={<UpdateDiscModal disc={disc} approve={approve} />}
       />
       <OpenModalButton

@@ -7,9 +7,9 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import DiscsLandingPage from "./components/DiscsLandingPage";
 import HomePage from "./components/HomePage";
-import BagsLandingPage from "./components/BagsLandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
+import BagsNavigationBar from "./components/BagsNavigationBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function App() {
           </Route>
           <ProtectedRoute>
             <Route path="/bags">
-              <BagsLandingPage />
+              <BagsNavigationBar />
             </Route>
           </ProtectedRoute>
         </Switch>

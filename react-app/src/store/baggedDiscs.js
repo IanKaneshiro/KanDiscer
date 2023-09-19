@@ -1,6 +1,7 @@
 // ---------------------- Constants --------------------------------
 const LOAD_BAGGED_DISCS = "discs/LOAD_BAGGED_DISCS";
 const LOAD_BAGGED_DISC = "discs/LOAD_BAGGED_DISC";
+const CLEAR_BAGGED_DISCS = "discs/CLEAR_BAGGED_DISCS";
 
 // ----------------------- Action Creators -----------------------
 const loadBaggedDiscs = (discs) => ({
@@ -11,6 +12,10 @@ const loadBaggedDiscs = (discs) => ({
 const loadBaggedDisc = (disc) => ({
   type: LOAD_BAGGED_DISC,
   payload: disc,
+});
+
+export const clearBaggedDiscs = () => ({
+  type: CLEAR_BAGGED_DISCS,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -60,13 +65,15 @@ export default function reducer(state = initalState, action) {
       action.payload.BaggedDiscs.forEach((disc) => (allDiscs[disc.id] = disc));
       return {
         ...newState,
-        allDiscs,
+        allDiscs: allDiscs,
       };
     case LOAD_BAGGED_DISC:
       return {
         ...newState,
         currentDisc: action.payload,
       };
+    case CLEAR_BAGGED_DISCS:
+      return initalState;
     default:
       return state;
   }

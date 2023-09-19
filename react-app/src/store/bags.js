@@ -107,6 +107,7 @@ export const deleteBag = (id) => async (dispatch) => {
 
 // ---------------------- State Selectors ------------------------
 export const bags = (state) => Object.values(state.bags.usersBags);
+export const selectCurrentBag = (state) => state.bags.currentBag;
 
 // ---------------------- Initial State ---------------------------
 const initalState = {
