@@ -9,7 +9,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-  const [manufacture, setManufacture] = useState(disc?.manufacture);
+  const [manufacturer, setManufacture] = useState(disc?.manufacturer);
   const [name, setName] = useState(disc?.name);
   const [type, setType] = useState(disc?.type);
   const [description, setDescription] = useState(disc?.description);
@@ -34,7 +34,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedDisc = {
-      manufacture,
+      manufacturer,
       name,
       type,
       description,
@@ -62,7 +62,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
       <div className="create_disc__info">
         <select
           required
-          value={manufacture}
+          value={manufacturer}
           onChange={(e) => setManufacture(e.target.value)}
         >
           <option disabled value="">
@@ -74,7 +74,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
             </option>
           ))}
         </select>
-        {errors.manufacture && <p>{errors.manufacture}</p>}
+        {errors.manufacturer && <p>{errors.manufacturer}</p>}
         <input
           required
           placeholder="Name"

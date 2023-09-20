@@ -1,34 +1,31 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bags, getAllBags } from "../../store/bags";
+import {
+  getAllBaggedDiscs,
+  selectAllBaggedDiscs,
+  clearBaggedDiscs,
+} from "../../store/baggedDiscs";
 import "./BagsLandingPage.css";
-import BagsTile from "../BagsTile";
-import OpenModalButton from "../OpenModalButton";
-import CreateBagForm from "../CreateBagForm";
 
-const BagsLandingPage = () => {
+const BagsLandingPage = ({ bag }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllBags());
-  }, [dispatch]);
+  const baggedDiscs = useSelector(selectAllBaggedDiscs);
 
-  const allBags = useSelector(bags);
+  useEffect(() => {
+    dispatch(getAllBaggedDiscs(bag.id));
+    return () => dispatch(clearBaggedDiscs());
+  }, [dispatch, bag]);
 
   return (
     <div className="bags__container">
-      <div className="bags__search">
-        <input />
-        <OpenModalButton
-          buttonText={"Add a new bag"}
-          modalComponent={<CreateBagForm />}
-        />
-      </div>
       <div className="bags__main">
         <div className="bags__in_bag">
-          <BagsTile allBags={allBags} />
-          <BagsTile />
-          <BagsTile />
-          <BagsTile />
+          {baggedDiscs.map((disc) => (
+            <div>
+              <p>{disc.info.name}</p>
+              <p>{disc.color}</p>
+            </div>
+          ))}
           <button className="bags__add_btn">
             <i className="fa-solid fa-plus fa-2xl"></i>
           </button>

@@ -52,6 +52,25 @@ export const getAllDiscs = () => async (dispatch) => {
   }
 };
 
+export const getFilteredDiscs = (query) => async (dispatch) => {
+  let queryString = "?";
+  for (const [key, val] of Object.entries(query)) {
+    if (val) {
+      queryString += `${key}=${val}&`;
+    }
+  }
+  const res = await fetch(`/api/discs${queryString}`);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(loadDiscs(data));
+  } else if (res.status < 500) {
+    const data = await res.json();
+    return data;
+  } else {
+    return ["An error occured. Please try again"];
+  }
+};
+
 export const getDiscById = (id) => async (dispatch) => {
   const res = await fetch(`/api/discs/${id}`);
 

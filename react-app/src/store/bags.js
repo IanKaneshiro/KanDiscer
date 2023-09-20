@@ -2,6 +2,7 @@
 const LOAD_BAGS = "discs/LOAD_BAGS";
 const LOAD_BAG = "discs/LOAD_BAG";
 const ADD_BAG = "discs/ADD_BAG";
+const REMOVE_BAG = "discs/REMOVE_BAG";
 
 // ----------------------- Action Creators -----------------------
 const loadBags = (bags) => ({
@@ -17,6 +18,11 @@ const loadBag = (bag) => ({
 const addBag = (bag) => ({
   type: ADD_BAG,
   payload: bag,
+});
+
+const removeBag = (id) => ({
+  type: REMOVE_BAG,
+  payload: id,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -67,8 +73,41 @@ export const createNewBag = (bag) => async (dispatch) => {
   }
 };
 
+export const updateBag = (bag, id) => async (dispatch) => {
+  const res = await fetch(`/api/bags/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bag),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(addBag(data));
+    return null;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    return data;
+  } else {
+    return ["An error occured. Please try again"];
+  }
+};
+
+export const deleteBag = (id) => async (dispatch) => {
+  const res = await fetch(`/api/bags/${id}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(removeBag(id));
+  } else {
+    const data = await res.json();
+    return data;
+  }
+};
+
 // ---------------------- State Selectors ------------------------
 export const bags = (state) => Object.values(state.bags.usersBags);
+export const selectCurrentBag = (state) => state.bags.currentBag;
 
 // ---------------------- Initial State ---------------------------
 const initalState = {
@@ -99,6 +138,12 @@ export default function reducer(state = initalState, action) {
           ...newState.usersBags,
           [action.payload.id]: action.payload,
         },
+      };
+    case REMOVE_BAG:
+      delete newState.usersBags[action.payload];
+      return {
+        ...newState,
+        usersBags: newState.usersBags,
       };
     default:
       return state;

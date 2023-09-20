@@ -13,9 +13,47 @@ def all_disc():
     """
     Returns all discs
     """
-    discs = Disc.query.filter_by(
-        approved=True).all()
-    return {"Discs": [disc.to_dict() for disc in discs]}
+    filters = []
+
+    filter_name = request.args.get('name')
+    manufacturer = request.args.get('manufacturer')
+    speed_max = request.args.get('speed_max')
+    speed_min = request.args.get('speed_min')
+    glide_max = request.args.get('glide_max')
+    glide_min = request.args.get('glide_min')
+    turn_max = request.args.get('turn_max')
+    turn_min = request.args.get('turn_min')
+    fade_max = request.args.get('fade_max')
+    fade_min = request.args.get('fade_min')
+
+    if filter_name:
+        filters.append(Disc.name.ilike(f"%{filter_name}%"))
+    if manufacturer:
+        filters.append(Disc.manufacturer == manufacturer)
+    if speed_max != None:
+        filters.append(Disc.speed <= float(speed_max))
+    if speed_min != None:
+        filters.append(Disc.speed >= float(speed_min))
+    if glide_max != None:
+        filters.append(Disc.glide <= float(glide_max))
+    if glide_min != None:
+        filters.append(Disc.glide >= float(glide_min))
+    if turn_max != None:
+        filters.append(Disc.turn <= float(turn_max))
+    if turn_min != None:
+        filters.append(Disc.turn >= float(turn_min))
+    if fade_max != None:
+        filters.append(Disc.fade <= float(fade_max))
+    if fade_min != None:
+        filters.append(Disc.fade >= float(fade_min))
+
+    if filters:
+        filter_discs = Disc.query.filter(*filters, Disc.approved == True).all()
+        return {"Discs": [disc.to_dict() for disc in filter_discs]}
+    else:
+        discs = Disc.query.filter_by(
+            approved=True).order_by(Disc.created_at.desc()).all()
+        return {"Discs": [disc.to_dict() for disc in discs]}
 
 
 @disc_routes.route('/awaiting_approval')
@@ -51,7 +89,7 @@ def create_disc():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         disc = Disc(
-            manufacture=form.data['manufacture'],
+            manufacturer=form.data['manufacturer'],
             name=form.data['name'],
             description=form.data['description'],
             type=form.data['type'],
@@ -91,7 +129,7 @@ def update_disc(id):
         return {"message": "Disc doesn't exist"}, 404
 
     if form.validate_on_submit():
-        disc.manufacture = form.data['manufacture']
+        disc.manufacturer = form.data['manufacturer']
         disc.name = form.data['name']
         disc.description = form.data['description']
         disc.type = form.data['type']

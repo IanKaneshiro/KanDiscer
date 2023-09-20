@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 # Adds disc seeder data
 def seed_discs():
     disc1 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Buzzz',
         description='The Buzzz is disc golf’s most popular midrange due to its consistency and compatibility with a wide range of players styles. The Buzzz is a low profile modern midrange that is the gold standard for straight to stable flights players can trust.',
         type='Midrange',
@@ -25,7 +25,7 @@ def seed_discs():
     )
 
     disc2 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Machete',
         description='The Machete is a low profile meat hook driver built to slice through headwinds with unparalleled predictability. Use it with brute force to easily manage upwind shots, or more like a scalpel for on-demand placement precision on a hyzer or flex shot.',
         type='Distance Driver',
@@ -45,7 +45,7 @@ def seed_discs():
     )
 
     disc3 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Heat',
         description='The Heat™ debuted as the 2014 Ace Race proto and quickly caught fire with players for its control, glide and distance at slower arm speeds. It has a smaller rim for easier grip, and is being hailed as a breakthrough in delivering improved distance for new and developing players.',
         type='Fairway Driver',
@@ -65,7 +65,7 @@ def seed_discs():
     )
 
     disc4 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Meteor',
         description='The Meteor is an understable midrange designed for glide and effortless straight flights. In Z blend, the Meteor will break in slowly into an easy turning midrange for technical control shots with the durability for a long life of consistent flight. ',
         type='Midrange',
@@ -83,7 +83,7 @@ def seed_discs():
         approved=True,
     )
     disc5 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Luna',
         description='The Luna is a new putter co-designed from start to finish with Paul McBeth. The Luna features a new and unique plastic blend, combining the fan favorites of Jawbreaker and the durability and extra tackiness of rubber. The melding and firming process of these two materials makes for a great feel in the hand and gives the utmost confidence on the course. The Luna is a great neutral flying putter, making it a staple for heavily wooded and open style courses. This control allows The Luna to take advantage of any angle or putting style and showcase it at its full potential.',
         type='Putter',
@@ -101,11 +101,310 @@ def seed_discs():
         approved=True,
     )
 
+    disc6 = Disc(
+        manufacturer='Innova',
+        name='Star Destroyer',
+        description='The Star Destroyer is a legendary distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Destroyer is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
+        type='Distance Driver',
+        purchase_link='https://www.innova.com/disc/star-destroyer/',
+        plastics='Star, GStar, Champion',
+        speed=13,
+        glide=5,
+        turn=-1,
+        fade=3,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.5,
+        rim_width=2.3,
+        image_url='https://www.innova.com/wp-content/uploads/2022/03/Star-Destroyer-Front.png',
+        approved=True,
+    )
+
+    disc7 = Disc(
+        manufacturer='Discraft',
+        name='Zombee',
+        description='The Zombee is a popular midrange disc known for its reliable straight flight and its ability to power through the wind. It is a very versatile disc that can be used for a variety of shots, including drives, approaches, and upshots. The Zombee is a great choice for players of all skill levels.',
+        type='Midrange',
+        purchase_link='https://otbdiscs.com/?s=zombee&post_type=product',
+        plastics='Z-Line, ESP, FLX',
+        speed=5,
+        glide=5,
+        turn=0,
+        fade=1,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.6,
+        image_url='https://otbdiscs.b-cdn.net/wp-content/uploads/2019/07/Zombee-212.png',
+        approved=True,
+    )
+
+    disc8 = Disc(
+        manufacturer='Dynamic Discs',
+        name='Escape',
+        description='The Escape is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Escape is also a good choice for windy conditions.',
+        type='Fairway Driver',
+        purchase_link='https://www.dynamicdiscs.com/products/escape',
+        plastics='Lucid, Fuzion, Lucid Air, Fluid, Lucid X, Lucid Ice, Fuzion Ice',
+        speed=9,
+        glide=5,
+        turn=2,
+        fade=1,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.8,
+        image_url='https://www.dynamicdiscs.com/products/escape/images/7793_escape_lucid_front.png',
+        approved=True,
+    )
+
+    disc9 = Disc(
+        manufacturer='Westside Discs',
+        name='Harp',
+        description='The Harp is a popular overstable approach disc known for its reliable fade and its ability to handle windy conditions. It is a great choice for players who need a disc that can hold a line and finish with a strong fade. The Harp is also a good choice for players who need a disc that can be used for forehand shots.',
+        type='Approach',
+        purchase_link='https://www.westsidediscs.com/products/harp',
+        plastics='VIP, Tournament, BT Hard',
+        speed=4,
+        glide=3,
+        turn=0,
+        fade=3,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.4,
+        rim_width=1.6,
+        image_url='https://www.westsidediscs.com/products/harp/images/12057_harp_tournament_front.png',
+        approved=True,
+    )
+    disc10 = Disc(
+        manufacturer='Kastaplast',
+        name='Kaxe Z',
+        description='The Kaxe Z is a popular midrange disc known for its reliable straight flight and its ability to power through the wind. It is a very versatile disc that can be used for a variety of shots, including drives, approaches, and upshots. The Kaxe Z is a great choice for players of all skill levels.',
+        type='Midrange',
+        purchase_link='https://www.kastaplast.com/products/kaxe-z/',
+        plastics='K1, K2',
+        speed=5,
+        glide=5,
+        turn=0,
+        fade=1,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.6,
+        image_url='https://www.kastaplast.com/products/kaxe-z/images/12128_kaxe-z_k1_front.png',
+        approved=True,
+    )
+
+    disc11 = Disc(
+        manufacturer='Prodigy Disc',
+        name='A3',
+        description='The A3 is a popular overstable approach disc known for its reliable fade and its ability to handle windy conditions. It is a great choice for players who need a disc that can hold a line and finish with a strong fade. The A3 is also a good choice for players who need a disc that can be used for forehand shots.',
+        type='Approach',
+        purchase_link='https://www.prodigydisc.com/products/a3',
+        plastics='400G, 300, 750',
+        speed=4,
+        glide=3,
+        turn=0,
+        fade=3,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.4,
+        rim_width=1.6,
+        image_url='https://www.prodigydisc.com/products/a3/images/53137_a3_400g_front.png',
+        approved=True,
+    )
+
+    disc12 = Disc(
+        manufacturer='Latitude 64',
+        name='River',
+        description='The River is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The River is also a good choice for windy conditions.',
+        type='Fairway Driver',
+        purchase_link='https://www.latitude64.com/products/river',
+        plastics='Gold Line, Opto Line, Opto Air, Pearl, Royal Grand',
+        speed=9,
+        glide=5,
+        turn=-1,
+        fade=2,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.8,
+        image_url='https://www.latitude64.com/products/river/images/11407_river_gold-line_front.png',
+        approved=True,
+    )
+
+    disc13 = Disc(
+        manufacturer='MVP Disc Sports',
+        name='Axiom Crave',
+        description='The Axiom Crave is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Crave is also a good choice for windy conditions.',
+        type='Fairway Driver',
+        purchase_link='https://mvpdiscsports.com/products/crave',
+        plastics='Neutron, Plasma, Electron, Proton, Fission',
+        speed=9,
+        glide=5,
+        turn=-1,
+        fade=1,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.8,
+        image_url='https://mvpdiscsports.com/products/crave/images/2317_crave_neutron_front.png',
+        approved=True,
+    )
+
+    disc14 = Disc(
+        manufacturer='Discmania',
+        name='FD',
+        description='The FD is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The FD is also a good choice for windy conditions.',
+        type='Fairway Driver',
+        purchase_link='https://www.discmania.net/products/fd',
+        plastics='C-Line, S-Line, G-Line, Neo',
+        speed=7,
+        glide=6,
+        turn=-1,
+        fade=1,
+        diameter=21.2,
+        height=1.8,
+        rim_depth=1.4,
+        rim_width=1.8,
+        image_url='https://www.discmania.net/products/fd/images/9599_fd_c-line_front.png',
+        approved=True,
+    )
+
+    disc15 = Disc(
+        manufacturer='RPM Discs',
+        name='Glow Reactor',
+        description='The Glow Reactor is a popular putt and approach disc known for its reliable straight flight and its ability to handle windy conditions. It is a great choice for players of all skill levels.',
+        type='Putt and Approach',
+        purchase_link='https://rpmdiscs.com/products/glow-reactor',
+        plastics='Cosmic, Cosmic Glow',
+        speed=2,
+        glide=3,
+        turn=0,
+        fade=0,
+        diameter=21.2,
+        height=1.8,
+        rim_depth=0.9,
+        rim_width=1.1,
+        image_url='https://rpmdiscs.com/products/glow-reactor/images/52726_glow-reactor_cosmic_front.png',
+        approved=True,
+    )
+
+    disc16 = Disc(
+        manufacturer='Infinite Discs',
+        name='Discraft Hades',
+        description='The Hades is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Hades is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
+        type='Distance Driver',
+        purchase_link='https://infinitediscs.com/product/hades-driver/10',
+        plastics='C-Line, S-Line, ESP, FLX',
+        speed=14,
+        glide=5,
+        turn=-1,
+        fade=3,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.5,
+        rim_width=2.3,
+        image_url='https://infinitediscs.com/product/hades-driver/10/images/hades_c-line_front.png',
+        approved=True,
+    )
+
+    disc17 = Disc(
+        manufacturer='Axiom Discs',
+        name='Insanity',
+        description='The Insanity is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Insanity is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
+        type='Distance Driver',
+        purchase_link='https://axiomdiscs.com/products/insanity',
+        plastics='Neutron, Plasma, Electron',
+        speed=13,
+        glide=5,
+        turn=-1,
+        fade=3,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.5,
+        rim_width=2.3,
+        image_url='https://axiomdiscs.com/products/insanity/images/2312_insanity_neutron_front.png',
+        approved=True,
+    )
+
+    disc18 = Disc(
+        manufacturer='Innova',
+        name='Boss',
+        description='The Boss is a legendary distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Boss is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
+        type='Distance Driver',
+        purchase_link='https://www.innova.com/disc/boss/',
+        plastics='Champion, Star, GStar',
+        speed=13,
+        glide=5,
+        turn=-1,
+        fade=4,
+        diameter=21.2,
+        height=2.0,
+        rim_depth=1.5,
+        rim_width=2.3,
+        image_url='https://www.innova.com/wp-content/uploads/2022/03/Boss-Front.png',
+        approved=True,
+    )
+
+    disc19 = Disc(
+        manufacturer='Discraft',
+        name='Nuke SS',
+        description='The Nuke SS is a popular distance driver known for its incredible speed and distance potential. It is a slightly understable disc, which means that it will have a slight turn to the right (for right-handed throwers) before fading back to the left. The Nuke SS is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. It is also a good choice for windy conditions.',
+        type='Distance Driver',
+        purchase_link='https://otbdiscs.com/?s=nuke+ss&post_type=product',
+        plastics='Z-Line, ESP, FLX',
+        speed=12,
+        glide=6,
+        turn=-1,
+        fade=2,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=2.3,
+        image_url='https://otbdiscs.b-cdn.net/wp-content/uploads/2021/03/Big-Z-Nuke-SS-Neon-Yellow_1024x1024.png',
+        approved=True,
+    )
+
+    disc20 = Disc(
+        manufacturer='Dynamic Discs',
+        name='Envy',
+        description='The Envy is a popular midrange driver known for its reliable straight flight and its ability to handle windy conditions. It is a great choice for players of all skill levels.',
+        type='Midrange Driver',
+        purchase_link='https://www.dynamicdiscs.com/products/envy',
+        plastics='Lucid, Fuzion, Lucid Air, Fluid, Lucid X, Lucid Ice, Fuzion Ice',
+        speed=5,
+        glide=5,
+        turn=0,
+        fade=2,
+        diameter=21.2,
+        height=1.9,
+        rim_depth=1.5,
+        rim_width=1.6,
+        image_url='https://www.dynamicdiscs.com/products/envy/images/7795_envy_lucid_front.png',
+        approved=True,
+    )
+
     db.session.add(disc1)
     db.session.add(disc2)
     db.session.add(disc3)
     db.session.add(disc4)
     db.session.add(disc5)
+    db.session.add(disc6)
+    db.session.add(disc7)
+    db.session.add(disc8)
+    db.session.add(disc9)
+    db.session.add(disc10)
+    db.session.add(disc11)
+    db.session.add(disc12)
+    db.session.add(disc13)
+    db.session.add(disc14)
+    db.session.add(disc15)
+    db.session.add(disc16)
+    db.session.add(disc17)
+    db.session.add(disc18)
+    db.session.add(disc19)
+    db.session.add(disc20)
 
     db.session.commit()
 

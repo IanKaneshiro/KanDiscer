@@ -1,6 +1,7 @@
 // ---------------------- Constants --------------------------------
 const LOAD_BAGGED_DISCS = "discs/LOAD_BAGGED_DISCS";
 const LOAD_BAGGED_DISC = "discs/LOAD_BAGGED_DISC";
+const CLEAR_BAGGED_DISCS = "discs/CLEAR_BAGGED_DISCS";
 
 // ----------------------- Action Creators -----------------------
 const loadBaggedDiscs = (discs) => ({
@@ -11,6 +12,10 @@ const loadBaggedDiscs = (discs) => ({
 const loadBaggedDisc = (disc) => ({
   type: LOAD_BAGGED_DISC,
   payload: disc,
+});
+
+export const clearBaggedDiscs = () => ({
+  type: CLEAR_BAGGED_DISCS,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -41,10 +46,13 @@ export const getBaggedDiscById = (id) => async (dispatch) => {
     return ["An error occured. Please try again"];
   }
 };
+// ---------------------- State Selectors -------------------------
+export const selectAllBaggedDiscs = (state) =>
+  Object.values(state.baggedDiscs.allDiscs);
 
 // ---------------------- Initial State ---------------------------
 const initalState = {
-  baggedDiscs: {},
+  allDiscs: {},
   currentDisc: {},
 };
 
@@ -53,19 +61,19 @@ export default function reducer(state = initalState, action) {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_BAGGED_DISCS:
-      const baggedDiscs = {};
-      action.payload.BaggedDiscs.forEach(
-        (disc) => (baggedDiscs[disc.id] = disc)
-      );
+      const allDiscs = {};
+      action.payload.BaggedDiscs.forEach((disc) => (allDiscs[disc.id] = disc));
       return {
         ...newState,
-        baggedDiscs,
+        allDiscs: allDiscs,
       };
     case LOAD_BAGGED_DISC:
       return {
         ...newState,
         currentDisc: action.payload,
       };
+    case CLEAR_BAGGED_DISCS:
+      return initalState;
     default:
       return state;
   }

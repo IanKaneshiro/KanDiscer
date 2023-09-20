@@ -9,7 +9,7 @@ class Disc(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    manufacture = db.Column(db.String(40), nullable=False)
+    manufacturer = db.Column(db.String(40), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text)
     type = db.Column(db.String(50), nullable=False)
@@ -35,7 +35,7 @@ class Disc(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'manufacture': self.manufacture,
+            'manufacturer': self.manufacturer,
             'name': self.name,
             'description': self.description,
             'type': self.type,
