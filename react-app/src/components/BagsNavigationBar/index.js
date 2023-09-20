@@ -9,8 +9,9 @@ import {
 import BagsLandingPage from "../BagsLandingPage";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
+import DeleteModal from "../DeleteModal";
 import "./BagsNavigationBar.css";
-import { clearBaggedDiscs } from "../../store/baggedDiscs";
+import { Switch, Route } from "react-router-dom";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
@@ -37,12 +38,25 @@ const BagsNavigationBar = () => {
         value={currentBagId}
         onChange={(e) => getCurrentBag(Number(e.target.value))}
       >
-        <option value="">Select your bag</option>
+        <option value="">Select your bag...</option>
         {allBags.map((bag) => (
           <option value={bag.id}>{bag.name}</option>
         ))}
       </select>
-      <BagsLandingPage bag={currentBag} />
+      {currentBagId !== 0 && (
+        <div>
+          <OpenModalButton buttonText={"Update"} />
+          <OpenModalButton
+            modalComponent={<DeleteModal name={currentBag} />}
+            buttonText={"Delete"}
+          />
+        </div>
+      )}
+      <Switch>
+        <Route path="/bags/:bagId">
+          <BagsLandingPage bag={currentBag} />
+        </Route>
+      </Switch>
     </div>
   );
 };

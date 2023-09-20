@@ -12,9 +12,13 @@ const BagsLandingPage = ({ bag }) => {
   const baggedDiscs = useSelector(selectAllBaggedDiscs);
 
   useEffect(() => {
-    dispatch(getAllBaggedDiscs(bag.id));
+    if (bag.id) {
+      dispatch(getAllBaggedDiscs(bag.id));
+    }
     return () => dispatch(clearBaggedDiscs());
   }, [dispatch, bag]);
+
+  if (!bag.id) return <h1>Please Select a bag</h1>;
 
   return (
     <div className="bags__container">

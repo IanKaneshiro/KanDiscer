@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./AddToBag.css";
+import CreateBaggedDiscForm from "../CreateBaggedDiscForm";
+import { currentDisc, getDiscById } from "../../store/discs";
 
 function AddToBag({ discId, bagId }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const disc = useSelector(currentDisc);
   const divRef = useRef();
+
+  useEffect(() => {
+    dispatch(getDiscById(discId));
+  }, [dispatch, discId]);
 
   const openMenu = (e) => {
     if (showMenu || !bagId) return;
@@ -34,8 +41,7 @@ function AddToBag({ discId, bagId }) {
     <>
       <button onClick={openMenu}>Add to Bag</button>
       <div className={divClassName} ref={divRef}>
-        Hello World
-        <button onClick={closeMenu}>Submit</button>
+        <CreateBaggedDiscForm closeMenu={closeMenu} disc={disc} bagId={bagId} />
       </div>
     </>
   );
