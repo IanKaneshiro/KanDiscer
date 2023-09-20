@@ -34,14 +34,16 @@ const DiscsLandingPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (filters) {
-      dispatch(getFilteredDiscs(filters));
+    let returnFilters = filters;
+    if (query) {
+      returnFilters.name = query;
+      return dispatch(getFilteredDiscs(returnFilters));
+    } else {
+      returnFilters.name = "";
+      dispatch(getFilteredDiscs(returnFilters));
     }
-  }, [dispatch, filters]);
+  }, [dispatch, filters, query]);
 
-  useEffect(() => {
-    dispatch(getFilteredDiscs({ name: query }));
-  }, [dispatch, query]);
   return (
     <>
       <input

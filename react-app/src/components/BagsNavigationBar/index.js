@@ -10,6 +10,7 @@ import BagsLandingPage from "../BagsLandingPage";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
 import "./BagsNavigationBar.css";
+import { clearBaggedDiscs } from "../../store/baggedDiscs";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
