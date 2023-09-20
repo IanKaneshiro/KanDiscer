@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 # Adds disc seeder data
 def seed_discs():
     disc1 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Buzzz',
         description='The Buzzz is disc golf’s most popular midrange due to its consistency and compatibility with a wide range of players styles. The Buzzz is a low profile modern midrange that is the gold standard for straight to stable flights players can trust.',
         type='Midrange',
@@ -25,7 +25,7 @@ def seed_discs():
     )
 
     disc2 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Machete',
         description='The Machete is a low profile meat hook driver built to slice through headwinds with unparalleled predictability. Use it with brute force to easily manage upwind shots, or more like a scalpel for on-demand placement precision on a hyzer or flex shot.',
         type='Distance Driver',
@@ -45,7 +45,7 @@ def seed_discs():
     )
 
     disc3 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Heat',
         description='The Heat™ debuted as the 2014 Ace Race proto and quickly caught fire with players for its control, glide and distance at slower arm speeds. It has a smaller rim for easier grip, and is being hailed as a breakthrough in delivering improved distance for new and developing players.',
         type='Fairway Driver',
@@ -65,7 +65,7 @@ def seed_discs():
     )
 
     disc4 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Meteor',
         description='The Meteor is an understable midrange designed for glide and effortless straight flights. In Z blend, the Meteor will break in slowly into an easy turning midrange for technical control shots with the durability for a long life of consistent flight. ',
         type='Midrange',
@@ -83,7 +83,7 @@ def seed_discs():
         approved=True,
     )
     disc5 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Luna',
         description='The Luna is a new putter co-designed from start to finish with Paul McBeth. The Luna features a new and unique plastic blend, combining the fan favorites of Jawbreaker and the durability and extra tackiness of rubber. The melding and firming process of these two materials makes for a great feel in the hand and gives the utmost confidence on the course. The Luna is a great neutral flying putter, making it a staple for heavily wooded and open style courses. This control allows The Luna to take advantage of any angle or putting style and showcase it at its full potential.',
         type='Putter',
@@ -102,7 +102,7 @@ def seed_discs():
     )
 
     disc6 = Disc(
-        manufacture='Innova',
+        manufacturer='Innova',
         name='Star Destroyer',
         description='The Star Destroyer is a legendary distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Destroyer is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
         type='Distance Driver',
@@ -121,7 +121,7 @@ def seed_discs():
     )
 
     disc7 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Zombee',
         description='The Zombee is a popular midrange disc known for its reliable straight flight and its ability to power through the wind. It is a very versatile disc that can be used for a variety of shots, including drives, approaches, and upshots. The Zombee is a great choice for players of all skill levels.',
         type='Midrange',
@@ -140,7 +140,7 @@ def seed_discs():
     )
 
     disc8 = Disc(
-        manufacture='Dynamic Discs',
+        manufacturer='Dynamic Discs',
         name='Escape',
         description='The Escape is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Escape is also a good choice for windy conditions.',
         type='Fairway Driver',
@@ -159,7 +159,7 @@ def seed_discs():
     )
 
     disc9 = Disc(
-        manufacture='Westside Discs',
+        manufacturer='Westside Discs',
         name='Harp',
         description='The Harp is a popular overstable approach disc known for its reliable fade and its ability to handle windy conditions. It is a great choice for players who need a disc that can hold a line and finish with a strong fade. The Harp is also a good choice for players who need a disc that can be used for forehand shots.',
         type='Approach',
@@ -177,7 +177,7 @@ def seed_discs():
         approved=True,
     )
     disc10 = Disc(
-        manufacture='Kastaplast',
+        manufacturer='Kastaplast',
         name='Kaxe Z',
         description='The Kaxe Z is a popular midrange disc known for its reliable straight flight and its ability to power through the wind. It is a very versatile disc that can be used for a variety of shots, including drives, approaches, and upshots. The Kaxe Z is a great choice for players of all skill levels.',
         type='Midrange',
@@ -196,7 +196,7 @@ def seed_discs():
     )
 
     disc11 = Disc(
-        manufacture='Prodigy Disc',
+        manufacturer='Prodigy Disc',
         name='A3',
         description='The A3 is a popular overstable approach disc known for its reliable fade and its ability to handle windy conditions. It is a great choice for players who need a disc that can hold a line and finish with a strong fade. The A3 is also a good choice for players who need a disc that can be used for forehand shots.',
         type='Approach',
@@ -215,7 +215,7 @@ def seed_discs():
     )
 
     disc12 = Disc(
-        manufacture='Latitude 64',
+        manufacturer='Latitude 64',
         name='River',
         description='The River is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The River is also a good choice for windy conditions.',
         type='Fairway Driver',
@@ -234,7 +234,7 @@ def seed_discs():
     )
 
     disc13 = Disc(
-        manufacture='MVP Disc Sports',
+        manufacturer='MVP Disc Sports',
         name='Axiom Crave',
         description='The Axiom Crave is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Crave is also a good choice for windy conditions.',
         type='Fairway Driver',
@@ -253,7 +253,7 @@ def seed_discs():
     )
 
     disc14 = Disc(
-        manufacture='Discmania',
+        manufacturer='Discmania',
         name='FD',
         description='The FD is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The FD is also a good choice for windy conditions.',
         type='Fairway Driver',
@@ -272,7 +272,7 @@ def seed_discs():
     )
 
     disc15 = Disc(
-        manufacture='RPM Discs',
+        manufacturer='RPM Discs',
         name='Glow Reactor',
         description='The Glow Reactor is a popular putt and approach disc known for its reliable straight flight and its ability to handle windy conditions. It is a great choice for players of all skill levels.',
         type='Putt and Approach',
@@ -291,7 +291,7 @@ def seed_discs():
     )
 
     disc16 = Disc(
-        manufacture='Infinite Discs',
+        manufacturer='Infinite Discs',
         name='Discraft Hades',
         description='The Hades is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Hades is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
         type='Distance Driver',
@@ -310,7 +310,7 @@ def seed_discs():
     )
 
     disc17 = Disc(
-        manufacture='Axiom Discs',
+        manufacturer='Axiom Discs',
         name='Insanity',
         description='The Insanity is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Insanity is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
         type='Distance Driver',
@@ -329,7 +329,7 @@ def seed_discs():
     )
 
     disc18 = Disc(
-        manufacture='Innova',
+        manufacturer='Innova',
         name='Boss',
         description='The Boss is a legendary distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Boss is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
         type='Distance Driver',
@@ -348,7 +348,7 @@ def seed_discs():
     )
 
     disc19 = Disc(
-        manufacture='Discraft',
+        manufacturer='Discraft',
         name='Nuke SS',
         description='The Nuke SS is a popular distance driver known for its incredible speed and distance potential. It is a slightly understable disc, which means that it will have a slight turn to the right (for right-handed throwers) before fading back to the left. The Nuke SS is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. It is also a good choice for windy conditions.',
         type='Distance Driver',
@@ -367,7 +367,7 @@ def seed_discs():
     )
 
     disc20 = Disc(
-        manufacture='Dynamic Discs',
+        manufacturer='Dynamic Discs',
         name='Envy',
         description='The Envy is a popular midrange driver known for its reliable straight flight and its ability to handle windy conditions. It is a great choice for players of all skill levels.',
         type='Midrange Driver',

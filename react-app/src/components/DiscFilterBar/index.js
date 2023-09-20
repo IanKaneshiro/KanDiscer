@@ -13,6 +13,7 @@ const DiscFilterBar = ({ filters, setFilters }) => {
           })
         }
       >
+        <option value={""}>None</option>
         {manufactures.map((man) => (
           <option key={man} value={man}>
             {man}

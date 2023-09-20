@@ -89,7 +89,7 @@ def create_disc():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         disc = Disc(
-            manufacture=form.data['manufacture'],
+            manufacturer=form.data['manufacturer'],
             name=form.data['name'],
             description=form.data['description'],
             type=form.data['type'],
@@ -129,7 +129,7 @@ def update_disc(id):
         return {"message": "Disc doesn't exist"}, 404
 
     if form.validate_on_submit():
-        disc.manufacture = form.data['manufacture']
+        disc.manufacturer = form.data['manufacturer']
         disc.name = form.data['name']
         disc.description = form.data['description']
         disc.type = form.data['type']

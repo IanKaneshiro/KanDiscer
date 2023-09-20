@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class DiscForm(FlaskForm):
-    manufacture = StringField('manufacture', validators=[DataRequired()])
+    manufacturer = StringField('manufacturer', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
     description = TextAreaField('description')
     type = StringField('type', validators=[DataRequired()])
