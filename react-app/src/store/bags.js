@@ -3,6 +3,7 @@ const LOAD_BAGS = "discs/LOAD_BAGS";
 const LOAD_BAG = "discs/LOAD_BAG";
 const ADD_BAG = "discs/ADD_BAG";
 const REMOVE_BAG = "discs/REMOVE_BAG";
+const CLEAR_CURRENT_BAG = "discs/CLEAR_CURRENT_BAG";
 
 // ----------------------- Action Creators -----------------------
 const loadBags = (bags) => ({
@@ -23,6 +24,10 @@ const addBag = (bag) => ({
 const removeBag = (id) => ({
   type: REMOVE_BAG,
   payload: id,
+});
+
+export const clearCurrentBag = () => ({
+  type: CLEAR_CURRENT_BAG,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -47,6 +52,7 @@ export const getBagById = (id) => async (dispatch) => {
     const data = await res.json();
     dispatch(loadBag(data));
   } else if (res.status < 500) {
+    dispatch(clearCurrentBag());
     const data = await res.json();
     return data;
   } else {
@@ -65,6 +71,7 @@ export const createNewBag = (bag) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(addBag(data));
+    return data;
   } else if (res.status < 500) {
     const data = await res.json();
     return data;
@@ -144,6 +151,12 @@ export default function reducer(state = initalState, action) {
       return {
         ...newState,
         usersBags: newState.usersBags,
+        currentBag: {},
+      };
+    case CLEAR_CURRENT_BAG:
+      return {
+        ...newState,
+        currentBag: {},
       };
     default:
       return state;
