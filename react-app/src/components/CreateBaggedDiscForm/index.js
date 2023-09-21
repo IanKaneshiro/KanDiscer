@@ -26,6 +26,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
       setErrors(data);
     } else {
       closeMenu();
+      alert("Succesfully added to your bag");
     }
   };
 

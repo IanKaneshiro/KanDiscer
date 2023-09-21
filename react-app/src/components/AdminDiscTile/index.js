@@ -25,7 +25,9 @@ const AdminDiscTile = ({ disc, approve }) => {
       />
       <OpenModalButton
         buttonText={"Delete"}
-        modalComponent={<DeleteModal disc={disc} handleDelete={handleDelete} />}
+        modalComponent={
+          <DeleteModal value={disc} handleDelete={handleDelete} />
+        }
       />
     </div>
   );

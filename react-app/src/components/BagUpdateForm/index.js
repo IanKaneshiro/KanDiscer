@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createNewBag } from "../../store/bags";
-import "./CreateBagForm.css";
+import { getBagById, selectCurrentBag, updateBag } from "../../store/bags";
 
-const CreateBagForm = () => {
+const BagUpdateForm = ({ bagId }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const bag = useSelector(selectCurrentBag);
   const { closeModal } = useModal();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [notes, setNotes] = useState("");
+  const [name, setName] = useState(bag.name);
+  const [description, setDescription] = useState(bag.description);
+  const [notes, setNotes] = useState(bag.note);
 
   const [errors, setErrors] = useState({});
 
-  if (!sessionUser) {
-    closeModal();
-    return <Redirect to="/login" />;
-  }
+  useEffect(() => {
+    dispatch(getBagById(bagId));
+  }, [dispatch, bagId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,12 +25,11 @@ const CreateBagForm = () => {
       notes,
     };
 
-    const data = await dispatch(createNewBag(bag));
-    if (data.errors) {
+    const data = await dispatch(updateBag(bag, bagId));
+    if (data) {
       setErrors(data);
     } else {
       closeModal();
-      return history.push(`/bags/${data.id}`);
     }
   };
 
@@ -62,9 +57,9 @@ const CreateBagForm = () => {
         type="text"
       />
       {errors.notes && <p className="errors">{errors.notes}</p>}
-      <button>Create</button>
+      <button>Save Changes</button>
     </form>
   );
 };
 
-export default CreateBagForm;
+export default BagUpdateForm;

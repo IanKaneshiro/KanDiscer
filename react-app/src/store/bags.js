@@ -26,7 +26,7 @@ const removeBag = (id) => ({
   payload: id,
 });
 
-const clearCurrentBag = () => ({
+export const clearCurrentBag = () => ({
   type: CLEAR_CURRENT_BAG,
 });
 
@@ -71,6 +71,7 @@ export const createNewBag = (bag) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(addBag(data));
+    return data;
   } else if (res.status < 500) {
     const data = await res.json();
     return data;
@@ -150,6 +151,7 @@ export default function reducer(state = initalState, action) {
       return {
         ...newState,
         usersBags: newState.usersBags,
+        currentBag: {},
       };
     case CLEAR_CURRENT_BAG:
       return {

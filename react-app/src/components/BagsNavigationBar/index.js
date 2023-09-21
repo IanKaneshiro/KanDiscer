@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllBags,
-  bags,
-  getBagById,
-  selectCurrentBag,
-} from "../../store/bags";
-import BagsLandingPage from "../BagsLandingPage";
+import { Route, useHistory } from "react-router-dom";
+import { getAllBags, bags } from "../../store/bags";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
-import DeleteModal from "../DeleteModal";
+import BagDetailsPage from "../BagDetailsPage";
+import { selectCurrentBag } from "../../store/bags";
 import "./BagsNavigationBar.css";
-import { Switch, Route } from "react-router-dom";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
   const allBags = useSelector(bags);
-  const currentBag = useSelector(selectCurrentBag);
-  const [currentBagId, setCurrentBagId] = useState(0);
+  const history = useHistory();
+  const bag = useSelector(selectCurrentBag);
+  const [currentId, setCurrentId] = useState("");
 
   useEffect(() => {
     dispatch(getAllBags());
   }, [dispatch]);
 
-  const getCurrentBag = (id) => {
-    dispatch(getBagById(id));
-    setCurrentBagId(id);
+  useEffect(() => {
+    setCurrentId(bag.id);
+  }, [bag]);
+
+  const setBag = (id) => {
+    if (id) {
+      return history.push(`/bags/${id}`);
+    } else {
+      setCurrentId("");
+      return history.push("/bags");
+    }
   };
 
   return (
@@ -34,29 +38,17 @@ const BagsNavigationBar = () => {
         buttonText={"Add a new bag"}
         modalComponent={<CreateBagForm />}
       />
-      <select
-        value={currentBagId}
-        onChange={(e) => getCurrentBag(Number(e.target.value))}
-      >
+      <select value={currentId} onChange={(e) => setBag(e.target.value)}>
         <option value="">Select your bag...</option>
         {allBags.map((bag) => (
-          <option value={bag.id}>{bag.name}</option>
+          <option key={bag.id} value={bag.id}>
+            {bag.name}
+          </option>
         ))}
       </select>
-      {currentBagId !== 0 && (
-        <div>
-          <OpenModalButton buttonText={"Update"} />
-          <OpenModalButton
-            modalComponent={<DeleteModal name={currentBag} />}
-            buttonText={"Delete"}
-          />
-        </div>
-      )}
-      <Switch>
-        <Route path="/bags/:bagId">
-          <BagsLandingPage bag={currentBag} />
-        </Route>
-      </Switch>
+      <Route path="/bags/:bagId">
+        <BagDetailsPage />
+      </Route>
     </div>
   );
 };

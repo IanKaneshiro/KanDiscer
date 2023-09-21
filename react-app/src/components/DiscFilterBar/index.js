@@ -32,7 +32,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15].map((speed) => (
-            <option value={speed}>{speed}</option>
+            <option key={speed} value={speed}>
+              {speed}
+            </option>
           ))}
         </select>
         <label>speed(Max)</label>
@@ -46,7 +48,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15].map((speed) => (
-            <option value={speed}>{speed}</option>
+            <option key={speed} value={speed}>
+              {speed}
+            </option>
           ))}
         </select>
       </div>
@@ -62,7 +66,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[1, 2, 3, 4, 5, 6, 7].map((glide) => (
-            <option value={glide}>{glide}</option>
+            <option key={glide} value={glide}>
+              {glide}
+            </option>
           ))}
         </select>
         <label>glide(Max)</label>
@@ -76,7 +82,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[1, 2, 3, 4, 5, 6, 7].map((glide) => (
-            <option value={glide}>{glide}</option>
+            <option key={glide} value={glide}>
+              {glide}
+            </option>
           ))}
         </select>
       </div>
@@ -92,7 +100,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[-5, -4, -3, -2 - 1, 0, 1, 2].map((turn) => (
-            <option value={turn}>{turn}</option>
+            <option key={turn} value={turn}>
+              {turn}
+            </option>
           ))}
         </select>
         <label>turn(Max)</label>
@@ -106,7 +116,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[-5, -4, -3, -2 - 1, 0, 1, 2].map((turn) => (
-            <option value={turn}>{turn}</option>
+            <option key={turn} value={turn}>
+              {turn}
+            </option>
           ))}
         </select>
       </div>
@@ -122,7 +134,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[0, 1, 2, 3, 4, 5, 6].map((fade) => (
-            <option value={fade}>{fade}</option>
+            <option key={fade} value={fade}>
+              {fade}
+            </option>
           ))}
         </select>
         <label>fade(Max)</label>
@@ -136,7 +150,9 @@ const DiscFilterBar = ({ filters, setFilters }) => {
         >
           <option value={""}>None</option>
           {[0, 1, 2, 3, 4, 5, 6].map((fade) => (
-            <option value={fade}>{fade}</option>
+            <option key={fade} value={fade}>
+              {fade}
+            </option>
           ))}
         </select>
       </div>
