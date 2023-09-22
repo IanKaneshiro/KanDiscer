@@ -68,7 +68,7 @@ const DiscDetailsModal = ({ disc }) => {
         </table>
       </section>
       <section className="disc_details__right">
-        <FlightChart />
+        <FlightChart disc={disc} />
       </section>
     </main>
   );

@@ -1,29 +1,59 @@
-import React, { useState } from "react";
-import { LineChart, Line, XAxis, YAxis } from "recharts";
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts";
+import { calculateFlightChart } from "../../utils/calculateFlightPath";
 
-const FlightChart = () => {
-  //   const [flightData, setFlightData] = useState([]);
-
-  // Get the flight numbers of the disc golf disc
-  const flightNumbers = [5, 2, 0, 3];
-
-  // Calculate the flight path
-  const flightPath = flightNumbers.map((number, index) => {
-    return {
-      x: index,
-      y: number,
-    };
-  });
-
-  // Set the flight data
-  //   setFlightData(flightPath);
-
+const FlightChart = ({ disc }) => {
+  const data = calculateFlightChart(disc);
+  console.log(data);
   return (
-    <LineChart width={300} height={500} data={flightPath} layout="vertical">
-      <Line type="monotone" dataKey="y" stroke="#ff0000" />
-      <XAxis />
-      <YAxis />
-    </LineChart>
+    <ResponsiveContainer width="100%">
+      <LineChart
+        width={500}
+        height={300}
+        data={data}
+        layout="vertical"
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <Line
+          type="basis"
+          dataKey="number"
+          dot=""
+          stroke="#000000"
+          strokeWidth={5}
+        />
+        <XAxis
+          type="number"
+          domain={[-12, 12]}
+          reversed="true"
+          // hide="true"
+          tickCount={10}
+        />
+        <YAxis
+          dataKey="distance"
+          reversed="true"
+          label={{
+            value: "Distance (FT)",
+            angle: -90,
+            position: "insideLeft",
+          }}
+          tickCount="6"
+          domain={[0, "maxData"]}
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
 
