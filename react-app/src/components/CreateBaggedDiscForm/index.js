@@ -36,7 +36,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
       <form className="create_bagged_disc__main" onSubmit={handleSubmit}>
         <input
           required
-          placeholder="Weight"
+          placeholder="Weight (Grams)"
           onChange={(e) => setWeight(e.target.value)}
           type="number"
         />
