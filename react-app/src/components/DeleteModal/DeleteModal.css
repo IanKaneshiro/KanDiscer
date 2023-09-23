@@ -1,0 +1,21 @@
+.delete-modal__container {
+  width: 400px;
+  height: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-modal__container > div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-modal__container button {
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+}

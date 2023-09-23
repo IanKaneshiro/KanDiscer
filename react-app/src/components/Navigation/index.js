@@ -22,11 +22,8 @@ function Navigation({ isLoaded }) {
         <li>
           <NavLink to="/bags">Bags</NavLink>
         </li>
-        {sessionUser?.admin && (
-          <li>
-            <NavLink to="/admin">Admin Dashboard</NavLink>
-          </li>
-        )}
+      </ul>
+      <ul>
         {isLoaded && (
           <li>
             <ProfileButton user={sessionUser} />

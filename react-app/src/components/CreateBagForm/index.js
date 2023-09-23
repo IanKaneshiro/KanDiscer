@@ -40,6 +40,7 @@ const CreateBagForm = () => {
 
   return (
     <form className="create_bag__main" onSubmit={handleSubmit}>
+      <h1>Add New Bag</h1>
       <input
         value={name}
         placeholder="Name"

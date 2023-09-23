@@ -5,11 +5,15 @@ import { getAllBags, bags, clearAllBags } from "../../store/bags";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
 import BagDetailsPage from "../BagDetailsPage";
-import { selectCurrentBag } from "../../store/bags";
+import { selectCurrentBag, deleteBag } from "../../store/bags";
+import BagUpdateForm from "../BagUpdateForm";
+import { useModal } from "../../context/Modal";
+import DeleteModal from "../DeleteModal";
 import "./BagsNavigationBar.css";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
   const allBags = useSelector(bags);
   const history = useHistory();
   const bag = useSelector(selectCurrentBag);
@@ -34,20 +38,43 @@ const BagsNavigationBar = () => {
     }
   };
 
+  const handleDelete = () => {
+    dispatch(deleteBag(bag.id));
+    closeModal();
+    return history.push("/bags");
+  };
+
   return (
     <div className="bags-navigation__container">
-      <OpenModalButton
-        buttonText={"Add a new bag"}
-        modalComponent={<CreateBagForm />}
-      />
-      <select value={currentId} onChange={(e) => setBag(e.target.value)}>
-        <option value="">Select your bag...</option>
-        {allBags.map((bag) => (
-          <option key={bag.id} value={bag.id}>
-            {bag.name}
-          </option>
-        ))}
-      </select>
+      <div className="bags-navigation__navbar">
+        <OpenModalButton
+          buttonText={"Add a new bag"}
+          modalComponent={<CreateBagForm />}
+        />
+        <select value={currentId} onChange={(e) => setBag(e.target.value)}>
+          <option value="">Select your bag...</option>
+          {allBags.map((bag) => (
+            <option key={bag.id} value={bag.id}>
+              {bag.name}
+            </option>
+          ))}
+        </select>
+        {bag.id && (
+          <>
+            <OpenModalButton
+              buttonText={"Details"}
+              modalComponent={<BagUpdateForm bagId={bag.id} />}
+            />
+            <OpenModalButton
+              buttonText={"Delete"}
+              modalComponent={
+                <DeleteModal value={bag} handleDelete={handleDelete} />
+              }
+            />
+          </>
+        )}
+      </div>
+
       <Route path="/bags/:bagId">
         <BagDetailsPage />
       </Route>

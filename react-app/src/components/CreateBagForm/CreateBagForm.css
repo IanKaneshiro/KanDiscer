@@ -1,0 +1,27 @@
+.create_bag__main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create_bag__main > input,
+textarea {
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.create_bag__main > textarea {
+  height: 200px;
+}
+
+.create_bag__main > button {
+  border-radius: 10px;
+  width: 100%;
+  background-color: #284b63;
+  height: 50px;
+  color: white;
+}
