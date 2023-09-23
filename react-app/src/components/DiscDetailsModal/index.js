@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bags, getAllBags } from "../../store/bags";
+import FlightChart from "../FlightChart";
 import AddToBag from "./AddToBag";
 import "./DiscDetailsModal.css";
 
@@ -67,7 +68,7 @@ const DiscDetailsModal = ({ disc }) => {
         </table>
       </section>
       <section className="disc_details__right">
-        <p>FLIGHT CHART</p>
+        <FlightChart disc={disc} />
       </section>
     </main>
   );
