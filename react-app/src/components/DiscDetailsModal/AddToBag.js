@@ -15,7 +15,10 @@ function AddToBag({ discId, bagId }) {
   }, [dispatch, discId]);
 
   const openMenu = (e) => {
-    if (showMenu || !bagId) return;
+    if (showMenu || !bagId) {
+      alert("Please select a bag");
+      return;
+    }
     setShowMenu(true);
     e.stopPropagation();
   };
@@ -38,12 +41,12 @@ function AddToBag({ discId, bagId }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
+    <div className="add-to-bag__container">
       <button onClick={openMenu}>Add to Bag</button>
       <div className={divClassName} ref={divRef}>
         <CreateBaggedDiscForm closeMenu={closeMenu} disc={disc} bagId={bagId} />
       </div>
-    </>
+    </div>
   );
 }
 

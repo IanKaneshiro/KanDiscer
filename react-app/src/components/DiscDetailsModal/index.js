@@ -29,43 +29,53 @@ const DiscDetailsModal = ({ disc }) => {
             <AddToBag discId={disc.id} bagId={bagId} />
           </div>
         </div>
-        <div className="disc_details__left-img">
-          <img src={disc.imageUrl} alt={disc.name} />
+        <div className="disc_details__left-img-description">
+          <div className="disc_details__left-img">
+            <img src={disc.imageUrl} alt={disc.name} />
+          </div>
+          <div className=".disc_details__left-description">
+            <p>{disc.description}</p>
+            <a style={{fontWeight: "Bold"}}href={disc.purchaseLink} rel="noreferrer" target="_blank">
+              Buy now
+            </a>
+          </div>
         </div>
-        <table className="disc_details__left-table flight">
-          <thead>
-            <tr>
-              <th>Speed</th>
-              <th>Glide</th>
-              <th>Turn</th>
-              <th>Fade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{disc.speed}</td>
-              <td>{disc.glide}</td>
-              <td>{disc.turn}</td>
-              <td>{disc.fade}</td>
-            </tr>
-          </tbody>
-        </table>
-        <table className="disc_details__left-table dimensions">
-          <thead>
-            <tr>
-              <th>Height</th>
-              <th>Rim Depth</th>
-              <th>Rim Width</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{disc.height}</td>
-              <td>{disc.rimDepth}</td>
-              <td>{disc.rimWidth}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="disc_details__left-table">
+          <table className="flight">
+            <thead>
+              <tr>
+                <th>Speed</th>
+                <th>Glide</th>
+                <th>Turn</th>
+                <th>Fade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{disc.speed}</td>
+                <td>{disc.glide}</td>
+                <td>{disc.turn}</td>
+                <td>{disc.fade}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table className="dimensions">
+            <thead>
+              <tr>
+                <th>Height</th>
+                <th>Rim Depth</th>
+                <th>Rim Width</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{disc.height}</td>
+                <td>{disc.rimDepth}</td>
+                <td>{disc.rimWidth}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
       <section className="disc_details__right">
         <FlightChart disc={disc} />

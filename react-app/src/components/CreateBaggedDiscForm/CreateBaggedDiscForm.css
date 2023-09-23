@@ -1,0 +1,42 @@
+.create_bagged_disc__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create_bagged_disc__container > h1 {
+  border-bottom: 1px solid black;
+  padding: 15px 0;
+}
+
+.create_bagged_disc__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.create_bagged_disc__main > input,
+select {
+  height: 50px;
+  width: 100%;
+}
+
+.create_bagged_disc__main > button {
+  background-color: #284b63;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+}
+
+.create_bagged_disc__color {
+  display: flex;
+  align-items: center;
+}
+
+.create_bagged_disc__color > input {
+  box-shadow: none;
+  border-radius: none;
+  height: 30px;
+  border: none;
+}

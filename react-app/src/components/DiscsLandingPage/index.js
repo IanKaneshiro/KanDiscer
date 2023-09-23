@@ -45,15 +45,16 @@ const DiscsLandingPage = () => {
   }, [dispatch, filters, query]);
 
   return (
-    <>
-      <input
-        className="disc_landing__search"
-        type="text"
-        value={nameFilter}
-        placeholder="Search by name..."
-        onChange={(e) => setNameFilter(e.target.value)}
-      />
-      <main className="disc_landing__container">
+    <main className="disc_landing__container">
+      <div className="disc_landing__search">
+        <input
+          type="text"
+          value={nameFilter}
+          placeholder="Search by name..."
+          onChange={(e) => setNameFilter(e.target.value)}
+        />
+      </div>
+      <div className="disc_landing__discs">
         <div className="disc_landing__filters">
           <DiscFilterBar filters={filters} setFilters={setFilters} />
           <div className="disc_landing__submit">
@@ -78,8 +79,8 @@ const DiscsLandingPage = () => {
             <h1>No discs match search parameters</h1>
           )}
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 };
 

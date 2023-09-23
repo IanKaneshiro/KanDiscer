@@ -29,3 +29,7 @@ button {
 .errors {
   color: red;
 }
+
+iframe {
+  display: none;
+}

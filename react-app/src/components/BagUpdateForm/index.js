@@ -9,7 +9,7 @@ const BagUpdateForm = ({ bagId }) => {
   const { closeModal } = useModal();
   const [name, setName] = useState(bag.name);
   const [description, setDescription] = useState(bag.description);
-  const [notes, setNotes] = useState(bag.note);
+  const [notes, setNotes] = useState(bag.notes);
 
   const [errors, setErrors] = useState({});
 

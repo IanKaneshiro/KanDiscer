@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, useHistory } from "react-router-dom";
-import { getAllBags, bags } from "../../store/bags";
+import { getAllBags, bags, clearAllBags } from "../../store/bags";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
 import BagDetailsPage from "../BagDetailsPage";
@@ -17,6 +17,8 @@ const BagsNavigationBar = () => {
 
   useEffect(() => {
     dispatch(getAllBags());
+
+    return dispatch(clearAllBags());
   }, [dispatch]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const BagsNavigationBar = () => {
   };
 
   return (
-    <div>
+    <div className="bags-navigation__container">
       <OpenModalButton
         buttonText={"Add a new bag"}
         modalComponent={<CreateBagForm />}
