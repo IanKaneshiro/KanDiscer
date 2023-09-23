@@ -79,11 +79,22 @@ export const createBaggedDisc = (disc, bagId, discId) => async (dispatch) => {
 // ---------------------- State Selectors -------------------------
 export const selectAllBaggedDiscs = (state) =>
   Object.values(state.baggedDiscs.allDiscs);
+export const selectDistance = (state) =>
+  Object.values(state.baggedDiscs.distance);
+export const selectFairway = (state) =>
+  Object.values(state.baggedDiscs.fairway);
+export const selectMidrange = (state) =>
+  Object.values(state.baggedDiscs.midrange);
+export const selectPutter = (state) => Object.values(state.baggedDiscs.putter);
 
 // ---------------------- Initial State ---------------------------
 const initalState = {
   allDiscs: {},
   currentDisc: {},
+  distance: {},
+  fairway: {},
+  midrange: {},
+  putter: {},
 };
 
 // ---------------------- Reducer ----------------------------------
@@ -92,10 +103,36 @@ export default function reducer(state = initalState, action) {
   switch (action.type) {
     case LOAD_BAGGED_DISCS:
       const allDiscs = {};
-      action.payload.BaggedDiscs.forEach((disc) => (allDiscs[disc.id] = disc));
+      const distance = {};
+      const fairway = {};
+      const midrange = {};
+      const putter = {};
+      action.payload.BaggedDiscs.forEach((disc) => {
+        allDiscs[disc.id] = disc;
+        switch (disc.info.type) {
+          case "Distance Driver":
+            distance[disc.id] = disc;
+            break;
+          case "Fairway Driver":
+            fairway[disc.id] = disc;
+            break;
+          case "Midrange":
+            midrange[disc.id] = disc;
+            break;
+          case "Putter":
+            putter[disc.id] = disc;
+            break;
+          default:
+            allDiscs[disc.id] = disc;
+        }
+      });
       return {
         ...newState,
-        allDiscs: allDiscs,
+        allDiscs,
+        distance,
+        fairway,
+        midrange,
+        putter,
       };
     case LOAD_BAGGED_DISC:
       return {
@@ -103,6 +140,22 @@ export default function reducer(state = initalState, action) {
         currentDisc: action.payload,
       };
     case ADD_BAGGED_DISC: {
+      // switch (action.payload.info.type) {
+      //   case "Distance Driver":
+      //     distance[action.payload.id] = action.payload;
+      //     break;
+      //   case "Fairway Driver":
+      //     fairway[action.payload.id] = action.payload;
+      //     break;
+      //   case "Midrange":
+      //     midrange[action.payload.id] = action.payload;
+      //     break;
+      //   case "Putter":
+      //     putter[action.payload.id] = action.payload;
+      //     break;
+      //   default:
+      //     allDiscs[action.payload.id] = action.payload;
+      // }
       return {
         ...newState,
         allDiscs: {

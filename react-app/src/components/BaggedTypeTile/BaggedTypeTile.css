@@ -1,0 +1,23 @@
+.bagged-type-tile__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+.bagged-type-tile__container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bagged-type-tile__container img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}

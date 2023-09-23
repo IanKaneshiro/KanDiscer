@@ -8,12 +8,16 @@ import {
 } from "../../store/bags";
 import {
   getAllBaggedDiscs,
-  selectAllBaggedDiscs,
   clearBaggedDiscs,
+  selectDistance,
+  selectFairway,
+  selectMidrange,
+  selectPutter,
 } from "../../store/baggedDiscs";
 import OpenModalButton from "../OpenModalButton";
 import DeleteModal from "../DeleteModal";
 import BagUpdateForm from "../BagUpdateForm";
+import BaggedType from "../BaggedType";
 import { useParams, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./BagDetailsPage.css";
@@ -21,7 +25,11 @@ import "./BagDetailsPage.css";
 const BagDetailsPage = () => {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const baggedDiscs = useSelector(selectAllBaggedDiscs);
+  const distance = useSelector(selectDistance);
+  const fairway = useSelector(selectFairway);
+  const midrange = useSelector(selectMidrange);
+  const putter = useSelector(selectPutter);
+
   const bag = useSelector(selectCurrentBag);
   const history = useHistory();
   const { bagId } = useParams();
@@ -60,12 +68,11 @@ const BagDetailsPage = () => {
       </div>
       <div className="bags__main">
         <div className="bags__in_bag">
-          {baggedDiscs.map((disc) => (
-            <div key={disc.id}>
-              <p>{disc.info.name}</p>
-              <p>{disc.color}</p>
-            </div>
-          ))}
+          <BaggedType type={"Distance"} discs={distance} />
+          <BaggedType type={"Fairway"} discs={fairway} />
+          <BaggedType type={"Midrange"} discs={midrange} />
+          <BaggedType type={"Putter"} discs={putter} />
+
           <button className="bags__add_btn">
             <i className="fa-solid fa-plus fa-2xl"></i>
           </button>

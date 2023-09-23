@@ -24,7 +24,7 @@ const AdminDashboard = () => {
     dispatch(getDiscsAwaitingApproval());
   }, [dispatch]);
 
-  if (!sessionUser.admin) {
+  if (!sessionUser?.admin) {
     return <Redirect to="/login" />;
   }
 

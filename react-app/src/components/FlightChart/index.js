@@ -11,7 +11,6 @@ import { calculateFlightChart } from "../../utils/calculateFlightPath";
 
 const FlightChart = ({ disc }) => {
   const data = calculateFlightChart(disc);
-  console.log(data);
   return (
     <ResponsiveContainer width="100%">
       <LineChart
@@ -31,8 +30,9 @@ const FlightChart = ({ disc }) => {
           type="basis"
           dataKey="number"
           dot=""
-          stroke="#000000"
+          stroke="#284b63"
           strokeWidth={5}
+          isAnimationActive="false"
         />
         <XAxis
           type="number"

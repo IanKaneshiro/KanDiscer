@@ -21,6 +21,12 @@ function LoginFormModal() {
     }
   };
 
+  const loginDemo = (e) => {
+    e.preventDefault();
+    dispatch(login("demo@aa.io", "password"));
+    closeModal();
+  };
+
   return (
     <>
       <h1>Log In</h1>
@@ -47,6 +53,7 @@ function LoginFormModal() {
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
       </form>
+      <button onClick={loginDemo}>Login as Demo</button>
     </>
   );
 }

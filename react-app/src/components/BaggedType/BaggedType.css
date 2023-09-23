@@ -1,0 +1,21 @@
+.bagged-type__container {
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  min-height: 200px;
+}
+
+.bagged-type__container > h1 {
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+.bagged-type__discs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 10px;
+}

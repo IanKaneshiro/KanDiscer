@@ -30,7 +30,7 @@ class BaggedDisc(db.Model):
             'weight': self.weight,
             'color': self.color,
             'plastic': self.plastic,
-            'image_url': self.image_url,
+            'imageUrl': self.image_url,
             'info': self.disc.to_dict(),
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
