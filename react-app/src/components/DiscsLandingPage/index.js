@@ -16,6 +16,8 @@ const DiscsLandingPage = () => {
   const discs = useSelector(allDiscs);
   const sessionUser = useSelector((state) => state.session.user);
   const [nameFilter, setNameFilter] = useState("");
+  const [showFilters, setShowFilters] = useState(true);
+
   const [filters, setFilters] = useState({
     manufacturer: null,
     speed_max: null,
@@ -28,6 +30,10 @@ const DiscsLandingPage = () => {
     fade_min: null,
   });
   const query = useDebounce(nameFilter, 500);
+
+  const handleFilter = () => {
+    setShowFilters(!showFilters);
+  };
 
   useEffect(() => {
     dispatch(getAllDiscs());
@@ -47,6 +53,12 @@ const DiscsLandingPage = () => {
   return (
     <main className="disc_landing__container">
       <div className="disc_landing__search">
+        <button onClick={handleFilter}>
+          <i
+            className="fa-solid fa-filter fa-2xl"
+            style={{ color: "#284b63" }}
+          ></i>
+        </button>
         <input
           type="text"
           value={nameFilter}
@@ -55,7 +67,13 @@ const DiscsLandingPage = () => {
         />
       </div>
       <div className="disc_landing__discs">
-        <div className="disc_landing__filters">
+        <div
+          className={
+            showFilters
+              ? "disc_landing__filters hide-filters"
+              : "disc_landing__filters"
+          }
+        >
           <DiscFilterBar filters={filters} setFilters={setFilters} />
           <div className="disc_landing__submit">
             {!sessionUser?.admin && <h3>Don't see your disc?</h3>}
@@ -72,7 +90,9 @@ const DiscsLandingPage = () => {
                 className="disc-landing__title"
                 key={disc.id}
                 component={<DiscTile disc={disc} />}
-                modalComponent={<DiscDetailsModal disc={disc} />}
+                modalComponent={
+                  <DiscDetailsModal sessionUser={sessionUser} disc={disc} />
+                }
               />
             ))
           ) : (

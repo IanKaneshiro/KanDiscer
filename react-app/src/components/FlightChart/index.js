@@ -12,15 +12,15 @@ import { calculateFlightChart } from "../../utils/calculateFlightPath";
 const FlightChart = ({ disc }) => {
   const data = calculateFlightChart(disc);
   return (
-    <ResponsiveContainer width="100%">
+    <ResponsiveContainer minWidth={100}>
       <LineChart
         data={data}
         layout="vertical"
         margin={{
           top: 20,
-          right: 30,
+          right: 20,
           left: 20,
-          bottom: 5,
+          bottom: 20,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
