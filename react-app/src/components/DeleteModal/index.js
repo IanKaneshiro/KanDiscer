@@ -5,10 +5,19 @@ import "./DeleteModal.css";
 const DeleteModal = ({ value, handleDelete }) => {
   const { closeModal } = useModal();
   return (
-    <div>
+    <div className="delete-modal__container">
       <h1>Delete {value.name}</h1>
-      <button onClick={handleDelete}>Confirm</button>
-      <button onClick={closeModal}>Cancel</button>
+      <div>
+        <button
+          style={{ backgroundColor: "#ff5a5f", color: "white" }}
+          onClick={handleDelete}
+        >
+          Confirm
+        </button>
+        <button style={{ backgroundColor: "#a9a9a9" }} onClick={closeModal}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };

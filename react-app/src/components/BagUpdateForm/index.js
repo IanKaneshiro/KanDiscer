@@ -35,6 +35,7 @@ const BagUpdateForm = ({ bagId }) => {
 
   return (
     <form className="create_bag__main" onSubmit={handleSubmit}>
+      <h1>{bag.name} Details</h1>
       <input
         value={name}
         placeholder="Name"

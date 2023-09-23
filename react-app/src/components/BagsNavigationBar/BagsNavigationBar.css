@@ -1,3 +1,13 @@
-.bags-navigation__container {
+.bags-navigation__navbar {
+  display: flex;
   padding: 20px;
+  width: 100%;
+  gap: 10px;
+}
+
+.bags-navigation__navbar > button {
+  background-color: #284b63;
+  border-radius: 10px;
+  width: 150px;
+  color: white;
 }
