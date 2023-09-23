@@ -14,8 +14,6 @@ const FlightChart = ({ disc }) => {
   return (
     <ResponsiveContainer width="100%">
       <LineChart
-        width={500}
-        height={300}
         data={data}
         layout="vertical"
         margin={{

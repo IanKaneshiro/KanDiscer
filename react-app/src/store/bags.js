@@ -4,6 +4,7 @@ const LOAD_BAG = "discs/LOAD_BAG";
 const ADD_BAG = "discs/ADD_BAG";
 const REMOVE_BAG = "discs/REMOVE_BAG";
 const CLEAR_CURRENT_BAG = "discs/CLEAR_CURRENT_BAG";
+const CLEAR_ALL_BAGS = "disc/CLEAR_ALL_BAGS";
 
 // ----------------------- Action Creators -----------------------
 const loadBags = (bags) => ({
@@ -24,6 +25,10 @@ const addBag = (bag) => ({
 const removeBag = (id) => ({
   type: REMOVE_BAG,
   payload: id,
+});
+
+export const clearAllBags = () => ({
+  type: CLEAR_ALL_BAGS,
 });
 
 export const clearCurrentBag = () => ({
@@ -158,6 +163,8 @@ export default function reducer(state = initalState, action) {
         ...newState,
         currentBag: {},
       };
+    case CLEAR_ALL_BAGS:
+      return initalState;
     default:
       return state;
   }

@@ -31,22 +31,28 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
   };
 
   return (
-    <>
-      <h1>Add details (Optional)</h1>
+    <div className="create_bagged_disc__container">
+      <h1>Add details</h1>
       <form className="create_bagged_disc__main" onSubmit={handleSubmit}>
         <input
-          placeholder="Weight (Optional)"
+          required
+          placeholder="Weight"
           onChange={(e) => setWeight(e.target.value)}
           type="number"
         />
+
         {errors.weight && <p className="errors">{errors.weight}</p>}
-        <input
-          required
-          type="color"
-          value={color}
-          placeholder="Color"
-          onChange={(e) => setColor(e.target.value)}
-        />
+        <div className="create_bagged_disc__color">
+          <label for="color">Color: </label>
+          <input
+            id="color"
+            required
+            type="color"
+            value={color}
+            placeholder="Color"
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </div>
         {errors.color && <p className="errors">{errors.color}</p>}
         <select required onChange={(e) => setPlastic(e.target.value)}>
           <option defaultChecked value="">
@@ -66,7 +72,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
         {errors.image_url && <p className="errors">{errors.image_url}</p>}
         <button>Add</button>
       </form>
-    </>
+    </div>
   );
 };
 

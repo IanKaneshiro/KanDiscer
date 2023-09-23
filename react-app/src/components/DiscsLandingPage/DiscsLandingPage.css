@@ -1,7 +1,10 @@
 .disc_landing__container {
+  padding: 20px;
+}
+
+.disc_landing__discs {
   display: flex;
   gap: 20px;
-  padding: 0 60px;
 }
 .disc_landing__filters {
   width: 350px;
@@ -33,8 +36,9 @@
 
 .disc_landing__main {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto auto auto auto auto auto 1fr;
+  gap: 20px;
   width: 100%;
 }
 
@@ -44,10 +48,11 @@
 
 .disc_landing__search {
   height: 50px;
-  margin: 20px 0;
-  width: 90%;
-  margin: 10px auto;
-  border-radius: 40px;
+  margin: 10px 0;
+  border-radius: 20px;
   background-color: #ffffff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

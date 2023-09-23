@@ -234,7 +234,7 @@ def seed_discs():
     )
 
     disc13 = Disc(
-        manufacturer='MVP Disc Sports',
+        manufacturer='MVP',
         name='Axiom Crave',
         description='The Axiom Crave is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Crave is also a good choice for windy conditions.',
         type='Fairway Driver',
