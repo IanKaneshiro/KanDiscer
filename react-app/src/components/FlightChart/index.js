@@ -38,7 +38,7 @@ const FlightChart = ({ disc }) => {
           type="number"
           domain={[-12, 12]}
           reversed="true"
-          // hide="true"
+          hide="true"
           tickCount={10}
         />
         <YAxis

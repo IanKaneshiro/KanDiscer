@@ -1,79 +1,3 @@
-// export const calculateDisc = (disc) => {
-//   const flightArray = [];
-
-//   for (let i = 0; i <= 600; i += 25) {
-//     const data = { distance: i, number: 0 };
-
-//     if (disc.speed <= 4) {
-//       if (i === 200) {
-//         data.number = disc.fade / 6;
-//       } else if (i === 225) {
-//         data.number = disc.fade / 2;
-//       } else if (i === 250) {
-//         data.number = disc.fade;
-//       } else if (i > 250) {
-//         data.number = null;
-//       }
-//     } else if (disc.speed <= 6) {
-//       if (i === 100) {
-//         data.number = disc.turn / 6;
-//       } else if (i === 125) {
-//         data.number = disc.turn / 3;
-//       } else if (i === 150) {
-//         data.number = disc.turn / 2;
-//       } else if (i === 175) {
-//         data.number = disc.turn / 1.5;
-//       } else if (i === 200) {
-//         data.number = disc.turn / 1.2;
-//       } else if (i === 225) {
-//         data.number = disc.turn;
-//       }
-//       if (i === 250) {
-//         data.number = disc.fade / 6;
-//       } else if (i === 275) {
-//         data.number = disc.fade / 2;
-//       } else if (i === 300) {
-//         data.number = disc.fade;
-//       } else if (i > 300) {
-//         data.number = null;
-//       }
-//     } else if (disc.speed <= 9) {
-//       if (i === 350) {
-//         data.number = disc.fade / 6;
-//       } else if (i === 375) {
-//         data.number = disc.fade / 2;
-//       } else if (i === 400) {
-//         data.number = disc.fade;
-//       } else if (i > 400) {
-//         data.number = null;
-//       }
-//     } else if (disc.speed <= 11) {
-//       if (i === 400) {
-//         data.number = disc.fade / 6;
-//       } else if (i === 425) {
-//         data.number = disc.fade / 2;
-//       } else if (i === 450) {
-//         data.number = disc.fade;
-//       } else if (i > 450) {
-//         data.number = null;
-//       }
-//     } else if (disc.speed <= 15) {
-//       if (i === 450) {
-//         data.number = disc.fade / 6;
-//       } else if (i === 475) {
-//         data.number = disc.fade / 2;
-//       } else if (i === 500) {
-//         data.number = disc.fade;
-//       } else if (i > 500) {
-//         data.number = null;
-//       }
-//     }
-
-//     flightArray.push(data);
-//   }
-//   return flightArray;
-// };
-
 const calculateDistance = (disc) => {
   let distance;
   if (disc.speed <= 4) {
@@ -122,15 +46,22 @@ export const calculateFlightChart = (disc) => {
       turnAmount += turnIncrementAmount;
     }
 
+    // Add conditionals for if there is no turn
     if (i >= turnRange && fadeIdx <= fadeIncrements) {
-      if (fadeIdx === 0) {
-        data.number = turnAmount + fadeIncrementAmount;
-        fadeAmount = turnAmount + fadeIncrementAmount;
+      if (disc.turn < 0) {
+        if (fadeIdx === 0) {
+          data.number = turnAmount + fadeIncrementAmount;
+          fadeAmount = turnAmount + fadeIncrementAmount;
+        } else {
+          data.number = fadeAmount + fadeIncrementAmount;
+          fadeAmount += fadeIncrementAmount;
+        }
+        fadeIdx++;
       } else {
+        fadeIdx++;
         data.number = fadeAmount + fadeIncrementAmount;
         fadeAmount += fadeIncrementAmount;
       }
-      fadeIdx++;
     }
 
     if (i > distance) data.number = null;
@@ -139,5 +70,5 @@ export const calculateFlightChart = (disc) => {
   return flightChart;
 };
 
-const test = calculateFlightChart({ turn: -2, fade: 1, speed: 9 });
+const test = calculateFlightChart({ turn: 0, fade: 3, speed: 9 });
 console.log(test);
