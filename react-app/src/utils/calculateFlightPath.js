@@ -29,14 +29,6 @@ export const calculateFlightChart = (disc) => {
   let turnAmount = turnIncrementAmount;
   let fadeAmount = turnAmount;
   const flightChart = [];
-  console.log(`Turn range is ${turnRange}, fade range is ${fadeRange}`);
-  console.log(
-    `Turn increments ${turnIncrements}, fade incremnets ${fadeIncrements}`
-  );
-  console.log(`turn amount ${turnAmount}, fade amount${fadeAmount}`);
-  console.log(
-    `Turn increments amount ${turnIncrementAmount}, fade incremnets amount ${fadeIncrementAmount}`
-  );
 
   for (let i = 0; i <= 500; i += 25) {
     const data = { distance: i, number: 0 };
@@ -69,6 +61,3 @@ export const calculateFlightChart = (disc) => {
   }
   return flightChart;
 };
-
-const test = calculateFlightChart({ turn: 0, fade: 3, speed: 9 });
-console.log(test);

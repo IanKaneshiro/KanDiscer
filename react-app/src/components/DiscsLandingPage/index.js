@@ -75,7 +75,7 @@ const DiscsLandingPage = () => {
               />
             ))
           ) : (
-            <h1>Cant seem to find that disc</h1>
+            <h1>No discs match search parameters</h1>
           )}
         </div>
       </main>

@@ -148,7 +148,7 @@ def seed_discs():
         plastics='Lucid, Fuzion, Lucid Air, Fluid, Lucid X, Lucid Ice, Fuzion Ice',
         speed=9,
         glide=5,
-        turn=2,
+        turn=-2,
         fade=1,
         diameter=21.2,
         height=1.9,
