@@ -6,11 +6,20 @@ import {
   YAxis,
   ResponsiveContainer,
   CartesianGrid,
+  Legend,
+  Tooltip,
 } from "recharts";
 import { calculateFlightChart } from "../../utils/calculateFlightPath";
 
-const FlightChart = ({ disc }) => {
-  const data = calculateFlightChart(disc);
+const FlightChart = ({ discs }) => {
+  let data = [];
+  discs.forEach((disc) => {
+    const flightPath = calculateFlightChart(disc.info);
+    flightPath.forEach((path, i) => {
+      data[i] = { ...data[i], ...flightPath[i] };
+    });
+  });
+  console.log(data);
   return (
     <ResponsiveContainer minWidth={100}>
       <LineChart
@@ -24,14 +33,15 @@ const FlightChart = ({ disc }) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <Line
-          type="basis"
-          dataKey={disc.name}
-          dot=""
-          stroke="#284b63"
-          strokeWidth={5}
-          isAnimationActive="false"
-        />
+        {discs.map((disc) => (
+          <Line
+            type="basis"
+            dataKey={disc.info.name}
+            dot=""
+            stroke={disc.color}
+            strokeWidth={5}
+          />
+        ))}
         <XAxis
           type="number"
           domain={[-12, 12]}
@@ -50,6 +60,7 @@ const FlightChart = ({ disc }) => {
           tickCount="6"
           domain={[0, "maxData"]}
         />
+        <Legend />
       </LineChart>
     </ResponsiveContainer>
   );

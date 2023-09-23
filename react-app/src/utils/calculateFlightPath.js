@@ -31,9 +31,9 @@ export const calculateFlightChart = (disc) => {
   const flightChart = [];
 
   for (let i = 0; i <= 500; i += 25) {
-    const data = { distance: i, number: 0 };
+    const data = { distance: i, [disc.name]: 0 };
     if (i >= 100 && i <= turnRange && turnIdx < turnIncrements) {
-      data.number = turnAmount;
+      data[disc.name] = turnAmount;
       turnIdx++;
       turnAmount += turnIncrementAmount;
     }
@@ -42,21 +42,21 @@ export const calculateFlightChart = (disc) => {
     if (i >= turnRange && fadeIdx <= fadeIncrements) {
       if (disc.turn < 0) {
         if (fadeIdx === 0) {
-          data.number = turnAmount + fadeIncrementAmount;
+          data[disc.name] = turnAmount + fadeIncrementAmount;
           fadeAmount = turnAmount + fadeIncrementAmount;
         } else {
-          data.number = fadeAmount + fadeIncrementAmount;
+          data[disc.name] = fadeAmount + fadeIncrementAmount;
           fadeAmount += fadeIncrementAmount;
         }
         fadeIdx++;
       } else {
         fadeIdx++;
-        data.number = fadeAmount + fadeIncrementAmount;
+        data[disc.name] = fadeAmount + fadeIncrementAmount;
         fadeAmount += fadeIncrementAmount;
       }
     }
 
-    if (i > distance) data.number = null;
+    if (i > distance) data[disc.name] = null;
     flightChart.push(data);
   }
   return flightChart;

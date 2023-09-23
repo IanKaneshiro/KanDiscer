@@ -8,13 +8,17 @@ import {
   selectFairway,
   selectMidrange,
   selectPutter,
+  selectAllBaggedDiscs,
 } from "../../store/baggedDiscs";
 import BaggedType from "../BaggedType";
+import BagFlightChart from "../BagFlightChart";
 import { useParams } from "react-router-dom";
 import "./BagDetailsPage.css";
 
 const BagDetailsPage = () => {
   const dispatch = useDispatch();
+
+  const allDiscs = useSelector(selectAllBaggedDiscs);
   const distance = useSelector(selectDistance);
   const fairway = useSelector(selectFairway);
   const midrange = useSelector(selectMidrange);
@@ -47,7 +51,9 @@ const BagDetailsPage = () => {
             <i className="fa-solid fa-plus fa-2xl"></i>
           </button>
         </div>
-        <div className="bags__flight_chart">right</div>
+        <div className="bags__flight_chart">
+          <BagFlightChart discs={allDiscs} />
+        </div>
       </div>
     </div>
   );
