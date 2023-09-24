@@ -46,10 +46,6 @@ const BagDetailsPage = () => {
           <BaggedType type={"Fairway"} discs={fairway} />
           <BaggedType type={"Midrange"} discs={midrange} />
           <BaggedType type={"Putter"} discs={putter} />
-
-          <button className="bags__add_btn">
-            <i className="fa-solid fa-plus fa-2xl"></i>
-          </button>
         </div>
         <div className="bags__flight_chart">
           <BagFlightChart discs={allDiscs} />

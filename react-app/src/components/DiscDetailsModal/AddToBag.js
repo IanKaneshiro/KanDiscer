@@ -4,7 +4,7 @@ import "./AddToBag.css";
 import CreateBaggedDiscForm from "../CreateBaggedDiscForm";
 import { currentDisc, getDiscById } from "../../store/discs";
 
-function AddToBag({ discId, bagId }) {
+function AddToBag({ discId, bagId, setBagId }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const disc = useSelector(currentDisc);
@@ -44,7 +44,12 @@ function AddToBag({ discId, bagId }) {
     <div className="add-to-bag__container">
       <button onClick={openMenu}>Add to Bag</button>
       <div className={divClassName} ref={divRef}>
-        <CreateBaggedDiscForm closeMenu={closeMenu} disc={disc} bagId={bagId} />
+        <CreateBaggedDiscForm
+          closeMenu={closeMenu}
+          disc={disc}
+          bagId={bagId}
+          setBagId={setBagId}
+        />
       </div>
     </div>
   );

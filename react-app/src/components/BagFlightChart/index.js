@@ -7,7 +7,6 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Legend,
-  Tooltip,
 } from "recharts";
 import { calculateFlightChart } from "../../utils/calculateFlightPath";
 

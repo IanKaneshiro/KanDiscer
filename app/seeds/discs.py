@@ -39,7 +39,7 @@ def seed_discs():
         height=1.6,
         rim_depth=1.1,
         rim_width=2.1,
-        image_url='https://cdn.discgolfscene.com/image/cache/catalog/discs/discraft/machete/machete-esp-2500x2500.jpg',
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Machete.Webp',
         approved=True,
 
     )

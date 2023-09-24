@@ -27,7 +27,7 @@ const DiscDetailsModal = ({ disc, sessionUser }) => {
                   <option value={bag.id}>{bag.name}</option>
                 ))}
               </select>
-              <AddToBag discId={disc.id} bagId={bagId} />
+              <AddToBag discId={disc.id} bagId={bagId} setBagId={setBagId} />
             </div>
           )}
         </div>

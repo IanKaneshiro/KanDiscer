@@ -4,6 +4,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   min-height: 200px;
+  padding: 20px 0;
 }
 
 .bagged-type__container > h1 {
