@@ -8,7 +8,7 @@ const BaggedType = ({ discs, type }) => {
       <h1>{type}</h1>
       <div className="bagged-type__discs">
         {discs.map((disc) => (
-          <BaggedTypeTile key={disc.id} disc={disc} />
+          <BaggedTypeTile disc={disc} />
         ))}
       </div>
     </div>

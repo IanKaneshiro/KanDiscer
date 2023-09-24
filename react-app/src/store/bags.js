@@ -146,6 +146,7 @@ export default function reducer(state = initalState, action) {
     case ADD_BAG:
       return {
         ...newState,
+        currentBag: action.payload,
         usersBags: {
           ...newState.usersBags,
           [action.payload.id]: action.payload,

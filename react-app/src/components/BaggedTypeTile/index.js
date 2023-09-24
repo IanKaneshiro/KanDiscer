@@ -1,7 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import OpenModalButton from "../OpenModalButton";
+import DeleteModal from "../DeleteModal";
+import { deleteBaggedDisc } from "../../store/baggedDiscs";
+import { useModal } from "../../context/Modal";
 import "./BaggedTypeTile.css";
 
 const BaggedTypeTile = ({ disc }) => {
+  const dispatch = useDispatch();
+  const { closeModal } = useModal();
+
+  const handleDelete = () => {
+    dispatch(deleteBaggedDisc(disc.id));
+    closeModal();
+  };
   return (
     <div className="bagged-type-tile__container">
       <div>
@@ -26,6 +38,12 @@ const BaggedTypeTile = ({ disc }) => {
         <p>{disc.plastic}</p>
         <p>{`${disc.info.speed} / ${disc.info.glide} / ${disc.info.turn} / ${disc.info.fade}`}</p>
       </div>
+      <OpenModalButton
+        buttonText={"❌"}
+        modalComponent={
+          <DeleteModal handleDelete={handleDelete} value={disc.info} />
+        }
+      />
     </div>
   );
 };

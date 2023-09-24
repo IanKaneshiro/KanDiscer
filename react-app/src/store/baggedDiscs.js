@@ -3,6 +3,7 @@ const LOAD_BAGGED_DISCS = "discs/LOAD_BAGGED_DISCS";
 const LOAD_BAGGED_DISC = "discs/LOAD_BAGGED_DISC";
 const CLEAR_BAGGED_DISCS = "discs/CLEAR_BAGGED_DISCS";
 const ADD_BAGGED_DISC = "discs/ADD_BAGGED_DISC";
+const DELETE_BAGGED_DISC = "discs/DELETE_BAGGED_DISC";
 
 // ----------------------- Action Creators -----------------------
 const loadBaggedDiscs = (discs) => ({
@@ -18,6 +19,11 @@ const loadBaggedDisc = (disc) => ({
 const addBaggedDisc = (disc) => ({
   type: ADD_BAGGED_DISC,
   payload: disc,
+});
+
+const removeBaggedDisc = (id) => ({
+  type: DELETE_BAGGED_DISC,
+  payload: id,
 });
 
 export const clearBaggedDiscs = () => ({
@@ -68,6 +74,18 @@ export const createBaggedDisc = (disc, bagId, discId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(addBaggedDisc(data));
+  } else if (res.status < 500) {
+    const data = await res.json();
+    return data;
+  } else {
+    return ["An error occured. Please try again"];
+  }
+};
+
+export const deleteBaggedDisc = (id) => async (dispatch) => {
+  const res = await fetch(`/api/bagged_discs/${id}`, { method: "DELETE" });
+  if (res.ok) {
+    dispatch(removeBaggedDisc(id));
   } else if (res.status < 500) {
     const data = await res.json();
     return data;
@@ -166,6 +184,13 @@ export default function reducer(state = initalState, action) {
     }
     case CLEAR_BAGGED_DISCS:
       return initalState;
+    case DELETE_BAGGED_DISC:
+      delete newState.distance[action.payload];
+      delete newState.fairway[action.payload];
+      delete newState.midrange[action.payload];
+      delete newState.putter[action.payload];
+      delete newState.allDiscs[action.payload];
+      return newState;
     default:
       return state;
   }

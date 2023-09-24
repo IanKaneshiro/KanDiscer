@@ -18,18 +18,9 @@ def seed_bagged_discs():
         color='pink',
         plastic='Z'
     )
-    bag3 = BaggedDisc(
-        bag_id=1,
-        disc_id=1,
-        weight=177,
-        color='clear',
-        plastic='Z'
-
-    )
 
     db.session.add(bag1)
     db.session.add(bag2)
-    db.session.add(bag3)
 
     db.session.commit()
 

@@ -16,10 +16,7 @@ function OpenModalDiv({
   };
 
   return (
-    <div
-      style={{ cursor: "pointer", width: "fit-content", height: "fit-content" }}
-      onClick={onClick}
-    >
+    <div style={{ cursor: "pointer" }} onClick={onClick}>
       {component}
     </div>
   );

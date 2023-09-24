@@ -29,16 +29,6 @@
   padding: 10px;
 }
 
-.bags__add_btn {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  background-color: #284b63;
-}
-
 .bags__flight_chart {
   height: 600px;
 }

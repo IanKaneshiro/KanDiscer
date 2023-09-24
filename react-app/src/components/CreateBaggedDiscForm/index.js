@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { createBaggedDisc } from "../../store/baggedDiscs";
 import "./CreateBaggedDiscForm.css";
 
-const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
+const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
   const dispatch = useDispatch();
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState("");
   const [color, setColor] = useState("#000000");
   const [plastic, setPlastic] = useState("");
   const [image_url, setImageUrl] = useState("");
@@ -26,6 +26,11 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
       setErrors(data);
     } else {
       closeMenu();
+      setBagId("");
+      setColor("");
+      setImageUrl("");
+      setPlastic("");
+      setWeight("");
       alert("Succesfully added to your bag");
     }
   };
@@ -37,6 +42,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
         <input
           required
           placeholder="Weight (Grams)"
+          value={weight}
           onChange={(e) => setWeight(e.target.value)}
           type="number"
         />
@@ -54,7 +60,11 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu }) => {
           />
         </div>
         {errors.color && <p className="errors">{errors.color}</p>}
-        <select required onChange={(e) => setPlastic(e.target.value)}>
+        <select
+          value={plastic}
+          required
+          onChange={(e) => setPlastic(e.target.value)}
+        >
           <option defaultChecked value="">
             Select plastic type...
           </option>
