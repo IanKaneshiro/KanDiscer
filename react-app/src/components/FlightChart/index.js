@@ -12,7 +12,7 @@ import { calculateFlightChart } from "../../utils/calculateFlightPath";
 const FlightChart = ({ disc }) => {
   const data = calculateFlightChart(disc);
   return (
-    <ResponsiveContainer minWidth={100}>
+    <ResponsiveContainer aspect={1} minWidth={300}>
       <LineChart
         data={data}
         layout="vertical"
