@@ -46,7 +46,7 @@ function ProfileButton({ user }) {
       {user ? (
         <button className="profile-btn" onClick={openMenu}>
           {user?.imageUrl ? (
-            <img src={user.imageUrl} alt={user.id} />
+            <img style={{ width: "50px" }} src={user.imageUrl} alt={user.id} />
           ) : (
             <div className="profile-icon">
               <i className="fa-solid fa-user fa-xl"></i>

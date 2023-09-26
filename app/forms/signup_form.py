@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from app.api.aws import ALLOWED_EXTENSIONS
 
 
 def user_exists(form, field):
@@ -27,7 +29,8 @@ class SignUpForm(FlaskForm):
                         DataRequired(), Email(), user_exists])
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    image_url = StringField('image_url')
+    image_url = FileField("Image File", validators=[
+                          FileAllowed(list(ALLOWED_EXTENSIONS))])
     pdga_number = IntegerField('pdga_number')
     skill_level = StringField('skill_level')
     throwing_preference = StringField('throwing_preference')

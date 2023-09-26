@@ -4,6 +4,9 @@ from sqlalchemy import or_
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.api.aws import (
+    upload_file_to_s3, get_unique_filename)
+
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -66,12 +69,22 @@ def sign_up():
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if form.data['image_url']:
+            image = form.data['image_url']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                return {'errors': validation_errors_to_error_messages(upload)}, 400
+            url = upload["url"]
+        else:
+            url = None
         user = User(
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
             email=form.data['email'],
             username=form.data['username'],
-            image_url=form.data['image_url'],
+            image_url=url,
             pdga_number=form.data['pdga_number'],
             skill_level=form.data['skill_level'],
             throwing_preference=form.data['throwing_preference'],

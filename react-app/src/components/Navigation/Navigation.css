@@ -5,6 +5,7 @@
   background-color: #284b63;
   justify-content: space-evenly;
   padding: 0 20px;
+  position: relative;
 }
 
 .navbar__main {
