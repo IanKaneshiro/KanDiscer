@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDiscs, getFilteredDiscs } from "../../store/discs";
 import { allDiscs } from "../../store/discs";
@@ -15,6 +15,8 @@ const DiscsLandingPage = () => {
   const dispatch = useDispatch();
   const discs = useSelector(allDiscs);
   const sessionUser = useSelector((state) => state.session.user);
+  const ulRef = useRef();
+
   const [nameFilter, setNameFilter] = useState("");
   const [showFilters, setShowFilters] = useState(true);
 
@@ -30,6 +32,20 @@ const DiscsLandingPage = () => {
     fade_min: null,
   });
   const query = useDebounce(nameFilter, 500);
+
+  useEffect(() => {
+    if (showFilters) return;
+
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowFilters(true);
+      }
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showFilters]);
 
   const handleFilter = () => {
     setShowFilters(!showFilters);
@@ -68,6 +84,7 @@ const DiscsLandingPage = () => {
       </div>
       <div className="disc_landing__discs">
         <div
+          ref={ulRef}
           className={
             showFilters
               ? "disc_landing__filters hide-filters"
