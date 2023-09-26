@@ -1,9 +1,6 @@
 .create_disc__main {
-  width: 60vw;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   gap: 10px;
 }
@@ -27,25 +24,26 @@ select {
   height: 100px;
 }
 
-.create_disc__info {
-  grid-column: 1/ 5;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.create_disc__main > button {
+  height: 40px;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #284b63;
 }
 
-.create_disc__flight {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  grid-column: 5 / 10;
-  grid-row: 1;
-}
-
+.create_disc__info,
+.create_disc__flight,
 .create_disc__dimensions {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  grid-column: 5 / 10;
-  grid-row: 2;
+}
+
+.create_disc__form {
+  display: flex;
+  gap: 10px;
+}
+.create_disc__form > div {
+  width: 100%;
 }

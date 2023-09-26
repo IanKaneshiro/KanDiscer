@@ -33,3 +33,11 @@ button {
 iframe {
   display: none;
 }
+
+button:hover {
+  background-color: #376789;
+}
+
+button:active {
+  background-color: #4684af;
+}

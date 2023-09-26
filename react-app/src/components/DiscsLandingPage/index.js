@@ -53,7 +53,7 @@ const DiscsLandingPage = () => {
   return (
     <main className="disc_landing__container">
       <div className="disc_landing__search">
-        <button onClick={handleFilter}>
+        <button className="disc_landing__filter-btn" onClick={handleFilter}>
           <i
             className="fa-solid fa-filter fa-2xl"
             style={{ color: "#284b63" }}
