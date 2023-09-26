@@ -10,6 +10,7 @@
 
 .disc-filters select {
   height: 40px;
+  cursor: pointer;
 }
 
 .speed,

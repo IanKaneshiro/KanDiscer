@@ -4,10 +4,11 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -33,6 +34,8 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    closeMenu();
+    history.push("/");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -40,34 +43,61 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      {user ? (
+        <button className="profile-btn" onClick={openMenu}>
+          {user?.imageUrl ? (
+            <img src={user.imageUrl} alt={user.id} />
+          ) : (
+            <div className="profile-icon">
+              <i className="fa-solid fa-user fa-xl"></i>
+            </div>
+          )}
+        </button>
+      ) : (
+        <button className="profile-login" onClick={openMenu}>
+          Login
+        </button>
+      )}
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
             <li>
-              <Link to="/admin">Admin Dashboard</Link>
+              <h3>Welcome {user.username}</h3>
             </li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <div className="profile-manage-options">
+                {user.admin && (
+                  <button
+                    onClick={() => {
+                      history.push("/admin");
+                      closeMenu();
+                    }}
+                  >
+                    Manage
+                  </button>
+                )}
+                <button onClick={handleLogout}>Log Out</button>
+              </div>
             </li>
           </>
         ) : (
           <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+            <li>
+              <h3>Lets get started!</h3>
+            </li>
+            <div className="profile-login-signup">
+              <OpenModalButton
+                buttonText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+              <OpenModalButton
+                buttonText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
+            </div>
           </>
         )}
       </ul>

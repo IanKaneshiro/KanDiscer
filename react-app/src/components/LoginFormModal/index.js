@@ -28,9 +28,9 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div className="login__container">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="login__form" onSubmit={handleSubmit}>
         <input
           placeholder="Email or Username"
           type="text"
@@ -50,7 +50,7 @@ function LoginFormModal() {
         <button type="submit">Log In</button>
       </form>
       <button onClick={loginDemo}>Login as Demo</button>
-    </>
+    </div>
   );
 }
 

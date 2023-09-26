@@ -65,3 +65,7 @@
   align-items: center;
   gap: 20px;
 }
+
+.disc_landing__filter-btn:hover {
+  background-color: transparent;
+}

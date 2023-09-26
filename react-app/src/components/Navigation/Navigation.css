@@ -16,6 +16,20 @@
 
 .profile-dropdown {
   position: absolute;
+  border-radius: 10px;
+  padding: 0 10px;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  gap: 10px;
   right: 20px;
 }
 
@@ -27,4 +41,67 @@
   background-color: #376789;
   border-radius: 10px;
   padding: 10px;
+}
+
+.profile-login {
+  background-color: transparent;
+  padding: 10px;
+}
+
+.profile-btn {
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.profile-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: transparent;
+}
+.profile-btn:active {
+  background-color: transparent;
+}
+
+.profile-login:hover {
+  background-color: #376789;
+  border-radius: 10px;
+}
+
+.profile-login:hover {
+  background-color: #376789;
+}
+
+.profile-login:active {
+  background-color: #4684af;
+}
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.profile-login {
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.profile-manage-options,
+.profile-login-signup {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-manage-options > button,
+.profile-login-signup > button {
+  width: 100px;
+  height: 40px;
+  background-color: #284b63;
+  margin: 0 10px;
+  color: #ffffff;
+  border-radius: 10px;
 }

@@ -21,10 +21,15 @@ function LoginFormPage() {
     }
   };
 
+  const loginDemo = (e) => {
+    e.preventDefault();
+    dispatch(login("demo@aa.io", "password"));
+  };
+
   return (
-    <>
+    <div className="login-page__container">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="login-page__form" onSubmit={handleSubmit}>
         <input
           placeholder="Email or Username"
           type="text"
@@ -43,7 +48,8 @@ function LoginFormPage() {
         {errors.password && <p className="errors">{errors.password}</p>}
         <button type="submit">Log In</button>
       </form>
-    </>
+      <button onClick={loginDemo}>Login as Demo</button>
+    </div>
   );
 }
 
