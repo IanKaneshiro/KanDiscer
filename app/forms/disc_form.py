@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, FloatField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
+from flask_wtf.file import FileField, FileAllowed
+from app.api.aws import ALLOWED_EXTENSIONS
 
 
 class DiscForm(FlaskForm):
@@ -18,5 +20,6 @@ class DiscForm(FlaskForm):
     height = FloatField('height')
     rim_depth = FloatField('rim_depth')
     rim_width = FloatField('rim_width')
-    image_url = StringField('image_url')
+    image_url = FileField("Image File", validators=[
+                          FileAllowed(list(ALLOWED_EXTENSIONS))])
     approved = BooleanField('approved')

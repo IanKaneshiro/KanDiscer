@@ -70,10 +70,7 @@ export const logout = () => async (dispatch) => {
 export const signUp = (body) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
+    body: body,
   });
 
   if (response.ok) {

@@ -27,3 +27,12 @@ export const discTypes = [
   "Midrange",
   "Putter",
 ];
+
+export const skillOptions = ["Novice", "Amateur", "Intermediate", "Pro"];
+
+export const throwingOptions = [
+  "Right hand, Backhand",
+  "Left hand, Backhand",
+  "Right hand, Forehand",
+  "Left hand, Forehand",
+];

@@ -14,14 +14,13 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const baggedDisc = {
-      weight,
-      color,
-      plastic,
-      image_url,
-    };
+    const formData = new FormData();
+    formData.append("weight", weight);
+    formData.append("color", color);
+    formData.append("plastic", plastic);
+    formData.append("image_url", image_url);
 
-    const data = await dispatch(createBaggedDisc(baggedDisc, bagId, disc.id));
+    const data = await dispatch(createBaggedDisc(formData, bagId, disc.id));
     if (data) {
       setErrors(data);
     } else {
@@ -38,11 +37,17 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
   return (
     <div className="create_bagged_disc__container">
       <h1>Add details</h1>
-      <form className="create_bagged_disc__main" onSubmit={handleSubmit}>
+      <form
+        className="create_bagged_disc__main"
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
         <input
           required
           placeholder="Weight (Grams)"
           value={weight}
+          min={100}
+          max={200}
           onChange={(e) => setWeight(e.target.value)}
           type="number"
         />
@@ -74,10 +79,9 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
         </select>
         {errors.plastic && <p className="errors">{errors.plastic}</p>}
         <input
-          placeholder="Image Url (Optional)"
-          value={image_url}
-          onChange={(e) => setImageUrl(e.target.value)}
-          type="text"
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImageUrl(e.target.files[0])}
         />
         {errors.image_url && <p className="errors">{errors.image_url}</p>}
         <button>Add</button>

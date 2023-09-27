@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Bag, db, BaggedDisc
 from .route_utils import admin_required
 from app.forms import BagForm, BaggedDiscForm
+from app.api.aws import upload_file_to_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
 
 bag_routes = Blueprint('bags', __name__)
@@ -133,13 +134,23 @@ def create_bagged_disc(bag_id, disc_id):
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if form.data['image_url']:
+            image = form.data['image_url']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                return {'errors': validation_errors_to_error_messages(upload)}, 400
+            url = upload["url"]
+        else:
+            url = None
         bagged_disc = BaggedDisc(
             bag_id=bag_id,
             disc_id=disc_id,
             weight=form.data['weight'],
             color=form.data['color'],
             plastic=form.data['plastic'],
-            image_url=form.data['image_url'],
+            image_url=url
         )
 
         db.session.add(bagged_disc)

@@ -1,0 +1,32 @@
+.signup__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 300px;
+}
+
+.signup__form > button {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #284b63;
+}
+
+.signup-options:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.signup-options {
+  background-color: transparent;
+}

@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 10px;
+  width: 300px;
 }
 
 .login-page__form > button {
@@ -22,7 +22,16 @@
   background-color: #284b63;
 }
 
-.login-pgage__container > button:hover {
+.login__options {
+  display: flex;
+  gap: 10px;
+}
+
+.login__options > button:hover {
   text-decoration: underline;
-  background-color: white;
+  background-color: transparent;
+}
+
+.login__options > button {
+  background-color: transparent;
 }

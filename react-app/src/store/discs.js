@@ -101,10 +101,7 @@ export const getDiscsAwaitingApproval = () => async (dispatch) => {
 export const createNewDisc = (disc) => async (dispatch) => {
   const res = await fetch("/api/discs/new", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(disc),
+    body: disc,
   });
   if (res.ok) {
     const data = await res.json();
@@ -125,10 +122,7 @@ export const createNewDisc = (disc) => async (dispatch) => {
 export const updateDisc = (updatedDisc, id, approve) => async (dispatch) => {
   const res = await fetch(`/api/discs/${id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updatedDisc),
+    body: updatedDisc,
   });
   if (res.ok) {
     const data = await res.json();

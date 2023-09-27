@@ -21,20 +21,19 @@ function SignupFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = {
-      first_name,
-      last_name,
-      email,
-      username,
-      image_url,
-      pdga_number,
-      skill_level,
-      throwing_preference,
-      password,
-    };
+    const formData = new FormData();
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
+    formData.append("email", email);
+    formData.append("username", username);
+    formData.append("image_url", image_url);
+    formData.append("pdga_number", pdga_number);
+    formData.append("skill_level", skill_level);
+    formData.append("throwing_preference", throwing_preference);
+    formData.append("password", password);
 
     if (password === confirmPassword) {
-      const data = await dispatch(signUp(user));
+      const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data);
       } else {
@@ -51,7 +50,11 @@ function SignupFormModal() {
   return (
     <div className="signup__container">
       <h1>Sign Up</h1>
-      <form className="signup__form" onSubmit={handleSubmit}>
+      <form
+        className="signup__form"
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
         <input
           type="text"
           placeholder="First Name"
@@ -85,16 +88,14 @@ function SignupFormModal() {
         />{" "}
         {errors.username && <p className="errors">{errors.username}</p>}
         <input
-          placeholder="Image Url"
-          type="text"
-          value={image_url}
-          onChange={(e) => setImageUrl(e.target.value)}
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImageUrl(e.target.files[0])}
         />
         {errors.image_url && <p className="errors">{errors.image_url}</p>}
         <input
           placeholder="PDGA Number"
           type="number"
-          // value={pdga_number}
           onChange={(e) => setPdgaNumber(e.target.value)}
         />
         {errors.pdga_number && <p className="errors">{errors.pdga_number}</p>}
