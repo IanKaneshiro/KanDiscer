@@ -47,7 +47,9 @@ const UpdateDiscModal = ({ disc, approve }) => {
     formData.append("height", height);
     formData.append("rim_depth", rim_depth);
     formData.append("rim_width", rim_width);
-    formData.append("image_url", image_url);
+    if (image_url) {
+      formData.append("image_url", image_url);
+    }
     const data = await dispatch(updateDisc(formData, disc.id, approve));
     if (data) {
       setErrors(data);
