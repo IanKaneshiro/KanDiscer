@@ -1,5 +1,5 @@
 .delete-modal__container {
-  width: 400px;
+  width: 350px;
   height: 150px;
   padding: 20px;
   display: flex;
@@ -18,4 +18,25 @@
   width: 150px;
   height: 50px;
   border-radius: 10px;
+}
+
+.delete-modal__delete {
+  background-color: #b10027;
+  color: #ffffff;
+}
+.delete-modal__delete:hover {
+  background-color: #d83542;
+}
+.delete-modal__delete:active {
+  background-color: #ff5a5f;
+}
+.delete-modal__cancel {
+  background-color: #818c94;
+}
+
+.delete-modal__cancel:hover {
+  background-color: #979a9f;
+}
+.delete-modal__cancel:active {
+  background-color: #a9a9a9;
 }
