@@ -10,6 +10,7 @@ import BagUpdateForm from "../BagUpdateForm";
 import { useModal } from "../../context/Modal";
 import DeleteModal from "../DeleteModal";
 import "./BagsNavigationBar.css";
+import LoadingSpinner from "../LoadingSpinner";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
@@ -21,8 +22,7 @@ const BagsNavigationBar = () => {
 
   useEffect(() => {
     dispatch(getAllBags());
-
-    return dispatch(clearAllBags());
+    return () => dispatch(clearAllBags());
   }, [dispatch]);
 
   useEffect(() => {
@@ -43,6 +43,8 @@ const BagsNavigationBar = () => {
     closeModal();
     return history.push("/bags");
   };
+
+  if (!allBags) return <LoadingSpinner />;
 
   return (
     <div className="bags-navigation__container">
@@ -74,7 +76,6 @@ const BagsNavigationBar = () => {
           </>
         )}
       </div>
-
       <Route path="/bags/:bagId">
         <BagDetailsPage />
       </Route>

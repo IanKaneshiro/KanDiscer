@@ -55,10 +55,8 @@ td {
 
 .disc_details__left-header {
   border-bottom: 1px solid #000000;
-
   text-align: center;
   height: 50px;
-  margin-top: 20px;
   display: flex;
   justify-content: space-evenly;
 }

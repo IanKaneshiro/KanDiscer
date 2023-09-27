@@ -4,6 +4,9 @@ from app.models import Disc, db
 from .route_utils import admin_required
 from app.forms import DiscForm
 from .auth_routes import validation_errors_to_error_messages
+from app.api.aws import (
+    upload_file_to_s3, get_unique_filename)
+
 
 disc_routes = Blueprint('discs', __name__)
 
@@ -88,6 +91,16 @@ def create_disc():
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if form.data['image_url']:
+            image = form.data['image_url']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                return {'errors': validation_errors_to_error_messages(upload)}, 400
+            url = upload["url"]
+        else:
+            url = None
         disc = Disc(
             manufacturer=form.data['manufacturer'],
             name=form.data['name'],
@@ -103,7 +116,7 @@ def create_disc():
             height=form.data['height'],
             rim_depth=form.data['rim_depth'],
             rim_width=form.data['rim_width'],
-            image_url=form.data['image_url']
+            image_url=url
         )
         if current_user.admin:
             disc.approved = True
@@ -129,6 +142,16 @@ def update_disc(id):
         return {"message": "Disc doesn't exist"}, 404
 
     if form.validate_on_submit():
+        if form.data['image_url']:
+            image = form.data['image_url']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                return {'errors': validation_errors_to_error_messages(upload)}, 400
+            url = upload["url"]
+        else:
+            url = disc.image_url
         disc.manufacturer = form.data['manufacturer']
         disc.name = form.data['name']
         disc.description = form.data['description']
@@ -143,7 +166,7 @@ def update_disc(id):
         disc.height = form.data['height']
         disc.rim_depth = form.data['rim_depth']
         disc.rim_width = form.data['rim_width']
-        disc.image_url = form.data['image_url']
+        disc.image_url = url
         if current_user.admin:
             disc.approved = True
         db.session.commit()

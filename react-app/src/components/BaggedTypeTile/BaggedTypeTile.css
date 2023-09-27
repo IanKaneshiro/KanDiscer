@@ -22,6 +22,6 @@
   border-radius: 50%;
 }
 
-.bagged-type-tile__container > button:hover {
+.bagged-type-tile__container button:hover {
   background-color: transparent;
 }

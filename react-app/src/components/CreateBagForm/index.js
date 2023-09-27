@@ -41,7 +41,9 @@ const CreateBagForm = () => {
   return (
     <form className="create_bag__main" onSubmit={handleSubmit}>
       <h1>Add New Bag</h1>
+      <label for="name">Name</label>
       <input
+        id="name"
         value={name}
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}
@@ -49,16 +51,20 @@ const CreateBagForm = () => {
         required
       />
       {errors.name && <p className="errors">{errors.name}</p>}
+      <label for="description">Description</label>
       <textarea
+        id="description"
         value={description}
-        placeholder="Add a description (Optional)"
+        placeholder="Add some details about your bag"
         onChange={(e) => setDescription(e.target.value)}
         type="text"
       />
       {errors.description && <p className="errors">{errors.description}</p>}
+      <label for="notes">Notes</label>
       <textarea
+        id="notes"
         value={notes}
-        placeholder="Add notes about your bag (Optional)"
+        placeholder="Add notes about your bag"
         onChange={(e) => setNotes(e.target.value)}
         type="text"
       />

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
@@ -36,6 +33,16 @@ function ProfileButton({ user }) {
     dispatch(logout());
     closeMenu();
     history.push("/");
+  };
+
+  const handleLogin = () => {
+    history.push("/login");
+    closeMenu();
+  };
+
+  const handleSignUp = () => {
+    history.push("/signup");
+    closeMenu();
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -86,17 +93,8 @@ function ProfileButton({ user }) {
               <h3>Lets get started!</h3>
             </li>
             <div className="profile-login-signup">
-              <OpenModalButton
-                buttonText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
-
-              <OpenModalButton
-                buttonText="Sign Up"
-                onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
-              />
+              <button onClick={handleLogin}>Log In</button>
+              <button onClick={handleSignUp}>Sign Up</button>
             </div>
           </>
         )}

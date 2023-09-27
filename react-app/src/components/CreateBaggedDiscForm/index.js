@@ -46,6 +46,8 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
           required
           placeholder="Weight (Grams)"
           value={weight}
+          min={100}
+          max={200}
           onChange={(e) => setWeight(e.target.value)}
           type="number"
         />

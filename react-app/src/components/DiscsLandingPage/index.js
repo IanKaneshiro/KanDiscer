@@ -113,7 +113,17 @@ const DiscsLandingPage = () => {
               />
             ))
           ) : (
-            <h1>No discs match search parameters</h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "400px",
+              }}
+            >
+              <h1>No discs match search parameters</h1>
+            </div>
           )}
         </div>
       </div>

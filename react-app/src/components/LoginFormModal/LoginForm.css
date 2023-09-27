@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  width: 300px;
 }
 
 .login__form > button {
@@ -24,5 +25,5 @@
 
 .login__container > button:hover {
   text-decoration: underline;
-  background-color: white;
+  background-color: transparent;
 }

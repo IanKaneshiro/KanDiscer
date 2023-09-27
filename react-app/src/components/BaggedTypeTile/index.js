@@ -39,7 +39,7 @@ const BaggedTypeTile = ({ disc }) => {
         <p>{`${disc.info.speed} / ${disc.info.glide} / ${disc.info.turn} / ${disc.info.fade}`}</p>
       </div>
       <OpenModalButton
-        buttonText={"❌"}
+        buttonText={"✖"}
         modalComponent={
           <DeleteModal handleDelete={handleDelete} value={disc.info} />
         }

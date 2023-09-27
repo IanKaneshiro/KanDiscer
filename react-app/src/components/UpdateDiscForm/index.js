@@ -22,7 +22,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
   const [height, setHeight] = useState(disc?.height);
   const [rim_depth, setRimDepth] = useState(disc?.rimDepth);
   const [rim_width, setRimWidth] = useState(disc?.rimWidth);
-  const [image_url, setImageUrl] = useState(disc?.imageUrl);
+  const [image_url, setImageUrl] = useState("");
 
   const [errors, setErrors] = useState({});
 
@@ -33,23 +33,22 @@ const UpdateDiscModal = ({ disc, approve }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedDisc = {
-      manufacturer,
-      name,
-      type,
-      description,
-      purchase_link,
-      plastics,
-      speed,
-      glide,
-      turn,
-      fade,
-      height,
-      rim_depth,
-      rim_width,
-      image_url,
-    };
-    const data = await dispatch(updateDisc(updatedDisc, disc.id, approve));
+    const formData = new FormData();
+    formData.append("manufacturer", manufacturer);
+    formData.append("name", name);
+    formData.append("type", type);
+    formData.append("description", description);
+    formData.append("purchase_link", purchase_link);
+    formData.append("plastics", plastics);
+    formData.append("speed", speed);
+    formData.append("glide", glide);
+    formData.append("turn", turn);
+    formData.append("fade", fade);
+    formData.append("height", height);
+    formData.append("rim_depth", rim_depth);
+    formData.append("rim_width", rim_width);
+    formData.append("image_url", image_url);
+    const data = await dispatch(updateDisc(formData, disc.id, approve));
     if (data) {
       setErrors(data);
     } else {
@@ -59,138 +58,212 @@ const UpdateDiscModal = ({ disc, approve }) => {
 
   return (
     <form className="create_disc__main" onSubmit={handleSubmit}>
-      <div className="create_disc__info">
-        <select
-          required
-          value={manufacturer}
-          onChange={(e) => setManufacture(e.target.value)}
-        >
-          <option disabled value="">
-            Please select a manufacturer...
-          </option>
-          {manufactures.map((man) => (
-            <option key={man} value={man}>
-              {man}
-            </option>
-          ))}
-        </select>
-        {errors.manufacturer && <p>{errors.manufacturer}</p>}
-        <input
-          required
-          placeholder="Name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {errors.name && <p>{errors.name}</p>}
-        <textarea
-          placeholder="Description (Optional)"
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        {errors.description && <p>{errors.description}</p>}{" "}
-        <select required value={type} onChange={(e) => setType(e.target.value)}>
-          <option disabled value="">
-            Please select a type...
-          </option>
-          {discTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-        {errors.type && <p>{errors.type}</p>}
-        <input
-          placeholder="Add a link to purchase (Optional)"
-          type="text"
-          value={purchase_link}
-          onChange={(e) => setPurchaseLink(e.target.value)}
-        />
-        {errors.purchase_link && <p>{errors.purchase_link}</p>}
-        <input
-          placeholder="Please enter discs plastic types. e.g 'Esp, Ti, Z'"
-          type="text"
-          value={plastics}
-          onChange={(e) => setPlastics(e.target.value)}
-          required
-        />
-        {errors.plastics && <p>{errors.plastics}</p>}
-      </div>
-      <div class="create_disc__flight">
-        <span>
-          Speed: {speed} Glide: {glide} Turn: {turn} Fade: {fade}
-        </span>
-        <input
-          placeholder="Speed"
-          type="range"
-          min="1"
-          max="15"
-          value={speed}
-          onChange={(e) => setSpeed(e.target.value)}
-          required
-        />
-        {errors.speed && <p>{errors.speed}</p>}
-        <input
-          placeholder="Glide"
-          type="range"
-          min="1"
-          max="7"
-          value={glide}
-          onChange={(e) => setGlide(e.target.value)}
-          required
-        />
-        {errors.glide && <p>{errors.glide}</p>}
-        <input
-          placeholder="Turn"
-          type="range"
-          min="-5"
-          max="2"
-          value={turn}
-          onChange={(e) => setTurn(e.target.value)}
-          required
-        />
-        {errors.turn && <p>{errors.turn}</p>}
-        <input
-          placeholder="Fade"
-          type="range"
-          min="0"
-          max="6"
-          value={fade}
-          onChange={(e) => setFade(e.target.value)}
-          required
-        />
-        {errors.fade && <p>{errors.fade}</p>}
-      </div>
-      <div class="create_disc__dimensions">
-        <input
-          value={height}
-          type="number"
-          placeholder="Height"
-          onChange={(e) => setHeight(e.target.value)}
-        />
-        {errors.height && <p>{errors.height}</p>}
-        <input
-          value={rim_depth}
-          type="number"
-          placeholder="Rim depth"
-          onChange={(e) => setRimDepth(e.target.value)}
-        />
-        {errors.rim_depth && <p>{errors.rim_depth}</p>}{" "}
-        <input
-          value={rim_width}
-          type="number"
-          placeholder="Rim width"
-          onChange={(e) => setRimWidth(e.target.value)}
-        />
-        {errors.rim_width && <p>{errors.rim_width}</p>}{" "}
-        <input
-          value={image_url}
-          type="text"
-          placeholder="Image Url"
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        {errors.image_url && <p>{errors.image_url}</p>}
+      <div className="create_disc__form">
+        <div class="create_disc__info">
+          <label>
+            Manufacturer
+            <select
+              required
+              value={manufacturer}
+              onChange={(e) => setManufacture(e.target.value)}
+            >
+              <option disabled value="">
+                Please select a manufacturer...
+              </option>
+              {manufactures.map((man) => (
+                <option key={man} value={man}>
+                  {man}
+                </option>
+              ))}
+            </select>
+          </label>
+          {errors.manufacturer && <p>{errors.manufacturer}</p>}
+          <label>
+            Name
+            <input
+              required
+              placeholder="Name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          {errors.name && <p className="errors">{errors.name}</p>}
+          <label>
+            Description
+            <textarea
+              placeholder="Short description of disc"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          {errors.description && <p className="errors">{errors.description}</p>}{" "}
+          <label>
+            Type of Disc
+            <select
+              required
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option disabled value="">
+                Please select a type...
+              </option>
+              {discTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </label>
+          {errors.type && <p className="errors">{errors.type}</p>}
+          <label>
+            Link to Purchase
+            <input
+              placeholder="Add a link to purchase"
+              type="text"
+              value={purchase_link}
+              onChange={(e) => setPurchaseLink(e.target.value)}
+            />
+          </label>
+          {errors.purchase_link && (
+            <p className="errors">{errors.purchase_link}</p>
+          )}
+          <label>
+            Plastic Types
+            <input
+              placeholder="Esp, Ti, Z"
+              type="text"
+              value={plastics}
+              onChange={(e) => setPlastics(e.target.value)}
+              required
+            />
+          </label>
+          {errors.plastics && <p className="errors">{errors.plastics}</p>}
+          <label>
+            Current Image:
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                style={{ width: "100px" }}
+                src={disc.imageUrl}
+                alt={disc.id}
+              />
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImageUrl(e.target.files[0])}
+            />
+          </label>
+          {errors.image_url && <p className="errors">{errors.image_url}</p>}
+        </div>
+        <div class="create_disc__flight">
+          <span>
+            <table className="disc_tile__flight">
+              <thead>
+                <tr>
+                  <th>Speed</th>
+                  <th>Glide</th>
+                  <th>Turn</th>
+                  <th>Fade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{speed}</td>
+                  <td>{glide}</td>
+                  <td>{turn}</td>
+                  <td>{fade}</td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
+          <label>
+            Speed
+            <input
+              placeholder="Speed"
+              type="range"
+              min="1"
+              max="15"
+              value={speed}
+              onChange={(e) => setSpeed(e.target.value)}
+              required
+            />
+          </label>
+          {errors.speed && <p className="errors">{errors.speed}</p>}
+          <label>
+            Glide
+            <input
+              placeholder="Glide"
+              type="range"
+              min="1"
+              max="7"
+              value={glide}
+              onChange={(e) => setGlide(e.target.value)}
+              required
+            />
+          </label>
+          {errors.glide && <p className="errors">{errors.glide}</p>}
+          <label>
+            Turn
+            <input
+              placeholder="Turn"
+              type="range"
+              min="-5"
+              max="2"
+              value={turn}
+              onChange={(e) => setTurn(e.target.value)}
+              required
+            />
+          </label>
+          {errors.turn && <p className="errors">{errors.turn}</p>}
+          <label>
+            Fade
+            <input
+              placeholder="Fade"
+              type="range"
+              min="0"
+              max="6"
+              value={fade}
+              onChange={(e) => setFade(e.target.value)}
+              required
+            />
+          </label>
+          {errors.fade && <p className="errors">{errors.fade}</p>}
+          <label>
+            Height
+            <input
+              required
+              value={height}
+              type="decimal"
+              placeholder="In Cm"
+              onChange={(e) => setHeight(e.target.value)}
+            />
+          </label>
+          {errors.height && <p className="errors">{errors.height}</p>}
+          <label>
+            Rim Depth
+            <input
+              required
+              value={rim_depth}
+              type="decimal"
+              placeholder="In Cm"
+              onChange={(e) => setRimDepth(e.target.value)}
+            />
+          </label>
+          {errors.rim_depth && <p className="errors">{errors.rim_depth}</p>}{" "}
+          <label>
+            Rim Width
+            <input
+              required
+              value={rim_width}
+              type="decimal"
+              placeholder="In Cm"
+              onChange={(e) => setRimWidth(e.target.value)}
+            />
+          </label>
+          {errors.rim_width && <p className="errors">{errors.rim_width}</p>}{" "}
+        </div>
       </div>
       <button type="submit">{approve ? "Approve" : "Save Changes"}</button>
     </form>
