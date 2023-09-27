@@ -22,7 +22,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
   const [height, setHeight] = useState(disc?.height);
   const [rim_depth, setRimDepth] = useState(disc?.rimDepth);
   const [rim_width, setRimWidth] = useState(disc?.rimWidth);
-  const [image_url, setImageUrl] = useState("");
+  const [image_url, setImageUrl] = useState(null);
 
   const [errors, setErrors] = useState({});
 

@@ -34,9 +34,11 @@ const AdminDashboard = () => {
       <div className="admin__main">
         <div>
           <h2>Manage Discs</h2>
-          {discs.map((disc) => (
-            <AdminDiscTile key={disc.id} disc={disc} />
-          ))}
+          {discs
+            .sort((a, b) => b.id - a.id)
+            .map((disc) => (
+              <AdminDiscTile key={disc.id} disc={disc} />
+            ))}
         </div>
         <div>
           <h2>Awaiting Approval</h2>
