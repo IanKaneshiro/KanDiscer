@@ -59,7 +59,11 @@ const UpdateDiscModal = ({ disc, approve }) => {
   };
 
   return (
-    <form className="create_disc__main" onSubmit={handleSubmit}>
+    <form
+      className="create_disc__main"
+      onSubmit={handleSubmit}
+      encType="multipart/form-data"
+    >
       <div className="create_disc__form">
         <div class="create_disc__info">
           <label>
