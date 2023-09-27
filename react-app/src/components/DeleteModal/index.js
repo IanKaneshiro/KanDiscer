@@ -8,13 +8,10 @@ const DeleteModal = ({ value, handleDelete }) => {
     <div className="delete-modal__container">
       <h1>Delete {value.name}</h1>
       <div>
-        <button
-          style={{ backgroundColor: "#ff5a5f", color: "white" }}
-          onClick={handleDelete}
-        >
+        <button className="delete-modal__delete" onClick={handleDelete}>
           Confirm
         </button>
-        <button style={{ backgroundColor: "#a9a9a9" }} onClick={closeModal}>
+        <button className="delete-modal__cancel" onClick={closeModal}>
           Cancel
         </button>
       </div>

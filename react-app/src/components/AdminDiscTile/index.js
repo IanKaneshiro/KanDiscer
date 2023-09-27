@@ -18,17 +18,19 @@ const AdminDiscTile = ({ disc, approve }) => {
 
   return (
     <div className="admin-disc__main">
-      <h2>{disc.name}</h2>
-      <OpenModalButton
-        buttonText={approve ? "Review" : "Update"}
-        modalComponent={<UpdateDiscModal disc={disc} approve={approve} />}
-      />
-      <OpenModalButton
-        buttonText={"Delete"}
-        modalComponent={
-          <DeleteModal value={disc} handleDelete={handleDelete} />
-        }
-      />
+      <h3>{disc.name}</h3>
+      <div className="admin-disc__edit">
+        <OpenModalButton
+          buttonText={approve ? "Review" : "Update"}
+          modalComponent={<UpdateDiscModal disc={disc} approve={approve} />}
+        />
+        <OpenModalButton
+          buttonText={"Delete"}
+          modalComponent={
+            <DeleteModal value={disc} handleDelete={handleDelete} />
+          }
+        />
+      </div>
     </div>
   );
 };

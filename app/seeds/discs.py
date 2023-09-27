@@ -126,7 +126,7 @@ def seed_discs():
         description='The Zombee is a popular midrange disc known for its reliable straight flight and its ability to power through the wind. It is a very versatile disc that can be used for a variety of shots, including drives, approaches, and upshots. The Zombee is a great choice for players of all skill levels.',
         type='Midrange',
         purchase_link='https://otbdiscs.com/?s=zombee&post_type=product',
-        plastics='Z-Line, ESP, FLX',
+        plastics='Z, ESP, FLX',
         speed=6,
         glide=4,
         turn=-1,
