@@ -4,8 +4,9 @@
   padding: 0 10px;
   height: 50px;
   background-color: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .bagged-type-tile__container > div {
@@ -20,6 +21,10 @@
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.bagged-type-tile__container button {
+  background-color: transparent;
 }
 
 .bagged-type-tile__container button:hover {

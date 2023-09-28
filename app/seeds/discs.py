@@ -292,7 +292,7 @@ def seed_discs():
 
     disc16 = Disc(
         manufacturer='Discraft',
-        name='Discraft Hades',
+        name='Hades',
         description='The Hades is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Hades is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
         type='Distance Driver',
         purchase_link='https://infinitediscs.com/product/hades-driver/10',
@@ -313,7 +313,7 @@ def seed_discs():
         manufacturer='Axiom Discs',
         name='Insanity',
         description='The Insanity is a popular distance driver known for its incredible speed and distance potential. It is a very overstable disc, which means that it will finish with a strong fade to the right (for right-handed throwers). The Insanity is a great choice for strong arms who need a disc that can handle windy conditions or that can be used to power through tight gaps.',
-        type='Distance Driver',
+        type='Fairway Driver',
         purchase_link='https://axiomdiscs.com/products/insanity',
         plastics='Neutron, Plasma, Electron',
         speed=9,

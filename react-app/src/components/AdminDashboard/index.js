@@ -6,8 +6,8 @@ import {
   getDiscsAwaitingApproval,
   awaitingApproval,
 } from "../../store/discs";
-import AdminDiscTile from "../AdminDiscTile";
 import "./AdminDashboard.css";
+import AdminDashboardTile from "../AdminDashboardTile";
 import { Redirect } from "react-router-dom";
 
 const AdminDashboard = () => {
@@ -32,26 +32,13 @@ const AdminDashboard = () => {
     <main className="admin__container">
       <h1>Admin Dashboard</h1>
       <div className="admin__main">
-        <div>
-          <h2>Manage Discs</h2>
-          {discs
-            .sort((a, b) => b.id - a.id)
-            .map((disc) => (
-              <AdminDiscTile key={disc.id} disc={disc} />
-            ))}
-        </div>
-        <div>
-          <h2>Awaiting Approval</h2>
-          {approvalDiscs.map((disc) => (
-            <AdminDiscTile key={disc.id} disc={disc} approve={true} />
-          ))}
-        </div>
-        <div>
-          <h2>Manage Courses</h2>
-        </div>
-        <div>
-          <h2>Manage Users</h2>
-        </div>
+        <AdminDashboardTile header={"Manage Discs"} content={discs} />
+        <AdminDashboardTile
+          header={"Awaiting Approval"}
+          content={approvalDiscs}
+        />
+        <AdminDashboardTile header={"Manage Courses"} />
+        <AdminDashboardTile header={"Manage Users"} />
       </div>
     </main>
   );

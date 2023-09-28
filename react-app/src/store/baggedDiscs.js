@@ -158,22 +158,22 @@ export default function reducer(state = initalState, action) {
         currentDisc: action.payload,
       };
     case ADD_BAGGED_DISC: {
-      // switch (action.payload.info.type) {
-      //   case "Distance Driver":
-      //     distance[action.payload.id] = action.payload;
-      //     break;
-      //   case "Fairway Driver":
-      //     fairway[action.payload.id] = action.payload;
-      //     break;
-      //   case "Midrange":
-      //     midrange[action.payload.id] = action.payload;
-      //     break;
-      //   case "Putter":
-      //     putter[action.payload.id] = action.payload;
-      //     break;
-      //   default:
-      //     allDiscs[action.payload.id] = action.payload;
-      // }
+      switch (action.payload.info.type) {
+        case "Distance Driver":
+          newState.distance[action.payload.id] = action.payload;
+          break;
+        case "Fairway Driver":
+          newState.fairway[action.payload.id] = action.payload;
+          break;
+        case "Midrange":
+          newState.midrange[action.payload.id] = action.payload;
+          break;
+        case "Putter":
+          newState.putter[action.payload.id] = action.payload;
+          break;
+        default:
+          newState.allDiscs[action.payload.id] = action.payload;
+      }
       return {
         ...newState,
         allDiscs: {

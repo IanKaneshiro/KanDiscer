@@ -5,6 +5,7 @@ const LOAD_ADMIN_DISCS = "discs/LOAD_ADMIN_DISCS";
 const ADD_DISC = "discs/ADD_DISC";
 const REMOVE_DISC = "discs/REMOVE_DISC";
 const APPROVE_DISC = "discs/APPROVE_DISC";
+const CLEAR_CURRENT_DISC = "discs/CLEAR_CURRENT_DISCS";
 
 // ----------------------- Action Creators -----------------------
 const loadDiscs = (discs) => ({
@@ -37,6 +38,9 @@ const approveDisc = (id) => ({
   payload: id,
 });
 
+export const clearCurrentDisc = () => ({
+  type: CLEAR_CURRENT_DISC,
+});
 // ----------------------- Thunk Action Creators -----------------
 export const getAllDiscs = () => async (dispatch) => {
   const res = await fetch("/api/discs");
@@ -210,6 +214,12 @@ export default function reducer(state = initalState, action) {
         ...newState,
         awaitingApproval: newState.awaitingApproval,
       };
+    case CLEAR_CURRENT_DISC: {
+      return {
+        ...newState,
+        currentDisc: {},
+      };
+    }
     default:
       return state;
   }
