@@ -1,14 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBaggedDisc } from "../../store/baggedDiscs";
+import { useHistory } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import toast from "react-hot-toast";
+
 import "./CreateBaggedDiscForm.css";
 
 const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("#000000");
   const [plastic, setPlastic] = useState("");
   const [image_url, setImageUrl] = useState("");
+  const { closeModal } = useModal();
+
+  const handleToast = () => {
+    history.push(`/bags/${bagId}`);
+    closeModal();
+  };
+  const toastAlert = () =>
+    toast((t) => (
+      <div className="toast-alert">
+        <h3>Succesfully added to your bag!</h3>
+        <div>
+          <button onClick={handleToast}>Go to bag</button>
+          <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+        </div>
+      </div>
+    ));
 
   const [errors, setErrors] = useState({});
 
@@ -30,7 +51,8 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
       setImageUrl("");
       setPlastic("");
       setWeight("");
-      alert("Succesfully added to your bag");
+      toastAlert();
+      // alert("Succesfully added to your bag");
     }
   };
 

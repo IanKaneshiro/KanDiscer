@@ -35,7 +35,7 @@ const DiscDetailsModal = ({ disc, sessionUser }) => {
           <div className="disc_details__left-img">
             <img src={disc.imageUrl} alt={disc.name} />
           </div>
-          <div className=".disc_details__left-description">
+          <div className="disc_details__left-description">
             <p>{disc.description}</p>
             <a
               style={{ fontWeight: "Bold" }}

@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import BagsNavigationBar from "./components/BagsNavigationBar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
+      <Toaster />
     </>
   );
 }

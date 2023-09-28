@@ -40,3 +40,16 @@ select {
   height: 30px;
   border: none;
 }
+
+.toast-alert button:hover {
+  background-color: transparent;
+}
+
+.toast-alert button:active {
+  background-color: transparent;
+}
+
+.toast-alert > div {
+  display: flex;
+  justify-content: space-between;
+}
