@@ -39,6 +39,8 @@ const FlightChart = ({ discs }) => {
             dot=""
             stroke={disc.color}
             strokeWidth={5}
+            legendType="circle"
+            label={disc.info.name}
           />
         ))}
         <XAxis
