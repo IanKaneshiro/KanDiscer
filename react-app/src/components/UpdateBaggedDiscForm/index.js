@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from "react";
-import "./AddToBagForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createBaggedDisc } from "../../store/baggedDiscs";
-import { getDiscById, currentDisc, clearCurrentDisc } from "../../store/discs";
+import {
+  updateBagDisc,
+  getBaggedDiscById,
+  selectcCurrentBaggedDisc,
+} from "../../store/baggedDiscs";
+import { useModal } from "../../context/Modal";
+import "./UpdateBaggedDiscForm.css";
 
-const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
+const UpdateBaggedDiscForm = ({ discId }) => {
   const dispatch = useDispatch();
-  const disc = useSelector(currentDisc);
-  const [weight, setWeight] = useState("");
-  const [color, setColor] = useState("#000000");
-  const [plastic, setPlastic] = useState("");
+  const disc = useSelector(selectcCurrentBaggedDisc);
+  const [weight, setWeight] = useState(disc.weight);
+  const [color, setColor] = useState(disc.color);
+  const [plastic, setPlastic] = useState(disc.plastic);
   const [image_url, setImageUrl] = useState("");
-  const [discId, setDiscId] = useState("");
+  const { closeModal } = useModal();
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    dispatch(getDiscById(discId));
-
-    return () => dispatch(clearCurrentDisc());
+    dispatch(getBaggedDiscById(discId));
   }, [dispatch, discId]);
 
   const handleSubmit = async (e) => {
@@ -29,44 +31,27 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
     formData.append("plastic", plastic);
     formData.append("image_url", image_url);
 
-    const data = await dispatch(createBaggedDisc(formData, bagId, disc.id));
+    const data = await dispatch(updateBagDisc(formData, disc.id));
     if (data) {
       setErrors(data);
     } else {
-      setColor("");
-      setImageUrl("");
-      setPlastic("");
-      setWeight("");
-      setDiscId("");
-      toggleMenu();
+      closeModal();
     }
   };
 
   return (
-    <div className="add_bagged_disc__container">
-      <h2>Add a disc</h2>
+    <div className="update_bagged_disc__container">
+      <h1>Update Disc</h1>
       <form
-        className="add_bagged_disc__main"
+        className="update_bagged_disc__main"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <select
-          value={discId}
-          required
-          onChange={(e) => setDiscId(e.target.value)}
-        >
-          <option defaultChecked value="">
-            Select a disc...
-          </option>
-          {discs.map((disc) => (
-            <option key={disc.id} value={disc.id}>
-              {disc.name}
-            </option>
-          ))}
-        </select>
+        <label htmlFor="weight">Weight</label>
         <input
+          id="weight"
           required
-          placeholder="Weight (Grams)"
+          placeholder="In grams"
           value={weight}
           min={100}
           max={200}
@@ -75,7 +60,7 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
         />
 
         {errors.weight && <p className="errors">{errors.weight}</p>}
-        <div className="add_bagged_disc__color">
+        <div className="update_bagged_disc__color">
           <label htmlFor="color">Color: </label>
           <input
             id="color"
@@ -87,29 +72,32 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
           />
         </div>
         {errors.color && <p className="errors">{errors.color}</p>}
+        <label htmlFor="plastic">Plastic</label>
         <select
+          id="plastic"
           value={plastic}
           required
           onChange={(e) => setPlastic(e.target.value)}
         >
-          <option defaultChecked value="">
-            Select plastic type...
-          </option>
-          {disc?.plastics?.split(", ").map((plastic) => (
-            <option value={plastic}>{plastic}</option>
+          {disc?.info?.plastics.split(", ").map((plastic) => (
+            <option key={plastic} value={plastic}>
+              {plastic}
+            </option>
           ))}
         </select>
         {errors.plastic && <p className="errors">{errors.plastic}</p>}
+        <label htmlFor="image">Image</label>
         <input
+          id="image"
           type="file"
           accept="image/*"
           onChange={(e) => setImageUrl(e.target.files[0])}
         />
         {errors.image_url && <p className="errors">{errors.image_url}</p>}
-        <button>Add</button>
+        <button>Save changes</button>
       </form>
     </div>
   );
 };
 
-export default AddToBagForm;
+export default UpdateBaggedDiscForm;

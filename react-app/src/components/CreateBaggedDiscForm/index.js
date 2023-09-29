@@ -64,9 +64,11 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
+        <label htmlFor="weight">Weight</label>
         <input
+          id="weight"
           required
-          placeholder="Weight (Grams)"
+          placeholder="In grams"
           value={weight}
           min={100}
           max={200}
@@ -76,7 +78,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
 
         {errors.weight && <p className="errors">{errors.weight}</p>}
         <div className="create_bagged_disc__color">
-          <label for="color">Color: </label>
+          <label htmlFor="color">Color: </label>
           <input
             id="color"
             required
@@ -87,7 +89,9 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
           />
         </div>
         {errors.color && <p className="errors">{errors.color}</p>}
+        <label htmlFor="plastic">Plastic</label>
         <select
+          id="plastic"
           value={plastic}
           required
           onChange={(e) => setPlastic(e.target.value)}
@@ -100,7 +104,9 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
           ))}
         </select>
         {errors.plastic && <p className="errors">{errors.plastic}</p>}
+        <label htmlFor="image">Image</label>
         <input
+          id="image"
           type="file"
           accept="image/*"
           onChange={(e) => setImageUrl(e.target.files[0])}

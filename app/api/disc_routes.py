@@ -146,7 +146,7 @@ def update_disc(id):
             image = form.data['image_url']
             image.filename = get_unique_filename(image.filename)
             upload = upload_file_to_s3(image)
-            print("I AM UPLOAD!", upload)
+            print(upload)
             if "url" not in upload:
                 return {'errors': validation_errors_to_error_messages(upload)}, 400
             url = upload["url"]

@@ -65,7 +65,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
       encType="multipart/form-data"
     >
       <div className="create_disc__form">
-        <div class="create_disc__info">
+        <div className="create_disc__info">
           <label>
             Manufacturer
             <select

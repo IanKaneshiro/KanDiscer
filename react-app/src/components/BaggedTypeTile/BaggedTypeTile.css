@@ -23,6 +23,9 @@
   border-radius: 50%;
 }
 
+.bagged_type-tile__options {
+  gap: 5px;
+}
 .bagged-type-tile__container button {
   background-color: transparent;
 }

@@ -7,7 +7,7 @@ def seed_bagged_discs():
         bag_id=1,
         disc_id=5,
         weight=174,
-        color='blue',
+        color='#0000FF',
         plastic='Z',
         image_url='https://lh3.googleusercontent.com/pw/AIL4fc98MpXO1xlsMgJ18Ym05FB11ev9AF89tYtAC8vw8xDZHIHR08dp5hn5ZO7u7jbRIVJQwyIvrkWqcHq822jpWt3FPekiHBQQvRO3lclTYhxE0k5xHgCvB8ZPhA_Kjz6ufXjz5F1TrhF4DzNxwjiuiarjvw=w1080-h1440-s-no?authuser=0',
     )
@@ -15,7 +15,7 @@ def seed_bagged_discs():
         bag_id=1,
         disc_id=4,
         weight=177,
-        color='pink',
+        color='#FFC0CB',
         plastic='Z'
     )
 

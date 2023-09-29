@@ -36,7 +36,7 @@ const BagUpdateForm = ({ bagId }) => {
   return (
     <form className="create_bag__main" onSubmit={handleSubmit}>
       <h1>{bag.name} Details</h1>
-      <label for="name">Name</label>
+      <label htmlFor="name">Name</label>
       <input
         id="name"
         value={name}
@@ -46,7 +46,7 @@ const BagUpdateForm = ({ bagId }) => {
         required
       />
       {errors.name && <p className="errors">{errors.name}</p>}
-      <label for="description">Description</label>
+      <label htmlFor="description">Description</label>
       <textarea
         id="description"
         value={description}
@@ -55,7 +55,7 @@ const BagUpdateForm = ({ bagId }) => {
         type="text"
       />
       {errors.description && <p className="errors">{errors.description}</p>}
-      <label for="notes">Notes</label>
+      <label htmlFor="notes">Notes</label>
       <textarea
         id="notes"
         value={notes}
