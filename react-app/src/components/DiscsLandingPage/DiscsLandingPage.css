@@ -51,6 +51,7 @@
   flex-wrap: wrap;
   gap: 10px;
   width: 100%;
+  justify-content: center;
 }
 
 .disc_landing__main > div {

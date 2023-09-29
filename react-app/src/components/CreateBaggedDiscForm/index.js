@@ -16,8 +16,9 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
   const [image_url, setImageUrl] = useState("");
   const { closeModal } = useModal();
 
-  const handleToast = () => {
+  const handleToast = (t) => {
     history.push(`/bags/${bagId}`);
+    toast.dismiss(t.id);
     closeModal();
   };
   const toastAlert = () =>
@@ -25,7 +26,7 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
       <div className="toast-alert">
         <h3>Succesfully added to your bag!</h3>
         <div>
-          <button onClick={handleToast}>Go to bag</button>
+          <button onClick={() => handleToast(t)}>Go to bag</button>
           <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
         </div>
       </div>
@@ -52,7 +53,6 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
       setPlastic("");
       setWeight("");
       toastAlert();
-      // alert("Succesfully added to your bag");
     }
   };
 

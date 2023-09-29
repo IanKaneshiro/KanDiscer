@@ -31,7 +31,7 @@
 }
 
 .bags__flight_chart {
-  height: 700px;
+  max-height: 700px;
 }
 
 .bags__add-discs-btn {
@@ -43,4 +43,10 @@
   position: absolute;
   right: 20px;
   top: 10px;
+}
+
+@media screen and (max-width: 1144px) {
+  .bags__main {
+    flex-direction: column;
+  }
 }
