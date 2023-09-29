@@ -18,7 +18,6 @@ const FlightChart = ({ discs }) => {
       data[i] = { ...data[i], ...flightPath[i] };
     });
   });
-  console.log(data);
   return (
     <ResponsiveContainer minWidth={100} minHeight={400}>
       <LineChart
@@ -34,6 +33,7 @@ const FlightChart = ({ discs }) => {
         <CartesianGrid strokeDasharray="3 3" />
         {discs.map((disc) => (
           <Line
+            key={disc.id}
             type="basis"
             dataKey={disc.info.name}
             dot=""

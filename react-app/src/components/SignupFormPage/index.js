@@ -57,7 +57,7 @@ function SignupFormPage() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <label for="firstName">First Name</label>
+        <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
           type="text"
@@ -67,7 +67,7 @@ function SignupFormPage() {
           required
         />
         {errors.first_name && <p className="errors">{errors.first_name}</p>}
-        <label for="lastName">Last Name</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           id="lastName"
           type="text"
@@ -77,7 +77,7 @@ function SignupFormPage() {
           required
         />
         {errors.last_name && <p className="errors">{errors.last_name}</p>}
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           placeholder="Email"
@@ -87,7 +87,7 @@ function SignupFormPage() {
           required
         />
         {errors.email && <p className="errors">{errors.email}</p>}
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           placeholder="Username"
@@ -97,7 +97,7 @@ function SignupFormPage() {
           required
         />
         {errors.username && <p className="errors">{errors.username}</p>}
-        <label for="img">Profile Image (Optional)</label>
+        <label htmlFor="img">Profile Image (Optional)</label>
         <input
           id="img"
           type="file"
@@ -105,7 +105,7 @@ function SignupFormPage() {
           onChange={(e) => setImageUrl(e.target.files[0])}
         />
         {errors.image_url && <p className="errors">{errors.image_url}</p>}
-        <label for="pdgaNumber">PDGA Number</label>
+        <label htmlFor="pdgaNumber">PDGA Number</label>
         <input
           id="pdgaNumber"
           placeholder="PDGA Number"
@@ -113,7 +113,7 @@ function SignupFormPage() {
           onChange={(e) => setPdgaNumber(e.target.value)}
         />
         {errors.pdga_number && <p className="errors">{errors.pdga_number}</p>}
-        <label for="skillLevel">Skill Level</label>
+        <label htmlFor="skillLevel">Skill Level</label>
         <select
           id="skillLevel"
           value={skill_level}
@@ -129,7 +129,7 @@ function SignupFormPage() {
           ))}
         </select>
         {errors.skill_level && <p className="errors">{errors.skill_level}</p>}
-        <label for="throwingPreference">Throwing Preference</label>
+        <label htmlFor="throwingPreference">Throwing Preference</label>
         <select
           id="throwingPreference"
           value={throwing_preference}
@@ -145,7 +145,7 @@ function SignupFormPage() {
           ))}
         </select>
         {errors.throwing_preference && <p className="errors">{errors.email}</p>}
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           placeholder="Password"
@@ -155,7 +155,7 @@ function SignupFormPage() {
           required
         />
         {errors.password && <p className="errors">{errors.password}</p>}
-        <label for="confirm">Confirm Password</label>
+        <label htmlFor="confirm">Confirm Password</label>
         <input
           id="confirm"
           placeholder="Confirm Password"

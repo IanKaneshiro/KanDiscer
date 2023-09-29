@@ -10,7 +10,7 @@ const AdminDashboardTile = ({ header, content }) => {
       <div className="admin-tile__header">
         <h2>{header}</h2>
         <div>
-          <label for="search">Search</label>
+          <label htmlFor="search">Search</label>
           <input
             id="search"
             placeholder="Search by name..."

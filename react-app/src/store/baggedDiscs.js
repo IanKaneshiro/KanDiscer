@@ -82,6 +82,22 @@ export const createBaggedDisc = (disc, bagId, discId) => async (dispatch) => {
   }
 };
 
+export const updateBagDisc = (disc, id) => async (dispatch) => {
+  const res = await fetch(`/api/bagged_discs/${id}`, {
+    method: "PUT",
+    body: disc,
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(addBaggedDisc(data));
+  } else if (res.status < 500) {
+    const data = await res.json();
+    return data;
+  } else {
+    return ["An error occured. Please try again"];
+  }
+};
+
 export const deleteBaggedDisc = (id) => async (dispatch) => {
   const res = await fetch(`/api/bagged_discs/${id}`, { method: "DELETE" });
   if (res.ok) {
@@ -97,6 +113,8 @@ export const deleteBaggedDisc = (id) => async (dispatch) => {
 // ---------------------- State Selectors -------------------------
 export const selectAllBaggedDiscs = (state) =>
   Object.values(state.baggedDiscs.allDiscs);
+export const selectcCurrentBaggedDisc = (state) =>
+  state.baggedDiscs.currentDisc;
 export const selectDistance = (state) =>
   Object.values(state.baggedDiscs.distance);
 export const selectFairway = (state) =>

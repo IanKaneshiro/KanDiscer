@@ -1,0 +1,43 @@
+.update_bagged_disc__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.update_bagged_disc__container > h1 {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.update_bagged_disc__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.update_bagged_disc__main > input,
+select {
+  height: 50px;
+  width: 100%;
+}
+
+.update_bagged_disc__main > button {
+  background-color: #284b63;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+}
+
+.update_bagged_disc__color {
+  display: flex;
+  align-items: center;
+}
+
+.update_bagged_disc__color > input {
+  box-shadow: none;
+  border-radius: none;
+  height: 30px;
+  border: none;
+}

@@ -60,9 +60,9 @@ const BagDetailsPage = () => {
         <div className="bags__in_bag">
           <button onClick={toggleMenu} className="bags__add-discs-btn">
             {openMenu ? (
-              <i class="fa-solid fa-caret-up fa-xl"></i>
+              <i className="fa-solid fa-caret-up fa-xl"></i>
             ) : (
-              <i class="fa-solid fa-plus fa-xl"></i>
+              <i className="fa-solid fa-plus fa-xl"></i>
             )}
           </button>
           <div className={addBagFormClassName}>

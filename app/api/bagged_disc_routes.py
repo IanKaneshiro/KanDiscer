@@ -4,6 +4,8 @@ from app.models import Bag, db, BaggedDisc
 from .route_utils import admin_required
 from app.forms import BaggedDiscForm
 from .auth_routes import validation_errors_to_error_messages
+from app.api.aws import (
+    upload_file_to_s3, get_unique_filename)
 
 bagged_disc_routes = Blueprint('bagged_discs', __name__)
 
@@ -36,10 +38,19 @@ def update_bagged_disc(id):
         return {"message": "Bagged disc couldn't be found"}, 404
 
     if form.validate_on_submit():
+        if form.data['image_url']:
+            image = form.data['image_url']
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            if "url" not in upload:
+                return {'errors': validation_errors_to_error_messages(upload)}, 400
+            url = upload["url"]
+        else:
+            url = bagged_disc.image_url
         bagged_disc.weight = form.data['weight']
         bagged_disc.color = form.data['color']
         bagged_disc.plastic = form.data['plastic']
-        bagged_disc.image_url = form.data['image_url']
+        bagged_disc.image_url = url
         db.session.commit()
         return bagged_disc.to_dict()
     return validation_errors_to_error_messages(form.errors), 400

@@ -35,7 +35,7 @@ function LoginFormPage() {
     <div className="login-page__container">
       <h1>Log In</h1>
       <form className="login-page__form" onSubmit={handleSubmit}>
-        <label for="credential">Email or Username</label>
+        <label htmlFor="credential">Email or Username</label>
         <input
           id="credential"
           placeholder="Email or Username"
@@ -45,7 +45,7 @@ function LoginFormPage() {
           required
         />
         {errors.credential && <p className="errors">{errors.credential}</p>}
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           placeholder="Password"

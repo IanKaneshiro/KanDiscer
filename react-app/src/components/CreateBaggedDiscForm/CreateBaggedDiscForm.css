@@ -2,10 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-align: left;
 }
 
 .create_bagged_disc__container > h1 {
   border-bottom: 1px solid black;
+  text-align: center;
   padding: 15px 0;
 }
 
