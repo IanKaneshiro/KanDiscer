@@ -25,6 +25,7 @@
   justify-content: space-evenly;
   gap: 10px;
   max-width: 600px;
+  padding: 10px;
 }
 
 .disc_details__left-table {
@@ -69,6 +70,12 @@ td {
   position: relative;
   display: flex;
   gap: 20px;
+}
+
+.disc_details__left-description {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .disc_details__left-img-description {

@@ -96,9 +96,9 @@ const CreateDiscForm = () => {
           </label>
           {errors.name && <p className="errors">{errors.name}</p>}
           <label>
-            Description (Optional)
+            Description
             <textarea
-              placeholder="Short description of disc"
+              placeholder="Description of disc"
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -124,7 +124,7 @@ const CreateDiscForm = () => {
           </label>
           {errors.type && <p className="errors">{errors.type}</p>}
           <label>
-            Link to Purchase (Optional)
+            Link to Purchase
             <input
               placeholder="Add a link to purchase"
               type="text"

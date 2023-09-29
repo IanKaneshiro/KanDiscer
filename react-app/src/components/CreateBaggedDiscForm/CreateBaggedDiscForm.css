@@ -40,3 +40,17 @@ select {
   height: 30px;
   border: none;
 }
+
+.toast-alert button {
+  width: 100px;
+  height: 40px;
+  background-color: #284b63;
+  border-radius: 10px;
+  color: white;
+}
+
+.toast-alert > div {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}

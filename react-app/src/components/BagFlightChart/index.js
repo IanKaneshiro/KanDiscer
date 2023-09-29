@@ -20,7 +20,7 @@ const FlightChart = ({ discs }) => {
   });
   console.log(data);
   return (
-    <ResponsiveContainer minWidth={100}>
+    <ResponsiveContainer minWidth={100} minHeight={400}>
       <LineChart
         data={data}
         layout="vertical"
