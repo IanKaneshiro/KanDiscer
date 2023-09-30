@@ -22,6 +22,9 @@ function Navigation({ isLoaded }) {
         <li>
           <NavLink to="/bags">Bags</NavLink>
         </li>
+        <li>
+          <NavLink to="/courses">Courses</NavLink>
+        </li>
       </ul>
       <ul>
         {isLoaded && (

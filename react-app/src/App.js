@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import BagsNavigationBar from "./components/BagsNavigationBar";
 import { Toaster } from "react-hot-toast";
+import CourseDetails from "./components/CourseDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/discs">
             <DiscsLandingPage />
+          </Route>
+          <Route path="/courses">
+            <CourseDetails />
           </Route>
           <ProtectedRoute>
             <Route path="/bags">
