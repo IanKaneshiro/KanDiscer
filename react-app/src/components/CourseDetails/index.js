@@ -1,93 +1,90 @@
-// import React, { useState } from "react";
-// import Map, { Marker, FullscreenControl, ScaleControl } from "react-map-gl";
-// import "./CourseDetails.css";
+import React, { useState } from "react";
+import Map, { Marker, Source, Layer } from "react-map-gl";
 
-// const teePad1 = { longitude: -123.1529549384451, latitude: 44.050963068556996 };
-// // const basket1 = { lat: 44.05073724174806, lng: -123.15207798763349 };
-// // const teePad2 = { lat: 44.05046067372952, lng: -123.15153686522522 };
-// // const basket2 = { lat: 44.050449405200894, lng: -123.15038055172724 };
+import "./CourseDetails.css";
 
-// const CourseDetails = () => {
-//   const [initialView, setInitialView] = useState({
-//     latitude: 44.05220019334348,
-//     longitude: -123.15358982872979,
-//     zoom: 16,
-//   });
-
-//   return (
-//     <div
-//       className="course-details__container"
-//       style={{ position: "relative", zIndex: "1000000" }}
-//     >
-//       <Map
-//         onClick={(map) => console.log(map.lngLat)}
-//         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-//         initialViewState={initialView}
-//         mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
-//         padding={20}
-//         style={{ position: "absolute" }}
-//       >
-//         <Marker
-//           longitude={teePad1.longitude}
-//           latitude={teePad1.latitude}
-//           offsetLeft={-20} // Adjust this value to move the marker horizontally
-//           offsetTop={-40} // Adjust this value to move the marker vertically
-//         >
-//           <div style={{ fontSize: 24, color: "red" }}>Marker</div>
-//         </Marker>
-//       </Map>
-//     </div>
-//   );
-// };
-
-// export default CourseDetails;
-
-import React, { useState, useEffect, useRef } from "react";
-import mapboxgl, { Marker } from "mapbox-gl";
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+const teePad1 = { lng: -123.1529549384451, lat: 44.050963068556996 };
+const basket1 = { lng: -123.15207798763349, lat: 44.05073724174806 };
+const teePad2 = { lat: 44.05046067372952, lng: -123.15153686522522 };
+const basket2 = { lat: 44.050449405200894, lng: -123.15038055172724 };
 
 const CourseDetails = () => {
-  const map = useRef(null);
-  const mapContainer = useRef(null);
-  const [lng, setLng] = useState(-123.15358982872979);
-  const [lat, setLat] = useState(44.05220019334348);
-  const [zoom, setZoom] = useState(16);
+  const [initialView, setInitialView] = useState({
+    latitude: 44.05220019334348,
+    longitude: -123.15358982872979,
+    zoom: 16,
+  });
 
-  useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/satellite-streets-v12",
-      center: [lng, lat],
-      zoom: zoom,
-    });
+  const data = {
+    type: "Feature",
+    properties: {},
+    geometry: {
+      type: "LineString",
+      coordinates: [
+        [-123.1529549384451, 44.050963068556996],
+        [-123.15207798763349, 44.05073724174806],
+      ],
+    },
+  };
+  const data2 = {
+    type: "Feature",
+    properties: {},
+    geometry: {
+      type: "LineString",
+      coordinates: [
+        [teePad2.lng, teePad2.lat],
+        [basket2.lng, basket2.lat],
+      ],
+    },
+  };
 
-    // Create and add the marker here
-    const marker = new Marker().addTo(map.current);
+  const layer = {
+    id: "route",
+    type: "line",
+    layout: {
+      "line-join": "round",
+      "line-cap": "round",
+    },
+    paint: {
+      "line-color": "#ffffff",
+      "line-width": 8,
+      "line-opacity": 0.6,
+    },
+  };
 
-    function updateMarker() {
-      const center = map.current.getCenter();
-      marker.setLngLat([center.lng, center.lat]);
-    }
-
-    map.current.on("move", () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
-    });
-    updateMarker();
-  }, [lat, lng, zoom]); // Empty dependency array ensures this runs once when the component mounts
+  const layer2 = {
+    id: "route2", // Unique ID for the second line
+    type: "line",
+    layout: {
+      "line-join": "round",
+      "line-cap": "round",
+    },
+    paint: {
+      "line-color": "#ffffff",
+      "line-width": 8,
+      "line-opacity": 0.6,
+    },
+  };
 
   return (
-    <div>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-      <div
-        style={{ height: "300px" }}
-        ref={mapContainer}
-        className="map-container"
-      />
+    <div className="course-details__container">
+      <Map
+        onClick={(map) => console.log(map.lngLat)}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        initialViewState={initialView}
+        mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
+      >
+        <Marker longitude={teePad1.lng} latitude={teePad1.lat} />
+        <Marker longitude={basket1.lng} latitude={basket1.lat} />
+        <Marker longitude={teePad2.lng} latitude={teePad2.lat} />
+        <Marker longitude={basket2.lng} latitude={basket2.lat} />
+        <Source id="my-data1" type="geojson" data={data}>
+          <Layer {...layer} />
+        </Source>
+        <Source id="my-data2" type="geojson" data={data2}>
+          <Layer {...layer2} />
+        </Source>
+      </Map>
     </div>
   );
 };
