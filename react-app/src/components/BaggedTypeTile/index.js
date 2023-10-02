@@ -41,7 +41,7 @@ const BaggedTypeTile = ({ disc }) => {
       </div>
       <div className="bagged_type-tile__options">
         <OpenModalButton2
-          modalComponent={<UpdateBaggedDiscForm discId={disc.id} />}
+          modalComponent={<UpdateBaggedDiscForm disc={disc} />}
           component={<i className="fa-regular fa-pen-to-square fa-sm"></i>}
         />
         <OpenModalButton2

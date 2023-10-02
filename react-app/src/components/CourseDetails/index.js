@@ -72,10 +72,19 @@ const CourseDetails = () => {
         onClick={(map) => console.log(map.lngLat)}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         initialViewState={initialView}
+        center={[-123.1524725738225, 44.05084228389478]}
         mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
+        bearing={115}
       >
         <Marker longitude={teePad1.lng} latitude={teePad1.lat} />
-        <Marker longitude={basket1.lng} latitude={basket1.lat} />
+
+        <Marker longitude={basket1.lng} latitude={basket1.lat}>
+          <img
+            style={{ width: "50px", height: "50px" }}
+            src="https://res.cloudinary.com/dmkyocbqi/image/upload/v1696214732/P130jE01_hfjszg.svg"
+            alt="basket"
+          />
+        </Marker>
         <Marker longitude={teePad2.lng} latitude={teePad2.lat} />
         <Marker longitude={basket2.lng} latitude={basket2.lat} />
         <Source id="my-data1" type="geojson" data={data}>
