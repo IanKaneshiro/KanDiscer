@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Course, db, Basket, CourseImage
+from app.models import Course, db, Teepad, CourseImage
 from .route_utils import admin_required
-from app.forms import CourseForm, BasketForm, CourseImageForm
+from app.forms import CourseForm, TeepadForm, CourseImageForm
 from .auth_routes import validation_errors_to_error_messages
 
 course_routes = Blueprint('courses', __name__)
@@ -126,16 +126,16 @@ def delete_course(id):
 
     return {'message': "You don't have permisson to delete this course"}, 403
 
-# ------------------- Baskets ------------------------
+# ------------------- Teepads ------------------------
 
 
-@course_routes.route('/<int:course_id>/baskets/new', methods=["POST"])
-def create_basket(course_id):
+@course_routes.route('/<int:course_id>/teepad/new', methods=["POST"])
+def create_teepad(course_id):
     """
-    create a new basket for course by id
+    create a new teepad for course by id
     """
 
-    form = BasketForm()
+    form = TeepadForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -146,36 +146,33 @@ def create_basket(course_id):
         return {"message": "Course doesn't exist"}, 404
 
     if course.owner_id != current_user.id:
-        return {'message': "You don't have authorization to create a basket for this course"}, 403
+        return {'message': "You don't have authorization to create a teepad for this course"}, 403
 
     if form.validate_on_submit():
-        basket = Basket(
+        teepad = Teepad(
             course_id=course.id,
             hole_number=form.data['hole_number'],
             lat=form.data['lat'],
             lng=form.data['lng'],
-            distance=form.data['distance'],
-            notes=form.data['notes'],
-            par=form.data['par'],
         )
-        db.session.add(basket)
+        db.session.add(teepad)
         db.session.commit()
-        return basket.to_dict()
+        return teepad.to_dict()
     return validation_errors_to_error_messages(form.errors), 400
 
 
-@course_routes.route('/<int:course_id>/baskets')
-def get_courses_baskets(course_id):
+@course_routes.route('/<int:course_id>/teepads')
+def get_courses_teepads(course_id):
     """
-    Get all baskets by course id
+    Get all teepads by course id
     """
     course = Course.query.get(course_id)
 
     if not course:
         return {"message": "Course couldn't be found"}, 404
-    if not course.baskets:
-        return {"message": "Course has no baskets yet"}, 404
-    return {"Baskets": [basket.to_dict() for basket in course.baskets]}
+    if not course.teepads:
+        return {"message": "Course has no teepads yet"}, 404
+    return {"Teepads": [teepad.to_dict() for teepad in course.teepads]}
 
 # ------------------- Course Images ---------------------------
 

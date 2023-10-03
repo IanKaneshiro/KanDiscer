@@ -36,11 +36,6 @@ def update_basket(id):
     if not basket:
         return {"message": "Basket couldn't be found"}, 404
 
-    course = Course.query.get(int(basket.course_id))
-
-    if course.owner_id != current_user.id and not current_user.admin:
-        return {'message': "You don't have authorization to update this basket"}, 403
-
     if form.validate_on_submit():
         basket.hole_number = form.data['hole_number']
         basket.lat = form.data['lat']

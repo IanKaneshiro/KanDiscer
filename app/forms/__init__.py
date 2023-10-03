@@ -8,3 +8,4 @@ from .disc_form import DiscForm
 from .bagged_disc_form import BaggedDiscForm
 from .update_user_form import UpdateUserForm
 from .make_admin_form import MakeAdminForm
+from .teepads_form import TeepadForm

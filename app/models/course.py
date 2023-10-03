@@ -30,8 +30,8 @@ class Course(db.Model):
     updated_at = db.Column(
         db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
-    baskets = db.relationship(
-        'Basket', back_populates='course', order_by="Basket.hole_number", cascade='all, delete-orphan')
+    teepads = db.relationship(
+        'Teepad', back_populates='course', order_by="Teepad.hole_number", cascade='all, delete-orphan')
     images = db.relationship(
         'CourseImage', back_populates='course', cascade='all, delete-orphan')
     owner = db.relationship('User', back_populates='courses')
@@ -56,7 +56,7 @@ class Course(db.Model):
             'approved': self.approved,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
-            'baskets': [basket.to_dict() for basket in self.baskets],
+            'teepads': [teepad.to_dict() for teepad in self.teepads],
             'owner': self.owner.to_dict(),
             'images': [image.to_dict() for image in self.images]
         }

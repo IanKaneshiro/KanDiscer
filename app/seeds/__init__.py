@@ -6,6 +6,7 @@ from .bagged_discs import seed_bagged_discs, undo_bagged_discs
 from .courses import seed_courses, undo_courses
 from .baskets import seed_baskets, undo_baskets
 from .course_images import seed_course_images, undo_course_images
+from .teepads import seed_teepads, undo_teepads
 
 from app.models.db import db, environment, SCHEMA
 
@@ -27,6 +28,7 @@ def seed():
         undo_bags()
         undo_bagged_discs()
         undo_courses()
+        undo_teepads()
         undo_baskets()
         undo_course_images()
     seed_users()
@@ -34,6 +36,7 @@ def seed():
     seed_bags()
     seed_bagged_discs()
     seed_courses()
+    seed_teepads()
     seed_baskets()
     seed_course_images()
     # Add other seed functions here
@@ -47,6 +50,7 @@ def undo():
     undo_bags()
     undo_bagged_discs()
     undo_courses()
+    undo_teepads()
     undo_baskets()
     undo_course_images()
     # Add other undo functions here

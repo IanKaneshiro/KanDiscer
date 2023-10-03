@@ -33,7 +33,8 @@ def upgrade():
                     sa.Column('par', sa.Integer(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=True),
                     sa.Column('updated_at', sa.DateTime(), nullable=True),
-                    sa.ForeignKeyConstraint(['course_id'], ['courses.id'], ),
+                    sa.ForeignKeyConstraint(
+                        ['course_id'], ['courses.id'], "courses_foreign_key_baskets"),
                     sa.PrimaryKeyConstraint('id')
                     )
 
