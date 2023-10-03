@@ -10,8 +10,9 @@ import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import BagsNavigationBar from "./components/BagsNavigationBar";
-import { Toaster } from "react-hot-toast";
 import CourseDetails from "./components/CourseDetails";
+import { Toaster } from "react-hot-toast";
+import CoursesLandingPage from "./components/CoursesLandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,10 @@ function App() {
           <Route path="/discs">
             <DiscsLandingPage />
           </Route>
-          <Route path="/courses">
+          <Route exact path="/courses">
+            <CoursesLandingPage />
+          </Route>
+          <Route path="/courses/:courseId">
             <CourseDetails />
           </Route>
           <ProtectedRoute>

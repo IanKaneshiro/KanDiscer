@@ -28,9 +28,6 @@ class Teepad(db.Model):
             'holeNumber': self.hole_number,
             'lat': self.lat,
             'lng': self.lng,
-            'distance': self.distance,
-            'notes': self.notes,
-            'par': self.par,
             'baskets': [basket.to_dict() for basket in self.baskets],
             'createdAt': self.created_at,
             'updatedAt': self.updated_at

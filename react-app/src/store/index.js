@@ -4,12 +4,16 @@ import session from "./session";
 import discs from "./discs";
 import bags from "./bags";
 import baggedDiscs from "./baggedDiscs";
+import courses from "./courses";
+import teepads from "./teepads";
 
 const rootReducer = combineReducers({
   session,
   discs,
   bags,
   baggedDiscs,
+  courses,
+  teepads,
 });
 
 let enhancer;
