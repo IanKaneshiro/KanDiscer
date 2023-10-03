@@ -4,6 +4,7 @@ const LOAD_BAGGED_DISC = "discs/LOAD_BAGGED_DISC";
 const CLEAR_BAGGED_DISCS = "discs/CLEAR_BAGGED_DISCS";
 const ADD_BAGGED_DISC = "discs/ADD_BAGGED_DISC";
 const DELETE_BAGGED_DISC = "discs/DELETE_BAGGED_DISC";
+const CLEAR_CURRENT_BAGGED_DISC = "discs/CLEAR_CURRENT_BAGGED_DISC";
 
 // ----------------------- Action Creators -----------------------
 const loadBaggedDiscs = (discs) => ({
@@ -28,6 +29,10 @@ const removeBaggedDisc = (id) => ({
 
 export const clearBaggedDiscs = () => ({
   type: CLEAR_BAGGED_DISCS,
+});
+
+export const clearCurrentBaggedDisc = () => ({
+  type: CLEAR_CURRENT_BAGGED_DISC,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -202,6 +207,11 @@ export default function reducer(state = initalState, action) {
     }
     case CLEAR_BAGGED_DISCS:
       return initalState;
+    case CLEAR_CURRENT_BAGGED_DISC:
+      return {
+        ...newState,
+        currentDisc: {},
+      };
     case DELETE_BAGGED_DISC:
       delete newState.distance[action.payload];
       delete newState.fairway[action.payload];

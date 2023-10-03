@@ -4,182 +4,164 @@ from sqlalchemy.sql import text
 
 def seed_baskets():
     basket1 = Basket(
-        id=1,
         hole_number=1,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05073724174806,
+        lng=-123.15207798763349,
         distance=297,
         par=3
     )
 
     basket2 = Basket(
-        id=2,
         hole_number=2,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.050335549832226,
+        lng=-123.15177002076109,
         distance=318,
         par=3
     )
 
     basket3 = Basket(
-        id=3,
         hole_number=3,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.050495872936864,
+        lng=-123.1503398859764,
         distance=302,
         par=3
     )
 
     basket4 = Basket(
-        id=4,
         hole_number=4,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05182636937076,
+        lng=-123.15065354638654,
         distance=405,
         notes="",
         par=3
     )
 
     basket5 = Basket(
-        id=5,
         hole_number=5,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.052161279061266,
+        lng=-123.14823440853417,
         distance=620,
         par=4
     )
 
     basket6 = Basket(
-        id=6,
         hole_number=6,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05279866837108,
+        lng=-123.1492282469045,
         distance=286,
         par=3
     )
 
     basket7 = Basket(
-        id=7,
         hole_number=7,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05313963354112,
+        lng=-123.1501593456099,
         distance=405,
         par=3
     )
 
     basket8 = Basket(
-        id=8,
         hole_number=8,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.053915583232765,
+        lng=-123.14915968183095,
         distance=321,
         par=3
     )
 
     basket9 = Basket(
-        id=9,
         hole_number=9,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05311712022785,
+        lng=-123.14894988888824,
         distance=299,
         par=3
     )
 
     basket10 = Basket(
-        id=10,
         hole_number=10,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.0538477809059,
+        lng=-123.14840931116886,
         distance=397,
         par=3
     )
 
     basket11 = Basket(
-        id=11,
         hole_number=11,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05400168271885,
+        lng=-123.1500913997165,
         distance=372,
         par=3
     )
 
     basket12 = Basket(
-        id=12,
         hole_number=12,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05390822368207,
+        lng=-123.15032018158062,
         distance=254,
         par=3
     )
 
     basket13 = Basket(
-        id=13,
         hole_number=13,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05261289055903,
+        lng=-123.15020280862427,
         distance=699,
         par=4
     )
 
     basket14 = Basket(
-        id=14,
         hole_number=14,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05229083112664,
+        lng=-123.15208681232176,
         distance=333,
         par=3
     )
 
     basket15 = Basket(
-        id=15,
         hole_number=15,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05286181927042,
+        lng=-123.15369214515934,
         distance=415,
         par=3
     )
 
     basket16 = Basket(
-        id=16,
         hole_number=16,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.05185931929984,
+        lng=-123.15137931555192,
         distance=384,
         par=4
     )
 
     basket17 = Basket(
-        id=17,
         hole_number=17,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.050937863617634,
+        lng=-123.15098612795347,
         distance=236,
         par=3
     )
 
     basket18 = Basket(
-        id=18,
         hole_number=18,
         course_id=1,
-        lat=44.050948,
-        lng=-123.091639,
+        lat=44.0514034429728,
+        lng=-123.15254717491858,
         distance=514,
         par=3
     )

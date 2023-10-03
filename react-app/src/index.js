@@ -7,6 +7,7 @@ import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
 
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./index.css";
 
 const store = configureStore();

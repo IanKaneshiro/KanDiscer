@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   updateBagDisc,
   getBaggedDiscById,
-  selectcCurrentBaggedDisc,
+  clearCurrentBaggedDisc,
 } from "../../store/baggedDiscs";
 import { useModal } from "../../context/Modal";
 import "./UpdateBaggedDiscForm.css";
 
-const UpdateBaggedDiscForm = ({ discId }) => {
+const UpdateBaggedDiscForm = ({ disc }) => {
   const dispatch = useDispatch();
-  const disc = useSelector(selectcCurrentBaggedDisc);
   const [weight, setWeight] = useState(disc.weight);
   const [color, setColor] = useState(disc.color);
   const [plastic, setPlastic] = useState(disc.plastic);
@@ -20,8 +19,9 @@ const UpdateBaggedDiscForm = ({ discId }) => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    dispatch(getBaggedDiscById(discId));
-  }, [dispatch, discId]);
+    dispatch(getBaggedDiscById(disc.id));
+    return () => dispatch(clearCurrentBaggedDisc());
+  }, [dispatch, disc]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +38,8 @@ const UpdateBaggedDiscForm = ({ discId }) => {
       closeModal();
     }
   };
+
+  if (!disc) return <h1>Loading...</h1>;
 
   return (
     <div className="update_bagged_disc__container">
