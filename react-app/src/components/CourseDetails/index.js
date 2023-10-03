@@ -43,8 +43,8 @@ const teePad14 = { lng: -123.15082955393135, lat: 44.05218779812694 };
 const basket14 = { lng: -123.15208681232176, lat: 44.05229083112664 };
 const teePad15 = { lng: -123.15234744586972, lat: 44.052272320554806 };
 const basket15 = { lng: -123.15369214515934, lat: 44.05286181927042 };
-const basket16 = { lng: -123.15137931555192, lat: 44.05185931929984 };
 const teePad16 = { lng: -123.1527955705296, lat: 44.05198370109369 };
+const basket16 = { lng: -123.15137931555192, lat: 44.05185931929984 };
 const teePad17 = { lng: -123.15142319725831, lat: 44.051514349592395 };
 const basket17 = { lng: -123.15098612795347, lat: 44.050937863617634 };
 const teePad18 = { lng: -123.15113526974402, lat: 44.05060797086824 };
@@ -153,7 +153,6 @@ const CourseDetails = () => {
 
   return (
     <div className="course-details__container">
-      <button onClick={goToNextHole}>Next</button>
       <Map
         ref={mapRef}
         onClick={(map) => console.log(map.lngLat)}
@@ -235,6 +234,7 @@ const CourseDetails = () => {
           </Source>
         ))}
       </Map>
+      <button onClick={goToNextHole}>Next</button>
     </div>
   );
 };
