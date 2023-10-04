@@ -1,14 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Map, {
-  Marker,
-  Source,
-  Layer,
-  NavigationControl,
-  FullscreenControl,
-  GeolocateControl,
-} from "react-map-gl";
+import Map, { Marker, Source, Layer, GeolocateControl } from "react-map-gl";
 
 import {
   getTeepadsByCourseId,
@@ -16,6 +9,7 @@ import {
   getBasketMarkers,
   getDottedLines,
   getHolePositions,
+  allTeepads,
 } from "../../store/teepads";
 
 import {
@@ -29,18 +23,20 @@ import {
   getCourseById,
 } from "../../store/courses";
 import LoadingSpinner from "../LoadingSpinner";
+import TextOverlay from "./TextOverlay";
 
 const CourseDetails = () => {
   const dispatch = useDispatch();
-  const [hole, setHole] = useState(0);
   const { courseId } = useParams();
   const course = useSelector(currentCourse);
+  const teepads = useSelector(allTeepads);
   const teePadMarkers = useSelector(getTeepadMarkers);
   const basketMarkers = useSelector(getBasketMarkers);
   const holePositions = useSelector(getHolePositions);
   const dottedLines = useSelector(getDottedLines);
   const basketPositions = calculateLines(holePositions);
   const dottedLineFeatures = calculateLines(dottedLines);
+  const [currentHole, setCurrentHole] = useState(1);
   const mapRef = useRef();
 
   const initalView = {
@@ -49,12 +45,28 @@ const CourseDetails = () => {
     zoom: 16,
   };
 
-  const goToNextHole = () => {
-    if (hole >= teePadMarkers.length) {
-      setHole(0);
+  const goToNextHole = (holeNumber) => {
+    setCurrentHole(holeNumber);
+    zoomToHolePosition(
+      teePadMarkers[holeNumber - 1],
+      basketMarkers[holeNumber - 1],
+      mapRef
+    );
+  };
+
+  const navigateHoles = (type) => {
+    switch (type) {
+      case "next":
+        if (currentHole === 18) return;
+        setCurrentHole((prev) => (prev += 1));
+        return goToNextHole(currentHole + 1);
+      case "prev":
+        if (currentHole === 1) return;
+        setCurrentHole((prev) => (prev -= 1));
+        return goToNextHole(currentHole - 1);
+      default:
+        return;
     }
-    zoomToHolePosition(teePadMarkers[hole], basketMarkers[hole], mapRef);
-    setHole((prev) => prev + 1);
   };
 
   useEffect(() => {
@@ -77,8 +89,6 @@ const CourseDetails = () => {
         initialViewState={initalView}
         mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
       >
-        <FullscreenControl position="top-left" />
-        <NavigationControl position="top-left" />
         <GeolocateControl
           position="top-left"
           trackUserLocation="true"
@@ -109,8 +119,8 @@ const CourseDetails = () => {
             latitude={basket.lat}
           >
             <img
-              style={{ width: "50px", height: "50px" }}
-              src="https://res.cloudinary.com/dmkyocbqi/image/upload/v1696214732/P130jE01_hfjszg.svg"
+              style={{ width: "40px", height: "40px" }}
+              src="https://res.cloudinary.com/dmkyocbqi/image/upload/v1696387602/disk_golf_in_gautier_mississippi_tkv6d4.png"
               alt="basket"
             />
           </Marker>
@@ -153,8 +163,28 @@ const CourseDetails = () => {
             />
           </Source>
         ))}
+        <TextOverlay basket={teepads[currentHole - 1].baskets[0]} />
       </Map>
-      <button onClick={goToNextHole}>Next</button>
+      <div className="course-details__options-container">
+        <div className="course-details__score">
+          <h1>Scores will be kept here</h1>
+        </div>
+        <div className="course-details__next-prev">
+          <button onClick={() => navigateHoles("prev")}>Prev</button>
+          <button onClick={() => navigateHoles("next")}>Next</button>
+        </div>
+        <div className="course-details__navigation">
+          {teepads.map((teepad) => (
+            <button
+              key={teepad.id}
+              onClick={() => goToNextHole(teepad.holeNumber)}
+            >
+              {teepad.holeNumber}
+            </button>
+          ))}
+        </div>
+      </div>
+      `
     </div>
   );
 };

@@ -66,7 +66,7 @@ export default function reducer(state = initalState, action) {
     case LOAD_TEEPADS:
       const allTeepads = {};
       action.payload.Teepads.forEach(
-        (teepad) => (allTeepads[teepad.id] = teepad)
+        (teepad) => (allTeepads[teepad.holeNumber] = teepad)
       );
       return {
         ...newState,

@@ -58,13 +58,16 @@ const BagDetailsPage = () => {
     <div className="bags__container">
       <div className="bags__main">
         <div className="bags__in_bag">
-          <button onClick={toggleMenu} className="bags__add-discs-btn">
-            {openMenu ? (
-              <i className="fa-solid fa-caret-up fa-xl"></i>
-            ) : (
-              <i className="fa-solid fa-plus fa-xl"></i>
-            )}
-          </button>
+          <div className="bags__button-div">
+            <h2>Add your discs to this bag</h2>
+            <button onClick={toggleMenu} className="bags__add-discs-btn">
+              {openMenu ? (
+                <i className="fa-solid fa-caret-up fa-xl"></i>
+              ) : (
+                <i className="fa-solid fa-plus fa-xl"></i>
+              )}
+            </button>
+          </div>
           <div className={addBagFormClassName}>
             <AddToBagForm bagId={bagId} discs={discs} toggleMenu={toggleMenu} />
           </div>
