@@ -47,11 +47,10 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
       setErrors(data);
     } else {
       closeMenu();
-      setBagId("");
-      setColor("");
-      setImageUrl("");
+      setColor("#000000");
       setPlastic("");
       setWeight("");
+      setBagId("");
       toastAlert();
     }
   };
@@ -100,7 +99,9 @@ const CreateBaggedDiscForm = ({ disc, bagId, closeMenu, setBagId }) => {
             Select plastic type...
           </option>
           {disc.plastics?.split(", ").map((plastic) => (
-            <option value={plastic}>{plastic}</option>
+            <option key={plastic} value={plastic}>
+              {plastic}
+            </option>
           ))}
         </select>
         {errors.plastic && <p className="errors">{errors.plastic}</p>}
