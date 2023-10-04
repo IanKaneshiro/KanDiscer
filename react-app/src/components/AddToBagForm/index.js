@@ -48,7 +48,6 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
 
   return (
     <div className="add_bagged_disc__container">
-      <h2>Add a disc</h2>
       <form
         className="add_bagged_disc__main"
         onSubmit={handleSubmit}
