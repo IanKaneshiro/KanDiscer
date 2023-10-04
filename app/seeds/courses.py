@@ -22,8 +22,28 @@ def seed_courses():
         cost=0,
         approved=True
     )
+    course2 = Course(
+        id=2,
+        owner_id=1,
+        name='Oregon Disc Golf Course at Alton Baker',
+        location_name='Eugene, OR',
+        lat=44.05603609681117,
+        lng=-123.07792826681485,
+        headline='Beautiful park course that has a mix of wooded and open holes!',
+        description='First 18 hole course on BLM land.',
+        course_contact='Myron Clements, Owner of Oregon Disc Golf',
+        course_website='https://www.discgolfscene.com/courses/Alton_Baker_Park',
+        year_established=2013,
+        hole_count=18,
+        tee_types='Brick/Pavers, Turf, Rubber Mat, Wood/Wood Chips, Grass, Dirt',
+        target_types='Prodigy T2 (T2), Gravity, Mach III, El Guapo Pro',
+        services='Dogs Allowed, Cart Friendly, Restrooms Available, Drinking Water Available',
+        cost=5,
+        approved=True
+    )
 
     db.session.add(course1)
+    db.session.add(course2)
 
     db.session.commit()
 
