@@ -25,7 +25,11 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("weight", weight);
-    formData.append("color", color);
+    if (!color) {
+      formData.append("color", "#000000");
+    } else {
+      formData.append("color", color);
+    }
     formData.append("plastic", plastic);
     formData.append("image_url", image_url);
 
@@ -33,7 +37,7 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
     if (data) {
       setErrors(data);
     } else {
-      setColor("");
+      setColor("#000000");
       setImageUrl("");
       setPlastic("");
       setWeight("");
@@ -96,7 +100,9 @@ const AddToBagForm = ({ bagId, discs, toggleMenu }) => {
             Select plastic type...
           </option>
           {disc?.plastics?.split(", ").map((plastic) => (
-            <option value={plastic}>{plastic}</option>
+            <option key={plastic} value={plastic}>
+              {plastic}
+            </option>
           ))}
         </select>
         {errors.plastic && <p className="errors">{errors.plastic}</p>}

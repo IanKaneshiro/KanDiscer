@@ -63,9 +63,8 @@ const UpdateBaggedDiscForm = ({ disc }) => {
 
         {errors.weight && <p className="errors">{errors.weight}</p>}
         <div className="update_bagged_disc__color">
-          <label htmlFor="color">Color: </label>
+          <label>Color: </label>
           <input
-            id="color"
             required
             type="color"
             value={color}
