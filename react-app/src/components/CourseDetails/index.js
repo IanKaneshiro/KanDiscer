@@ -84,7 +84,9 @@ const CourseDetails = () => {
     <div className="course-details__container">
       <Map
         ref={mapRef}
-        onClick={(map) => console.log(map.lngLat)}
+        onClick={(map) =>
+          console.log(`lat=${map.lngLat.lat}, lng=${map.lngLat.lng}`)
+        }
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         initialViewState={initalView}
         mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
@@ -184,7 +186,6 @@ const CourseDetails = () => {
           ))}
         </div>
       </div>
-      `
     </div>
   );
 };

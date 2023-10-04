@@ -145,7 +145,7 @@ def seed_baskets():
         lat=44.05185931929984,
         lng=-123.15137931555192,
         distance=384,
-        par=4
+        par=3
     )
 
     basket17 = Basket(
@@ -166,6 +166,169 @@ def seed_baskets():
         par=3
     )
 
+    basket19 = Basket(
+        hole_number=1,
+        teepad_id=19,
+        lat=44.056064872387594,
+        lng=-123.07843952205204,
+        distance=342,
+        par=3
+    )
+
+    basket20 = Basket(
+        hole_number=2,
+        teepad_id=20,
+        lat=44.05525734470166,
+        lng=-123.07949443781922,
+        distance=331,
+        par=3
+    )
+
+    basket21 = Basket(
+        hole_number=3,
+        teepad_id=21,
+        lat=44.05386035501331,
+        lng=-123.08086743188662,
+        distance=472,
+        par=4
+    )
+
+    basket22 = Basket(
+        hole_number=4,
+        teepad_id=22,
+        lat=44.053350562758624,
+        lng=-123.07781174777321,
+        distance=612,
+        notes="",
+        par=4
+    )
+
+    basket23 = Basket(
+        hole_number=5,
+        teepad_id=23,
+        lat=44.05376800423471,
+        lng=-123.08054667166087,
+        distance=697,
+        par=5
+    )
+
+    basket24 = Basket(
+        hole_number=6,
+        teepad_id=24,
+        lat=44.05327051063426,
+        lng=-123.07967620002991,
+        distance=457,
+        par=4
+    )
+
+    basket25 = Basket(
+        hole_number=7,
+        teepad_id=25,
+        lat=44.053184682529206,
+        lng=-123.07728756505037,
+        distance=413,
+        par=4
+    )
+
+    basket26 = Basket(
+        hole_number=8,
+        teepad_id=26,
+        lat=44.0528220727395,
+        lng=-123.07600949937692,
+        distance=393,
+        par=4
+    )
+
+    basket27 = Basket(
+        hole_number=9,
+        teepad_id=27,
+        lat=44.05370989901317,
+        lng=-123.07616782842535,
+        distance=284,
+        par=3
+    )
+
+    basket28 = Basket(
+        hole_number=10,
+        teepad_id=28,
+        lat=44.05447776604967,
+        lng=-123.0760999900628,
+        distance=202,
+        par=3
+    )
+
+    basket29 = Basket(
+        hole_number=11,
+        teepad_id=29,
+        lat=44.053222506339694,
+        lng=-123.07530624315322,
+        distance=408,
+        par=3
+    )
+
+    basket30 = Basket(
+        hole_number=12,
+        teepad_id=30,
+        lat=44.053053573311246,
+        lng=-123.07605654617029,
+        distance=327,
+        par=3
+    )
+
+    basket31 = Basket(
+        hole_number=13,
+        teepad_id=31,
+        lat=44.0544080044576,
+        lng=-123.07941933315674,
+        distance=805,
+        par=5
+    )
+
+    basket32 = Basket(
+        hole_number=14,
+        teepad_id=32,
+        lat=44.055288170112874,
+        lng=-123.07841064380307,
+        distance=328,
+        par=3
+    )
+
+    basket33 = Basket(
+        hole_number=15,
+        teepad_id=33,
+        lat=44.05645535674864,
+        lng=-123.07798100480674,
+        distance=292,
+        par=3
+    )
+
+    basket34 = Basket(
+        hole_number=16,
+        teepad_id=34,
+        lat=44.05721117039792,
+        lng=-123.07839068138505,
+        distance=334,
+        par=3
+    )
+
+    basket35 = Basket(
+        hole_number=17,
+        teepad_id=35,
+        lat=44.056628675749266,
+        lng=-123.07865932560796,
+        distance=410,
+        par=3
+    )
+
+    basket36 = Basket(
+        hole_number=18,
+        teepad_id=36,
+        lat=44.05598122959998,
+        lng=-123.08001367951215,
+        distance=393,
+        par=4
+    )
+
     db.session.add(basket1)
     db.session.add(basket2)
     db.session.add(basket3)
@@ -184,6 +347,24 @@ def seed_baskets():
     db.session.add(basket16)
     db.session.add(basket17)
     db.session.add(basket18)
+    db.session.add(basket19)
+    db.session.add(basket20)
+    db.session.add(basket21)
+    db.session.add(basket22)
+    db.session.add(basket23)
+    db.session.add(basket24)
+    db.session.add(basket25)
+    db.session.add(basket26)
+    db.session.add(basket27)
+    db.session.add(basket28)
+    db.session.add(basket29)
+    db.session.add(basket30)
+    db.session.add(basket31)
+    db.session.add(basket32)
+    db.session.add(basket33)
+    db.session.add(basket34)
+    db.session.add(basket35)
+    db.session.add(basket36)
 
     db.session.commit()
 

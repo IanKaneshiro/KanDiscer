@@ -7,7 +7,7 @@ const CourseLandingTile = ({ course }) => {
       <h1>{course.name}</h1>
       <p>{course.headline}</p>
       <p>{course.holeCount} hole course</p>
-      <img src={course.images[0].url} alt={course.description} />
+      {/* <img src={course.images[0].url} alt={course.description} /> */}
     </div>
   );
 };
