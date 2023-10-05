@@ -13,6 +13,7 @@ import BagsNavigationBar from "./components/BagsNavigationBar";
 import CourseDetails from "./components/CourseDetails";
 import { Toaster } from "react-hot-toast";
 import CoursesLandingPage from "./components/CoursesLandingPage";
+import CourseRound from "./components/CourseRounds";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path="/courses">
             <CoursesLandingPage />
+          </Route>
+          <Route path="/courses/:courseId/rounds">
+            <CourseRound />
           </Route>
           <Route path="/courses/:courseId">
             <CourseDetails />
