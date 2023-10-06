@@ -1,0 +1,41 @@
+.score-card__container {
+  margin: 0 auto;
+  overflow-x: auto;
+  width: 100vw;
+}
+
+.score-card__table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.score-card__table th,
+.score-card__table td {
+  padding: 8px;
+  text-align: center;
+}
+
+.score-card__table th {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ccc;
+}
+
+.player-name {
+  font-weight: bold;
+}
+
+.score-cell {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+
+.score-card__table tr:nth-child(even) .score-cell {
+  background-color: #e7e7e7;
+}
+
+.score-card__table tr:nth-child(odd) .score-cell {
+  background-color: #f7f7f7;
+}

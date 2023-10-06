@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Map, { Marker, Source, Layer, GeolocateControl } from "react-map-gl";
+import "./CourseRounds.css";
 
 import {
   getTeepadsByCourseId,
@@ -17,16 +18,18 @@ import {
   zoomToHolePosition,
   calculateLines,
 } from "../../utils/coursesHelperFunctions";
-import "./CourseDetails.css";
+
 import {
   clearCurrentCourse,
   currentCourse,
   getCourseById,
 } from "../../store/courses";
+
 import LoadingSpinner from "../LoadingSpinner";
 import TextOverlay from "./TextOverlay";
+import RoundDetails from "../RoundDetails";
 
-const CourseDetails = () => {
+const CourseRounds = () => {
   const dispatch = useDispatch();
   const { courseId } = useParams();
   const course = useSelector(currentCourse);
@@ -84,12 +87,9 @@ const CourseDetails = () => {
   if (!course.id) return <LoadingSpinner />;
 
   return (
-    <div className="course-details__container">
+    <div className="course-rounds__container">
       <Map
         ref={mapRef}
-        onClick={(map) =>
-          console.log(`lat=${map.lngLat.lat}, lng=${map.lngLat.lng}`)
-        }
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         initialViewState={initalView}
         mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
@@ -171,24 +171,14 @@ const CourseDetails = () => {
         {/* Current implmentation is only for one basket per hole. DB is setup to expand to multiple baskets */}
         <TextOverlay basket={teepads[currentHole - 1]?.baskets[0]} />
       </Map>
-      <div className="course-details__options-container">
-        <div className="course-details__next-prev">
-          <button onClick={() => navigateHoles("prev")}>Prev</button>
-          <button onClick={() => navigateHoles("next")}>Next</button>
-        </div>
-        <div className="course-details__navigation">
-          {teepads.map((teepad) => (
-            <button
-              key={teepad.id}
-              onClick={() => goToNextHole(teepad.holeNumber)}
-            >
-              {teepad.holeNumber}
-            </button>
-          ))}
-        </div>
-      </div>
+      <RoundDetails
+        basket={teepads[currentHole - 1]?.baskets[0]}
+        navigateHoles={navigateHoles}
+        currentHole={currentHole}
+        teepads={teepads}
+      />
     </div>
   );
 };
 
-export default CourseDetails;
+export default CourseRounds;

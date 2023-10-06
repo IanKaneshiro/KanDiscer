@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCourses, allCourses } from "../../store/courses";
 import { Link } from "react-router-dom";
 import CourseLandingTile from "../CourseLandingTile";
+import OpenModalButton from "../OpenModalButton";
+import CreateRoundForm from "../CreateRoundForm";
 import "./CoursesLandingPage.css";
 
 const CoursesLandingPage = () => {
@@ -15,11 +17,19 @@ const CoursesLandingPage = () => {
 
   return (
     <div className="course-landing__container">
-      {courses.map((course) => (
-        <Link key={`course${course.id}`} to={`/courses/${course.id}`}>
-          <CourseLandingTile course={course} />
-        </Link>
-      ))}
+      <div className="course-landing-start-round">
+        <OpenModalButton
+          modalComponent={<CreateRoundForm />}
+          buttonText={"Start Round"}
+        />
+      </div>
+      <div className="course-landing__main">
+        {courses.map((course) => (
+          <Link key={`course${course.id}`} to={`/courses/${course.id}`}>
+            <CourseLandingTile course={course} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

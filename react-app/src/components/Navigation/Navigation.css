@@ -15,6 +15,11 @@
   gap: 20px;
 }
 
+.navbar__main a {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .profile-dropdown {
   position: absolute;
   border-radius: 10px;

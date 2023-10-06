@@ -1,10 +1,15 @@
 // ---------------------- Constants --------------------------------
-const LOAD_TEEPADS = "courses/LOAD_TEEPADS";
+const LOAD_TEEPADS = "teepads/LOAD_TEEPADS";
+const CLEAR_TEEPADS = "teepads/CLEAR_TEEPADS";
 
 // ----------------------- Action Creators -----------------------
 const loadTeepads = (teepads) => ({
   type: LOAD_TEEPADS,
   payload: teepads,
+});
+
+export const clearTeepads = () => ({
+  type: CLEAR_TEEPADS,
 });
 
 // ----------------------- Thunk Action Creators -----------------
@@ -71,6 +76,10 @@ export default function reducer(state = initalState, action) {
       return {
         ...newState,
         allTeepads,
+      };
+    case CLEAR_TEEPADS:
+      return {
+        allTeepads: {},
       };
     default:
       return state;

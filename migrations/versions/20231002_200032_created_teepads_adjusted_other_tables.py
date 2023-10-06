@@ -43,7 +43,7 @@ def upgrade():
         batch_op.drop_column('course_id')
 
     if environment == "production":
-        op.execute(f"ALTER TABLE bagged_discs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE teepads SET SCHEMA {SCHEMA};")
 
     # ### end Alembic commands ###
 

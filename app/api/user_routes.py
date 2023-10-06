@@ -8,15 +8,14 @@ from .auth_routes import validation_errors_to_error_messages
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('/all')
 @login_required
-@admin_required
 def all_users():
     """
     Returns all users in database in desc order.
     """
     users = User.query.order_by(User.created_at.desc()).all()
-    return [user.to_dict() for user in users]
+    return {"Users": [user.to_dict() for user in users]}
 
 
 @user_routes.route('/<int:id>/admin', methods=["PUT"])

@@ -1,8 +1,13 @@
 .course-details__container {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   padding: 10px;
   margin: 0 auto;
+}
+
+.course-details__options-container > h3 {
+  margin: 10px 0;
+  text-align: center;
 }
 
 .course-details__map {
@@ -14,7 +19,6 @@
 .course-details__options-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .course-details__navigation {
@@ -64,6 +68,8 @@
   font-weight: bold;
 }
 
-.course-details__score {
-  height: 100%;
+.course-details__actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
