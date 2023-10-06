@@ -37,6 +37,8 @@ export const getCurrentPlayer = (id) => (state) => {
   return players[id];
 };
 
+export const selectPlayers = (state) => Object.values(state.rounds.players);
+
 // ---------------------- Initial State ---------------------------
 const initalState = {
   course: {},
@@ -78,11 +80,19 @@ export default function reducer(state = initalState, action) {
       );
       return { ...newState, players };
     case UPDATE_SCORE:
-      const player = newState.players[action.id];
-      player.scores[action.hole] = action.score;
+      const { id, hole, score } = action;
       return {
-        ...newState,
-        players: { ...newState.players, [action.id]: player },
+        ...state,
+        players: {
+          ...state.players,
+          [id]: {
+            ...state.players[id],
+            scores: {
+              ...state.players[id].scores,
+              [hole]: score,
+            },
+          },
+        },
       };
     default:
       return state;

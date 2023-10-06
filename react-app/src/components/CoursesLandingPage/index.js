@@ -17,6 +17,12 @@ const CoursesLandingPage = () => {
 
   return (
     <div className="course-landing__container">
+      <div className="course-landing-start-round">
+        <OpenModalButton
+          modalComponent={<CreateRoundForm />}
+          buttonText={"Start Round"}
+        />
+      </div>
       <div className="course-landing__main">
         {courses.map((course) => (
           <Link key={`course${course.id}`} to={`/courses/${course.id}`}>
@@ -24,10 +30,6 @@ const CoursesLandingPage = () => {
           </Link>
         ))}
       </div>
-      <OpenModalButton
-        modalComponent={<CreateRoundForm />}
-        buttonText={"Start Round"}
-      />
     </div>
   );
 };

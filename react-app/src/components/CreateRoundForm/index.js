@@ -20,7 +20,6 @@ const CreateRoundForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(startRound(users, courses[courseId]));
-    alert("Start!");
     closeModal();
     history.push(`/courses/${courseId}/rounds`);
   };

@@ -1,9 +1,7 @@
-.course-landing__container > button {
+.course-landing-start-round > button {
   background-color: #284b63;
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  width: 120px;
+  margin: 10px;
+  width: 100px;
   height: 50px;
   border-radius: 10px;
   color: white;
@@ -12,5 +10,8 @@
 .course-landing__main {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
   margin: 20px;
+  align-items: center;
+  justify-content: center;
 }

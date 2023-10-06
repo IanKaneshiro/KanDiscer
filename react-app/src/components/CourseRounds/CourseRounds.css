@@ -34,3 +34,17 @@
   justify-content: center;
   gap: 20px;
 }
+
+.course-rounds__view-score {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.course-rounds__view-score > button {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #284b63;
+  color: white;
+}
