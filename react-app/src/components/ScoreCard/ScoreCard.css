@@ -1,12 +1,12 @@
 .score-card__container {
-  width: 100%;
-  height: 100%;
-  margin: 20px;
+  margin: 0 auto;
+  overflow-x: auto;
+  width: 100vw;
 }
 
 .score-card__table {
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
   border: 1px solid #ccc;
 }
 
