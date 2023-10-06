@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllUsers, selectAllUsers } from "../../store/users";
 import { getAllCourses, allCourses } from "../../store/courses";
+import { startRound } from "../../store/rounds";
 import { useModal } from "../../context/Modal";
 
 import "./CreateRoundForm.css";
@@ -13,14 +14,15 @@ const CreateRoundForm = () => {
   const allUsers = useSelector(selectAllUsers);
   const courses = useSelector(allCourses);
   const { closeModal } = useModal();
-  const [course, setCourse] = useState("");
+  const [courseId, setCourseId] = useState("");
   const [users, setUsers] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(startRound(users, courses[courseId]));
     alert("Start!");
     closeModal();
-    history.push(`/courses/${course}/rounds`);
+    history.push(`/courses/${courseId}/rounds`);
   };
 
   const handleCheckboxChange = (e) => {
@@ -49,8 +51,8 @@ const CreateRoundForm = () => {
         <label htmlFor="course">Pick your course</label>
         <select
           id="course"
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
+          value={courseId}
+          onChange={(e) => setCourseId(e.target.value)}
           required
         >
           <option value="" disabled>

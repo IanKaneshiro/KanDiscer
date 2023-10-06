@@ -18,11 +18,13 @@ import {
   zoomToHolePosition,
   calculateLines,
 } from "../../utils/coursesHelperFunctions";
+
 import {
   clearCurrentCourse,
   currentCourse,
   getCourseById,
 } from "../../store/courses";
+
 import LoadingSpinner from "../LoadingSpinner";
 import TextOverlay from "./TextOverlay";
 import RoundDetails from "../RoundDetails";
@@ -173,6 +175,7 @@ const CourseRounds = () => {
         basket={teepads[currentHole - 1]?.baskets[0]}
         navigateHoles={navigateHoles}
         currentHole={currentHole}
+        teepads={teepads}
       />
     </div>
   );

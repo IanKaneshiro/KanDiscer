@@ -7,4 +7,6 @@ from .course import Course
 from .basket import Basket
 from .course_image import CourseImage
 from .teepads import Teepad
+from .round import Round
+from .score import Score
 from .db import environment, SCHEMA

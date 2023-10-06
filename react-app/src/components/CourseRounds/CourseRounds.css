@@ -16,26 +16,6 @@
   width: 100%;
   height: 100%;
 }
-.course-rounds__options-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.course-rounds__next-prev {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 5px;
-  padding: 10px;
-}
-
-.course-rounds__next-prev > button {
-  width: 100px;
-  height: 30px;
-  border-radius: 10px;
-  color: black;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
 
 .text-overlay {
   position: absolute;

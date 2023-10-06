@@ -34,6 +34,8 @@ class Course(db.Model):
         'Teepad', back_populates='course', order_by="Teepad.hole_number", cascade='all, delete-orphan')
     images = db.relationship(
         'CourseImage', back_populates='course', cascade='all, delete-orphan')
+    rounds = db.relationship(
+        'Round', back_populates="course",  cascade='all, delete-orphan')
     owner = db.relationship('User', back_populates='courses')
 
     def to_dict(self):

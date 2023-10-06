@@ -30,6 +30,8 @@ class User(db.Model, UserMixin):
     images = db.relationship('CourseImage', back_populates='owner')
     courses = db.relationship(
         'Course', back_populates='owner', cascade='all, delete-orphan')
+    scores = db.relationship(
+        'Score', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):
