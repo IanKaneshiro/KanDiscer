@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdminDiscTile from "../AdminDiscTile";
 import "./AdminDashboardTile.css";
 
-const AdminDashboardTile = ({ header, content }) => {
+const AdminDashboardTile = ({ header, content, approve }) => {
   const [filterName, setFilterName] = useState("");
 
   return (
@@ -26,7 +26,7 @@ const AdminDashboardTile = ({ header, content }) => {
         )
         .sort((a, b) => b.id - a.id)
         .map((disc) => (
-          <AdminDiscTile key={disc.id} disc={disc} />
+          <AdminDiscTile key={disc.id} disc={disc} approve={approve} />
         ))}
     </div>
   );
