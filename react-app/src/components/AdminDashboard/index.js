@@ -36,6 +36,7 @@ const AdminDashboard = () => {
         <AdminDashboardTile
           header={"Awaiting Approval"}
           content={approvalDiscs}
+          approve={true}
         />
         <AdminDashboardTile header={"Manage Courses"} />
         <AdminDashboardTile header={"Manage Users"} />
