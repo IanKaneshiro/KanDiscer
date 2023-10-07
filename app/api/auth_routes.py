@@ -79,13 +79,17 @@ def sign_up():
             url = upload["url"]
         else:
             url = None
+        if form.data['pdga_number'] is not 0:
+            p_num = form.data['pdga_number']
+        else:
+            p_num = None
         user = User(
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
             email=form.data['email'],
             username=form.data['username'],
             image_url=url,
-            pdga_number=form.data['pdga_number'],
+            pdga_number=p_num,
             skill_level=form.data['skill_level'],
             throwing_preference=form.data['throwing_preference'],
             password=form.data['password'],

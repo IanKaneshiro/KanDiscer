@@ -14,7 +14,7 @@ function SignupFormPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [image_url, setImageUrl] = useState("");
-  const [pdga_number, setPdgaNumber] = useState();
+  const [pdga_number, setPdgaNumber] = useState(0);
   const [skill_level, setSkillLevel] = useState("");
   const [throwing_preference, setThrowingPreference] = useState("");
   const [password, setPassword] = useState("");
@@ -166,7 +166,7 @@ function SignupFormPage() {
         />
         <button type="submit">Sign Up</button>
       </form>
-      <button className="signup-" onClick={() => history.push("/login")}>
+      <button className="signup-options" onClick={() => history.push("/login")}>
         Already a user? Log in
       </button>
     </div>

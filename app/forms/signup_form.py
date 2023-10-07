@@ -39,7 +39,7 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     image_url = FileField("Image File", validators=[
                           FileAllowed(list(ALLOWED_EXTENSIONS))])
-    pdga_number = StringField('pdga_number', validators=[pdga_number_exists])
+    pdga_number = IntegerField('pdga_number')
     skill_level = StringField('skill_level')
     throwing_preference = StringField('throwing_preference')
     password = StringField('password', validators=[DataRequired()])
