@@ -22,6 +22,14 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def pdga_number_exists(form, field):
+    # Checking if the pdga number is already in use
+    pdga_number = field.data
+    user = User.query.filter(User.pdga_number == pdga_number).first()
+    if user:
+        raise ValidationError('PDGA number is already in use.')
+
+
 class SignUpForm(FlaskForm):
     first_name = StringField('first_name', validators=[DataRequired()])
     last_name = StringField('last_name', validators=[DataRequired()])
@@ -31,7 +39,7 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     image_url = FileField("Image File", validators=[
                           FileAllowed(list(ALLOWED_EXTENSIONS))])
-    pdga_number = IntegerField('pdga_number')
+    pdga_number = StringField('pdga_number', validators=[pdga_number_exists])
     skill_level = StringField('skill_level')
     throwing_preference = StringField('throwing_preference')
     password = StringField('password', validators=[DataRequired()])
