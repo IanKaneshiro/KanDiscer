@@ -15,8 +15,8 @@ import { selectCurrentBag, deleteBag } from "../../store/bags";
 import BagUpdateForm from "../BagUpdateForm";
 import { useModal } from "../../context/Modal";
 import DeleteModal from "../DeleteModal";
-import "./BagsNavigationBar.css";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import "./BagsNavigationBar.css";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
@@ -34,13 +34,10 @@ const BagsNavigationBar = () => {
     return () => dispatch(clearAllBags());
   }, [dispatch]);
 
-  useEffect(() => {
-    setCurrentId(bag.id);
-  }, [bag]);
-
   const setBag = (id) => {
     if (id) {
       dispatch(getBagById(id));
+      setCurrentId(id);
       return history.push(`/bags/${id}`);
     } else {
       setCurrentId("");
@@ -55,9 +52,9 @@ const BagsNavigationBar = () => {
     return history.push("/bags");
   };
 
-  if (currentId && bag.ownerId !== sessionUser.id)
+  if (bag.id && bag.ownerId !== sessionUser.id) {
     return <Redirect to="/bags" />;
-
+  }
   return (
     <div className="bags-navigation__container">
       <div className="bags-navigation__navbar">

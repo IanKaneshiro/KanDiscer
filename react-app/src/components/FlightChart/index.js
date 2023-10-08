@@ -30,6 +30,7 @@ const FlightChart = ({ disc }) => {
           dot=""
           stroke="#284b63"
           strokeWidth={5}
+          isAnimationActive="true"
         />
         <XAxis
           type="number"
