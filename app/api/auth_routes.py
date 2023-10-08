@@ -1,9 +1,13 @@
 from flask import Blueprint, request
+
 from app.models import User, db
-from sqlalchemy import or_
+
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
+
+from flask_login import current_user, login_user, logout_user
+
+from sqlalchemy import or_
 from app.api.aws import (
     upload_file_to_s3, get_unique_filename)
 
@@ -79,7 +83,8 @@ def sign_up():
             url = upload["url"]
         else:
             url = None
-        if form.data['pdga_number'] is not 0:
+        # React input defaults to zero if there is no user input.
+        if form.data['pdga_number'] != 0:
             p_num = form.data['pdga_number']
         else:
             p_num = None

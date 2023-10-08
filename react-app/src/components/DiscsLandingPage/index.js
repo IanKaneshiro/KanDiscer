@@ -21,15 +21,15 @@ const DiscsLandingPage = () => {
   const [showFilters, setShowFilters] = useState(true);
 
   const [filters, setFilters] = useState({
-    manufacturer: null,
-    speed_max: null,
-    speed_min: null,
-    glide_max: null,
-    glide_min: null,
-    turn_max: null,
-    turn_min: null,
-    fade_max: null,
-    fade_min: null,
+    manufacturer: "",
+    speed_max: "",
+    speed_min: "",
+    glide_max: "",
+    glide_min: "",
+    turn_max: "",
+    turn_min: "",
+    fade_max: "",
+    fade_min: "",
   });
   const query = useDebounce(nameFilter, 500);
 

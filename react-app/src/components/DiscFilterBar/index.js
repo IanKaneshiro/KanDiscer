@@ -69,11 +69,11 @@ const DiscFilterBar = ({ filters, setFilters }) => {
             value={filters.glide_min}
             onChange={(e) =>
               setFilters((prev) => {
-                return { ...prev, turn_min: e.target.value };
+                return { ...prev, glide_min: e.target.value };
               })
             }
           >
-            <option value={""}>None</option>
+            <option value="">None</option>
             {[1, 2, 3, 4, 5, 6, 7].map((glide) => (
               <option key={glide} value={glide}>
                 {glide}
@@ -91,7 +91,7 @@ const DiscFilterBar = ({ filters, setFilters }) => {
               })
             }
           >
-            <option value={""}>None</option>
+            <option value="">None</option>
             {[1, 2, 3, 4, 5, 6, 7].map((glide) => (
               <option key={glide} value={glide}>
                 {glide}
@@ -111,8 +111,8 @@ const DiscFilterBar = ({ filters, setFilters }) => {
               })
             }
           >
-            <option value={""}>None</option>
-            {[-5, -4, -3, -2 - 1, 0, 1, 2].map((turn) => (
+            <option value="">None</option>
+            {[-5, -4, -3, -2, -1, 0, 1, 2].map((turn) => (
               <option key={turn} value={turn}>
                 {turn}
               </option>
@@ -129,8 +129,8 @@ const DiscFilterBar = ({ filters, setFilters }) => {
               })
             }
           >
-            <option value={""}>None</option>
-            {[-5, -4, -3, -2 - 1, 0, 1, 2].map((turn) => (
+            <option value="">None</option>
+            {[-5, -4, -3, -2, -1, 0, 1, 2].map((turn) => (
               <option key={turn} value={turn}>
                 {turn}
               </option>
@@ -149,7 +149,7 @@ const DiscFilterBar = ({ filters, setFilters }) => {
               })
             }
           >
-            <option value={""}>None</option>
+            <option value="">None</option>
             {[0, 1, 2, 3, 4, 5, 6].map((fade) => (
               <option key={fade} value={fade}>
                 {fade}
@@ -167,7 +167,7 @@ const DiscFilterBar = ({ filters, setFilters }) => {
               })
             }
           >
-            <option value={""}>None</option>
+            <option value="">None</option>
             {[0, 1, 2, 3, 4, 5, 6].map((fade) => (
               <option key={fade} value={fade}>
                 {fade}

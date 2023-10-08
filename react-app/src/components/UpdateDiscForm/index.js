@@ -163,7 +163,7 @@ const UpdateDiscModal = ({ disc, approve }) => {
           </label>
           {errors.image_url && <p className="errors">{errors.image_url}</p>}
         </div>
-        <div class="create_disc__flight">
+        <div className="create_disc__flight">
           <span>
             <table className="disc_tile__flight">
               <thead>
