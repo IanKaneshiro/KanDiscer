@@ -25,6 +25,7 @@ class Bag(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            "ownerId": self.owner_id,
             'name': self.name,
             'description': self.description,
             'notes': self.notes,

@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, useHistory } from "react-router-dom";
-import { getAllBags, bags, clearAllBags } from "../../store/bags";
+import {
+  getAllBags,
+  bags,
+  clearAllBags,
+  getBagById,
+  clearCurrentBag,
+} from "../../store/bags";
 import OpenModalButton from "../OpenModalButton";
 import CreateBagForm from "../CreateBagForm";
 import BagDetailsPage from "../BagDetailsPage";
@@ -10,14 +16,17 @@ import BagUpdateForm from "../BagUpdateForm";
 import { useModal } from "../../context/Modal";
 import DeleteModal from "../DeleteModal";
 import "./BagsNavigationBar.css";
-import LoadingSpinner from "../LoadingSpinner";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const BagsNavigationBar = () => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+
   const allBags = useSelector(bags);
   const history = useHistory();
   const bag = useSelector(selectCurrentBag);
+  const sessionUser = useSelector((state) => state.session.user);
+
   const [currentId, setCurrentId] = useState("");
 
   useEffect(() => {
@@ -31,9 +40,11 @@ const BagsNavigationBar = () => {
 
   const setBag = (id) => {
     if (id) {
+      dispatch(getBagById(id));
       return history.push(`/bags/${id}`);
     } else {
       setCurrentId("");
+      dispatch(clearCurrentBag());
       return history.push("/bags");
     }
   };
@@ -44,7 +55,8 @@ const BagsNavigationBar = () => {
     return history.push("/bags");
   };
 
-  if (!allBags) return <LoadingSpinner />;
+  if (currentId && bag.ownerId !== sessionUser.id)
+    return <Redirect to="/bags" />;
 
   return (
     <div className="bags-navigation__container">
