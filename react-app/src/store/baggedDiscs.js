@@ -69,9 +69,6 @@ export const createBaggedDisc = (disc, bagId, discId) => async (dispatch) => {
     `/api/bags/${bagId}/discs/${discId}/bagged_discs/new`,
     {
       method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
       body: disc,
     }
   );

@@ -1,10 +1,10 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Bag, db, BaggedDisc
-from .route_utils import admin_required
 from app.forms import BagForm, BaggedDiscForm
 from app.api.aws import upload_file_to_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
+
 
 bag_routes = Blueprint('bags', __name__)
 

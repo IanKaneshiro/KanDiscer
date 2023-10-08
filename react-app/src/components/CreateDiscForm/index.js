@@ -74,7 +74,7 @@ const CreateDiscForm = () => {
       encType="multipart/form-data"
     >
       <div className="create_disc__form">
-        <div class="create_disc__info">
+        <div className="create_disc__info">
           <label>
             Manufacturer
             <select
@@ -165,7 +165,7 @@ const CreateDiscForm = () => {
           </label>
           {errors.image_url && <p className="errors">{errors.image_url}</p>}
         </div>
-        <div class="create_disc__flight">
+        <div className="create_disc__flight">
           <span>
             <table className="disc_tile__flight">
               <thead>

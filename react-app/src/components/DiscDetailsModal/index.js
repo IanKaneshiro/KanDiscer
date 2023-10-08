@@ -24,7 +24,9 @@ const DiscDetailsModal = ({ disc, sessionUser }) => {
               <select value={bagId} onChange={(e) => setBagId(e.target.value)}>
                 <option value="">Select your bag...</option>
                 {allBags.map((bag) => (
-                  <option value={bag.id}>{bag.name}</option>
+                  <option key={bag.id} value={bag.id}>
+                    {bag.name}
+                  </option>
                 ))}
               </select>
               <AddToBag discId={disc.id} bagId={bagId} setBagId={setBagId} />
