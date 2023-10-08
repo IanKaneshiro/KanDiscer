@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { discTypes, manufactures } from "../../utils/seederData";
 import { createNewDisc } from "../../store/discs";
+import toast from "react-hot-toast";
 import "./CreateDiscForm.css";
 
 const CreateDiscForm = () => {
@@ -26,6 +27,13 @@ const CreateDiscForm = () => {
   const [image_url, setImageUrl] = useState("");
 
   const [errors, setErrors] = useState({});
+
+  const toastAlert = () =>
+    toast((t) => (
+      <div className="toast-alert">
+        {sessionUser.admin ? <h3>Created</h3> : <h3>Submitted for approval</h3>}
+      </div>
+    ));
 
   if (!sessionUser) {
     closeModal();
@@ -54,6 +62,7 @@ const CreateDiscForm = () => {
     if (data) {
       setErrors(data);
     } else {
+      toastAlert();
       closeModal();
     }
   };
