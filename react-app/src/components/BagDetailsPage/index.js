@@ -23,6 +23,7 @@ const BagDetailsPage = () => {
 
   const discs = useSelector(allDiscs);
   const allBaggedDiscs = useSelector(selectAllBaggedDiscs);
+
   const distance = useSelector(selectDistance);
   const fairway = useSelector(selectFairway);
   const midrange = useSelector(selectMidrange);
