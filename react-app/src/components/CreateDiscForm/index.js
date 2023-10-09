@@ -107,6 +107,7 @@ const CreateDiscForm = () => {
           <label>
             Description
             <textarea
+              required
               placeholder="Description of disc"
               type="text"
               value={description}
@@ -135,6 +136,7 @@ const CreateDiscForm = () => {
           <label>
             Link to Purchase
             <input
+              required
               placeholder="Add a link to purchase"
               type="text"
               value={purchase_link}
