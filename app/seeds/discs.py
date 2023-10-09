@@ -456,9 +456,9 @@ def seed_discs():
         image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Nuke5004.Webp',
         approved=True,
     )
-    disc24 = Disc(
+    disc25 = Disc(
         manufacturer='Discraft',
-        name='Nuke',
+        name='Wasp',
         description='The Wasp is one of the more popular overstable midrange discs. This is a great disc for windy conditions and strategic fading shots',
         type='Midrange',
         purchase_link='https://otbdiscs.com/?s=wasp&post_type=product',
