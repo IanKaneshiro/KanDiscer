@@ -234,7 +234,7 @@ def seed_discs():
     )
 
     disc13 = Disc(
-        manufacturer='Axiion Discs',
+        manufacturer='Axion Discs',
         name='Crave',
         description='The Axiom Crave is a popular fairway driver known for its long distance potential and its relatively straight flight path. It is a great choice for players who need a disc that can handle a variety of shots, including drives, approaches, and turnovers. The Crave is also a good choice for windy conditions.',
         type='Fairway Driver',
@@ -384,6 +384,96 @@ def seed_discs():
         image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/20230324134507_Envy-CosmicElectronF.webp',
         approved=True,
     )
+    disc21 = Disc(
+        manufacturer='Discraft',
+        name='Nebula',
+        description='The Discraft Nebula was the Ace Race disc for 2008. It is an overstable midrange that is now only available in this limited edition Elite Z run. In a lot of ways, the Nebula was the first Buzzz OS, as it is a very dependable overstable midrange that will hold strong in the wind.',
+        type='Midrange',
+        purchase_link='https://otbdiscs.com/?s=nebula&post_type=product',
+        plastics='Big Z, Esp, Z',
+        speed=5,
+        glide=4,
+        turn=-0.5,
+        fade=2,
+        diameter=21.30,
+        height=2.0,
+        rim_depth=1.30,
+        rim_width=1.30,
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Nebula_1.Webp',
+        approved=True,
+    )
+    disc22 = Disc(
+        manufacturer='Discraft',
+        name='Thrasher',
+        description='The Thrasher is a very fast and understable disc. It is important to know that this mold is not flippy, allowing huge distance from slower arms, and yet is still completely big-arm friendly. It will finish on a slow hyzer in most situations, so expect some clean anhyzers out of this disc. This mold is a great choice for most any skilled player',
+        type='Distance Driver',
+        purchase_link='https://otbdiscs.com/?s=thrasher&post_type=product',
+        plastics='Esp, Big Z, Z, Ti',
+        speed=12,
+        glide=5,
+        turn=-3,
+        fade=2,
+        diameter=21.20,
+        height=1.50,
+        rim_depth=1.10,
+        rim_width=2.20,
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Thrasher_3.Webp',
+        approved=True,
+    )
+    disc23 = Disc(
+        manufacturer='Discraft',
+        name='Scorch',
+        description='The Scorch is an understable distance driver. It is much like a longer Avenger SS. This makes it a great distance driver that will have some turn and a decent amount of fade, providing a consistent "S" curve flight path every time you rip it.',
+        type='Distance Driver',
+        purchase_link='https://otbdiscs.com/?s=scorch&post_type=product',
+        plastics='Esp, Z, Big Z',
+        speed=12,
+        glide=6,
+        turn=-2,
+        fade=2,
+        diameter=21.10,
+        height=1.80,
+        rim_depth=1.10,
+        rim_width=2.20,
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Scorch_3.Webp',
+        approved=True,
+    )
+    disc24 = Disc(
+        manufacturer='Discraft',
+        name='Nuke',
+        description='The Discraft Nuke is one of the most popular distance drivers in the world. This fast-flying driver has an ultra-thick rim (2.5cm) and maintains maximum speed for a long time. While this disc is ultra-fast, it is relatively stable for power throwers and has a Discraft stability rating of just 1.6. The Nuke is available in all the plastics Discraft makes.',
+        type='Distance Driver',
+        purchase_link='https://otbdiscs.com/?s=nuke&post_type=product',
+        plastics='Esp, Big Z, Z, Ti',
+        speed=13,
+        glide=5,
+        turn=-1,
+        fade=3,
+        diameter=21.20,
+        height=1.60,
+        rim_depth=1.20,
+        rim_width=2.50,
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Nuke5004.Webp',
+        approved=True,
+    )
+    disc25 = Disc(
+        manufacturer='Discraft',
+        name='Wasp',
+        description='The Wasp is one of the more popular overstable midrange discs. This is a great disc for windy conditions and strategic fading shots',
+        type='Midrange',
+        purchase_link='https://otbdiscs.com/?s=wasp&post_type=product',
+        plastics='Esp, Big Z, Z, Ti',
+        speed=5,
+        glide=3,
+        turn=-0,
+        fade=2,
+        diameter=21.60,
+        height=1.80,
+        rim_depth=1.20,
+        rim_width=1.20,
+        image_url='https://infinitediscs.com/Inf_Uploads/DiscProducts/W675_Waspf9ec.Webp',
+        approved=True,
+    )
 
     db.session.add(disc1)
     db.session.add(disc2)
@@ -405,6 +495,11 @@ def seed_discs():
     db.session.add(disc18)
     db.session.add(disc19)
     db.session.add(disc20)
+    db.session.add(disc21)
+    db.session.add(disc22)
+    db.session.add(disc23)
+    db.session.add(disc24)
+    db.session.add(disc25)
 
     db.session.commit()
 
