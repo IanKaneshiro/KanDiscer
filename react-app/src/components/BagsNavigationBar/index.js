@@ -86,7 +86,7 @@ const BagsNavigationBar = () => {
         )}
       </div>
       <Route path="/bags/:bagId">
-        <BagDetailsPage />
+        <BagDetailsPage setCurrentId={setCurrentId} />
       </Route>
     </div>
   );

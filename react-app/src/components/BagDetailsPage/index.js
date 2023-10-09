@@ -16,14 +16,15 @@ import BagFlightChart from "../BagFlightChart";
 import { useParams } from "react-router-dom";
 import "./BagDetailsPage.css";
 import AddToBagForm from "../AddToBagForm";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const BagDetailsPage = () => {
+const BagDetailsPage = ({ setCurrentId }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [openMenu, setOpenMenu] = useState(false);
 
   const discs = useSelector(allDiscs);
   const allBaggedDiscs = useSelector(selectAllBaggedDiscs);
-
   const distance = useSelector(selectDistance);
   const fairway = useSelector(selectFairway);
   const midrange = useSelector(selectMidrange);
@@ -42,10 +43,13 @@ const BagDetailsPage = () => {
   }, [dispatch, bagId]);
 
   useEffect(() => {
-    dispatch(getBagById(bagId));
+    dispatch(getBagById(bagId)).then((data) => {
+      if (data.message) return history.push("/bags");
+    });
 
+    setCurrentId(bagId);
     return () => dispatch(clearCurrentBag());
-  }, [dispatch, bagId]);
+  }, [dispatch, bagId, setCurrentId, history]);
 
   const addBagFormClassName = openMenu
     ? "bags__add_dropdown"
