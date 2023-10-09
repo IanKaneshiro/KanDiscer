@@ -203,7 +203,14 @@ export default function reducer(state = initalState, action) {
       };
     }
     case CLEAR_BAGGED_DISCS:
-      return initalState;
+      return {
+        allDiscs: {},
+        currentDisc: {},
+        distance: {},
+        fairway: {},
+        midrange: {},
+        putter: {},
+      };
     case CLEAR_CURRENT_BAGGED_DISC:
       return {
         ...newState,
