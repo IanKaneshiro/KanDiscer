@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import Map, { Marker } from "react-map-gl";
-
 import { createNewCourse } from "../../store/courses";
 
 const CreateCoursePage = () => {
@@ -71,15 +70,14 @@ const CreateCoursePage = () => {
           }}
           mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
         >
-          <Marker
+          {/* <Marker
             draggable="true"
-            longitude={lng}
-            latitude={lat}
+            anchor="center"
             onDragEnd={(e) => {
               setLat(e.lngLat.lat);
               setLng(e.lngLat.lng);
             }}
-          />
+          /> */}
         </Map>
       </div>
       <form className="login-page__form" onSubmit={handleSubmit}>
