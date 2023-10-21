@@ -10,10 +10,12 @@ import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import BagsNavigationBar from "./components/BagsNavigationBar";
-import CourseDetails from "./components/CourseDetails";
 import { Toaster } from "react-hot-toast";
 import CoursesLandingPage from "./components/CoursesLandingPage";
 import CourseRound from "./components/CourseRounds";
+import CreateCoursePage from "./components/CreateCoursePage";
+import CourseInfoPage from "./components/CourseInfoPage";
+import CourseDetails from "./components/CourseDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,16 +47,20 @@ function App() {
           <Route exact path="/courses">
             <CoursesLandingPage />
           </Route>
-          <Route path="/courses/:courseId/rounds">
+          <ProtectedRoute exact path="/courses/new">
+            <CreateCoursePage />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/courses/:courseId/rounds">
             <CourseRound />
-          </Route>
-          <Route path="/courses/:courseId">
+          </ProtectedRoute>
+          <Route exact path="/courses/:courseId/view">
             <CourseDetails />
           </Route>
-          <ProtectedRoute>
-            <Route path="/bags">
-              <BagsNavigationBar />
-            </Route>
+          <Route path="/courses/:courseId">
+            <CourseInfoPage />
+          </Route>
+          <ProtectedRoute path="/bags">
+            <BagsNavigationBar />
           </ProtectedRoute>
         </Switch>
       )}

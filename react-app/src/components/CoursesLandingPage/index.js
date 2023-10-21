@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCourses, allCourses } from "../../store/courses";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CourseLandingTile from "../CourseLandingTile";
-import OpenModalButton from "../OpenModalButton";
-import CreateRoundForm from "../CreateRoundForm";
+
 import "./CoursesLandingPage.css";
 
 const CoursesLandingPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const courses = useSelector(allCourses);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getAllCourses());
@@ -18,10 +19,13 @@ const CoursesLandingPage = () => {
   return (
     <div className="course-landing__container">
       <div className="course-landing-start-round">
-        <OpenModalButton
-          modalComponent={<CreateRoundForm />}
-          buttonText={"Start Round"}
-        />
+        {sessionUser && (
+          <>
+            <button onClick={() => history.push("/courses/new")}>
+              Add Course
+            </button>
+          </>
+        )}
       </div>
       <div className="course-landing__main">
         {courses.map((course) => (
