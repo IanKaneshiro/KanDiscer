@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import Map, { Marker } from "react-map-gl";
 import { SearchBox } from "@mapbox/search-js-react";
@@ -10,14 +10,13 @@ import "./CreateCoursePage.css";
 const CreateCoursePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { courseId } = useParams();
   const mapRef = useRef();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [name, setName] = useState("");
   const [location_name, setLocationName] = useState("");
-  const [lat, setLat] = useState(37.80221709927471);
-  const [lng, setLng] = useState(-100.47483245550866);
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
   const [headline, setHeadline] = useState("");
   const [description, setDescription] = useState("");
   const [course_contact, setCourseContact] = useState("");

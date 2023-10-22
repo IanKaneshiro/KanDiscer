@@ -4,6 +4,7 @@ const LOAD_CURRENT_COURSE = "courses/LOAD_CURRENT_COURSE";
 const LOAD_ADMIN_COURSES = "courses/LOAD_ADMIN_COURSES";
 const CLEAR_CURRENT_COURSE = "courses/CLEAR_CURRENT_COURSE";
 const ADD_COURSE = "courses/ADD_COURSE";
+const APPROVE_COURSE = "courses/APPROVE_COURSE";
 const REMOVE_COURSE = "courses/REMOVE_COURSE";
 
 // ----------------------- Action Creators -----------------------
@@ -30,6 +31,11 @@ const addCourse = (course) => ({
 const removeCourse = (id) => ({
   type: REMOVE_COURSE,
   payload: id,
+});
+
+const approveCourse = (course) => ({
+  type: APPROVE_COURSE,
+  payload: course,
 });
 
 export const clearCurrentCourse = () => ({
@@ -97,6 +103,28 @@ export const createNewCourse = (course) => async (dispatch) => {
     return data;
   } else {
     return ["An error occured. Please try again"];
+  }
+};
+
+export const updateCourse = (course, id, approve) => async (dispatch) => {
+  const res = await fetch(`/api/courses/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(course),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(addCourse(data));
+    if (approve) {
+      dispatch(approveCourse(data));
+    }
+  } else if (res.status < 500) {
+    const data = await res.json();
+    return data;
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 
@@ -170,6 +198,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...newState,
         allCourses: newState.allCourses,
+        awaitingApproval: newState.awaitingApproval,
+      };
+    case APPROVE_COURSE:
+      delete newState.awaitingApproval[action.payload.id];
+      return {
+        ...newState,
         awaitingApproval: newState.awaitingApproval,
       };
     default:

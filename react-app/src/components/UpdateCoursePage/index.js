@@ -1,16 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Map, { Marker } from "react-map-gl";
 import { SearchBox } from "@mapbox/search-js-react";
-import { createNewCourse } from "../../store/courses";
+import {
+  getCourseById,
+  currentCourse,
+  clearCurrentCourse,
+  updateCourse,
+} from "../../store/courses";
 import "./UpdateCoursePage.css";
 
 const UpdateCoursePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const mapRef = useRef();
+  const { courseId } = useParams();
+  const course = useSelector(currentCourse);
   const sessionUser = useSelector((state) => state.session.user);
 
   const [name, setName] = useState("");
@@ -30,6 +37,39 @@ const UpdateCoursePage = () => {
 
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    dispatch(getCourseById(courseId));
+    return () => dispatch(clearCurrentCourse);
+  }, [dispatch, courseId]);
+
+  useEffect(() => {
+    if (course.id) {
+      setName(course.name);
+      setLocationName(course.locationName);
+      setLat(course.lat);
+      setLng(course.lng);
+      setHeadline(course.headline);
+      setDescription(course.description);
+      setCourseContact(course.courseContact);
+      setCourseWebsite(course.courseWebsite);
+      setYearEstablished(course.yearEstablished);
+      setHoleCount(course.holeCount);
+      setTeeTypes(course.teeTypes);
+      setTargetTypes(course.targetTypes);
+      setServices(course.services);
+      setCost(course.cost);
+      mapRef.current?.flyTo({
+        center: [course.lng, course.lat],
+        zoom: 16,
+        speed: 1.5,
+        curve: 1,
+        easing(t) {
+          return t;
+        },
+      });
+    }
+  }, [course]);
+
   if (!sessionUser) return <Redirect to="/" />;
 
   const extractCityAndState = (address) => {
@@ -46,7 +86,7 @@ const UpdateCoursePage = () => {
   const toastAlert = () =>
     toast((t) => (
       <div className="toast-alert">
-        {sessionUser.admin ? <h3>Created</h3> : <h3>Submitted for approval</h3>}
+        {course.approved ? <h3>Updated</h3> : <h3>Approved</h3>}
       </div>
     ));
 
@@ -69,7 +109,9 @@ const UpdateCoursePage = () => {
       cost,
     };
 
-    const data = await dispatch(createNewCourse(course));
+    const data = await dispatch(
+      updateCourse(course, courseId, course.approved ? false : true)
+    );
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -258,7 +300,9 @@ const UpdateCoursePage = () => {
             {errors.cost && <p className="errors">{errors.cost}</p>}
           </div>
         </div>
-        <button type="submit">Create Course</button>
+        <button type="submit">
+          {course.approved ? "Save Changes" : "Approve"}
+        </button>
       </form>
     </div>
   );
