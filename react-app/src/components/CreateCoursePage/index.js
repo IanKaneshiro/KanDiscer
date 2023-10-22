@@ -12,8 +12,8 @@ const CreateCoursePage = () => {
 
   const [name, setName] = useState("");
   const [location_name, setLocationName] = useState("");
-  const [lat, setLat] = useState(-79.4512);
-  const [lng, setLng] = useState(43.6568);
+  const [lat, setLat] = useState(37.80221709927471);
+  const [lng, setLng] = useState(-100.47483245550866);
   const [headline, setHeadline] = useState("");
   const [description, setDescription] = useState("");
   const [course_contact, setCourseContact] = useState("");
@@ -52,6 +52,9 @@ const CreateCoursePage = () => {
     if (data.errors) {
       setErrors(data);
     } else {
+      if (!data.approved) {
+        return history.push("/courses");
+      }
       return history.push(`/courses/${data.id}`);
     }
   };
@@ -63,22 +66,28 @@ const CreateCoursePage = () => {
         <Map
           ref={mapRef}
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+          onClick={(e) => console.log(e.lngLat)}
           initialViewState={{
-            longitude: -79.4512,
-            latitude: 43.6568,
-            zoom: 13,
+            longitude: -100.47483245550866,
+            latitude: 37.80221709927471,
+            zoom: 2,
           }}
           mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
         >
-          {/* <Marker
+          <Marker
             draggable="true"
             anchor="center"
+            latitude={lat}
+            longitude={lng}
             onDragEnd={(e) => {
               setLat(e.lngLat.lat);
               setLng(e.lngLat.lng);
             }}
-          /> */}
+          />
         </Map>
+        <p>
+          Lat {lat} Lng {lng}
+        </p>
       </div>
       <form className="login-page__form" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>

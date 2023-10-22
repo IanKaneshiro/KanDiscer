@@ -12,7 +12,17 @@ def all_courses():
     """
     Returns all courses
     """
-    courses = Course.query.all()
+    courses = Course.query.filter_by(
+        approved=True).order_by(Course.created_at.desc()).all()
+    return {"Courses": [course.to_dict() for course in courses]}
+
+
+@course_routes.route('/awaiting_approval')
+def courses_awaiting_approval():
+    """
+    Returns all courses with the admin status of false
+    """
+    courses = Course.query.filter_by(approved=False).all()
     return {"Courses": [course.to_dict() for course in courses]}
 
 
@@ -25,8 +35,6 @@ def course_by_id(id):
     if not course:
         return {"message": "Course couldn't be found"}, 404
     return course.to_dict()
-
-# Create
 
 
 @course_routes.route('/new', methods=['POST'])

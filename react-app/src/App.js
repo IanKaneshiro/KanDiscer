@@ -56,6 +56,12 @@ function App() {
           <Route exact path="/courses/:courseId/view">
             <CourseDetails />
           </Route>
+          <ProtectedRoute exact path="/courses/:courseId/update">
+            <h1>Update Courses</h1>
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/courses/:courseId/review">
+            <h1>Review Courses</h1>
+          </ProtectedRoute>
           <Route path="/courses/:courseId">
             <CourseInfoPage />
           </Route>
