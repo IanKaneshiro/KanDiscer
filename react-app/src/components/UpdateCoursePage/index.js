@@ -34,6 +34,11 @@ const UpdateCoursePage = () => {
   const [target_types, setTargetTypes] = useState("");
   const [services, setServices] = useState("");
   const [cost, setCost] = useState("");
+  const [viewState, setViewState] = React.useState({
+    longitude: -100,
+    latitude: 40,
+    zoom: 3.5,
+  });
 
   const [errors, setErrors] = useState({});
 
@@ -58,14 +63,10 @@ const UpdateCoursePage = () => {
       setTargetTypes(course.targetTypes);
       setServices(course.services);
       setCost(course.cost);
-      mapRef.current?.flyTo({
-        center: [course.lng, course.lat],
+      setViewState({
+        latitude: course.lat,
+        longitude: course.lng,
         zoom: 16,
-        speed: 1.5,
-        curve: 1,
-        easing(t) {
-          return t;
-        },
       });
     }
   }, [course]);
@@ -129,12 +130,9 @@ const UpdateCoursePage = () => {
           style={{ width: "100%", height: "400px" }}
           ref={mapRef}
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          initialViewState={{
-            longitude: -100.47483245550866,
-            latitude: 37.80221709927471,
-            zoom: 2,
-          }}
+          {...viewState}
           mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
+          onMove={(evt) => setViewState(evt.viewState)}
         >
           <div className="text-overlay-create-course">
             <p>Place marker in the parking lot or teepad of hole 1</p>
