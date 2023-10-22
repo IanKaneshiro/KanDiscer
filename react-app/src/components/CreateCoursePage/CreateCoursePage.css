@@ -1,0 +1,31 @@
+.create-course__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.create-course__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.create-course__form > div {
+  width: 400px;
+}
+
+.text-overlay-create-course {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
