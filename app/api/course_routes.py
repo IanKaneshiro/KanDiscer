@@ -12,7 +12,17 @@ def all_courses():
     """
     Returns all courses
     """
-    courses = Course.query.all()
+    courses = Course.query.filter_by(
+        approved=True).order_by(Course.created_at.desc()).all()
+    return {"Courses": [course.to_dict() for course in courses]}
+
+
+@course_routes.route('/awaiting_approval')
+def courses_awaiting_approval():
+    """
+    Returns all courses with the admin status of false
+    """
+    courses = Course.query.filter_by(approved=False).all()
     return {"Courses": [course.to_dict() for course in courses]}
 
 
@@ -25,8 +35,6 @@ def course_by_id(id):
     if not course:
         return {"message": "Course couldn't be found"}, 404
     return course.to_dict()
-
-# Create
 
 
 @course_routes.route('/new', methods=['POST'])
@@ -55,7 +63,6 @@ def create_course():
             hole_count=form.data['hole_count'],
             tee_types=form.data['tee_types'],
             target_types=form.data['target_types'],
-            services=form.data['services'],
             cost=form.data['cost'],
         )
         if current_user.admin:
@@ -84,20 +91,19 @@ def update_course(id):
 
     if course.owner_id == current_user.id or current_user.admin:
         if form.validate_on_submit():
-            name = form.data['name']
-            location_name = form.data['location_name']
-            lat = form.data['lat']
-            lng = form.data['lng']
-            headline = form.data['headline']
-            description = form.data['description']
-            course_contact = form.data['course_contact']
-            course_website = form.data['course_website']
-            year_established = form.data['year_established']
-            hole_count = form.data['hole_count']
-            tee_types = form.data['tee_types']
-            target_types = form.data['target_types']
-            services = form.data['services']
-            cost = form.data['cost']
+            course.name = form.data['name']
+            course.location_name = form.data['location_name']
+            course.lat = form.data['lat']
+            course.lng = form.data['lng']
+            course.headline = form.data['headline']
+            course.description = form.data['description']
+            course.course_contact = form.data['course_contact']
+            course.course_website = form.data['course_website']
+            course.year_established = form.data['year_established']
+            course.hole_count = form.data['hole_count']
+            course.tee_types = form.data['tee_types']
+            course.target_types = form.data['target_types']
+            course.cost = form.data['cost']
             if current_user.admin:
                 course.approved = True
             db.session.commit()

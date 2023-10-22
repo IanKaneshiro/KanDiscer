@@ -16,6 +16,5 @@ class CourseForm(FlaskForm):
     hole_count = IntegerField('hole_count', validators=[DataRequired()])
     tee_types = StringField('tee_types')
     target_types = StringField('target_types')
-    services = StringField('services')
     cost = FloatField('cost')
     approved = BooleanField('approved')

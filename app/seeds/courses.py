@@ -18,7 +18,6 @@ def seed_courses():
         hole_count=18,
         tee_types='Concrete',
         target_types='DISCatchers Pro',
-        services='dog friendly, cart friendly',
         cost=0,
         approved=True
     )
@@ -37,7 +36,6 @@ def seed_courses():
         hole_count=18,
         tee_types='Brick/Pavers, Turf, Rubber Mat, Wood/Wood Chips, Grass, Dirt',
         target_types='Prodigy T2 (T2), Gravity, Mach III, El Guapo Pro',
-        services='Dogs Allowed, Cart Friendly, Restrooms Available, Drinking Water Available',
         cost=5,
         approved=True
     )

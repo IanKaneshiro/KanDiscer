@@ -23,7 +23,6 @@ class Course(db.Model):
     hole_count = db.Column(db.Integer, nullable=False)
     tee_types = db.Column(db.String)
     target_types = db.Column(db.String)
-    services = db.Column(db.String)
     cost = db.Column(db.Float)
     approved = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
@@ -53,7 +52,6 @@ class Course(db.Model):
             'holeCount': self.hole_count,
             'teeTypes': self.tee_types,
             'targetTypes': self.target_types,
-            'services': self.services,
             'cost': self.cost,
             'approved': self.approved,
             'createdAt': self.created_at,

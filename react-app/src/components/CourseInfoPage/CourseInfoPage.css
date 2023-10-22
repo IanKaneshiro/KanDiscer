@@ -1,0 +1,39 @@
+.course-info__container {
+  display: flex;
+  width: 800px;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.course-info__header {
+  align-self: flex-start;
+}
+
+.course-info__header > button {
+  background-color: #284b63;
+  margin: 10px;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+}
+
+.course-info__main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.course-info__main > div {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  min-width: 250px;
+}
