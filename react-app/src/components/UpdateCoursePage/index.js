@@ -1,16 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import Map, { Marker } from "react-map-gl";
 import { SearchBox } from "@mapbox/search-js-react";
 import { createNewCourse } from "../../store/courses";
-import "./CreateCoursePage.css";
+import "./UpdateCoursePage.css";
 
-const CreateCoursePage = () => {
+const UpdateCoursePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { courseId } = useParams();
   const mapRef = useRef();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -81,7 +80,6 @@ const CreateCoursePage = () => {
       return history.push("/courses");
     }
   };
-
   return (
     <div className="create-course__container">
       <form className="create-course__form" onSubmit={handleSubmit}>
@@ -266,4 +264,4 @@ const CreateCoursePage = () => {
   );
 };
 
-export default CreateCoursePage;
+export default UpdateCoursePage;

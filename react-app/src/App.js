@@ -16,6 +16,7 @@ import CourseRound from "./components/CourseRounds";
 import CreateCoursePage from "./components/CreateCoursePage";
 import CourseInfoPage from "./components/CourseInfoPage";
 import CourseDetails from "./components/CourseDetails";
+import UpdateCoursePage from "./components/UpdateCoursePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,10 +58,10 @@ function App() {
             <CourseDetails />
           </Route>
           <ProtectedRoute exact path="/courses/:courseId/update">
-            <h1>Update Courses</h1>
+            <UpdateCoursePage />
           </ProtectedRoute>
           <ProtectedRoute exact path="/courses/:courseId/review">
-            <h1>Review Courses</h1>
+            <UpdateCoursePage />
           </ProtectedRoute>
           <Route path="/courses/:courseId">
             <CourseInfoPage />

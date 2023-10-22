@@ -7,12 +7,27 @@
 }
 .create-course__form {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  flex-direction: column;
 }
 
-.create-course__form > div {
-  width: 400px;
+.create-course__form > button {
+  height: 40px;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #284b63;
+}
+.create-course__form-info {
+  display: flex;
+  gap: 15px;
+}
+
+.create-course__form-info > div {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .text-overlay-create-course {
