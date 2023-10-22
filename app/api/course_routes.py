@@ -63,7 +63,6 @@ def create_course():
             hole_count=form.data['hole_count'],
             tee_types=form.data['tee_types'],
             target_types=form.data['target_types'],
-            services=form.data['services'],
             cost=form.data['cost'],
         )
         if current_user.admin:
@@ -104,7 +103,6 @@ def update_course(id):
             course.hole_count = form.data['hole_count']
             course.tee_types = form.data['tee_types']
             course.target_types = form.data['target_types']
-            course.services = form.data['services']
             course.cost = form.data['cost']
             if current_user.admin:
                 course.approved = True

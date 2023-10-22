@@ -25,7 +25,6 @@ const CreateCoursePage = () => {
   const [hole_count, setHoleCount] = useState("");
   const [tee_types, setTeeTypes] = useState("");
   const [target_types, setTargetTypes] = useState("");
-  const [services, setServices] = useState("");
   const [cost, setCost] = useState("");
 
   const [errors, setErrors] = useState({});
@@ -65,7 +64,6 @@ const CreateCoursePage = () => {
       hole_count,
       tee_types,
       target_types,
-      services,
       cost,
     };
 
@@ -237,16 +235,6 @@ const CreateCoursePage = () => {
             {errors.target_types && (
               <p className="errors">{errors.target_types}</p>
             )}
-            <label htmlFor="services">Services</label>
-            <input
-              id="services"
-              type="text"
-              placeholder="Services"
-              value={services}
-              onChange={(e) => setServices(e.target.value)}
-              required
-            />
-            {errors.services && <p className="errors">{errors.services}</p>}
             <label htmlFor="cost">Cost</label>
             <input
               id="cost"

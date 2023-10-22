@@ -67,7 +67,6 @@ const CourseInfoPage = () => {
           </p>
           <p>{course.holeCount} Holes</p>
           <p>{course.cost}</p>
-          <p>Additional Details: {course.services}</p>
         </div>
         <div className="course-info__contact">
           <h3>Contact</h3>

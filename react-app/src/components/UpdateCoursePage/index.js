@@ -32,7 +32,6 @@ const UpdateCoursePage = () => {
   const [hole_count, setHoleCount] = useState("");
   const [tee_types, setTeeTypes] = useState("");
   const [target_types, setTargetTypes] = useState("");
-  const [services, setServices] = useState("");
   const [cost, setCost] = useState("");
   const [viewState, setViewState] = React.useState({
     longitude: -100,
@@ -61,7 +60,6 @@ const UpdateCoursePage = () => {
       setHoleCount(course.holeCount);
       setTeeTypes(course.teeTypes);
       setTargetTypes(course.targetTypes);
-      setServices(course.services);
       setCost(course.cost);
       setViewState({
         latitude: course.lat,
@@ -106,21 +104,18 @@ const UpdateCoursePage = () => {
       hole_count,
       tee_types,
       target_types,
-      services,
       cost,
     };
 
     const data = await dispatch(
       updateCourse(course, courseId, course.approved ? false : true)
     );
-    if (data.errors) {
+    if (data?.errors) {
+      console.log("ran");
       setErrors(data.errors);
     } else {
       toastAlert();
-      if (sessionUser.admin) {
-        return history.push(`/courses/${data.id}`);
-      }
-      return history.push("/courses");
+      return history.push(`/courses/${data.id}`);
     }
   };
   return (
@@ -276,16 +271,6 @@ const UpdateCoursePage = () => {
             {errors.target_types && (
               <p className="errors">{errors.target_types}</p>
             )}
-            <label htmlFor="services">Services</label>
-            <input
-              id="services"
-              type="text"
-              placeholder="Services"
-              value={services}
-              onChange={(e) => setServices(e.target.value)}
-              required
-            />
-            {errors.services && <p className="errors">{errors.services}</p>}
             <label htmlFor="cost">Cost</label>
             <input
               id="cost"
