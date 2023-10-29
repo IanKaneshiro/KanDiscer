@@ -14,6 +14,7 @@ import Map from "react-map-gl";
 
 const CourseInfoPage = () => {
   const course = useSelector(currentCourse);
+  const sessionUser = useSelector((state) => state.session.user);
   const { courseId } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -39,10 +40,12 @@ const CourseInfoPage = () => {
             >
               View layout
             </button>
-            <OpenModalButton
-              modalComponent={<CreateRoundForm course={course} />}
-              buttonText={"Start Round"}
-            />
+            {sessionUser ? (
+              <OpenModalButton
+                modalComponent={<CreateRoundForm course={course} />}
+                buttonText={"Start Round"}
+              />
+            ) : null}
           </>
         ) : (
           <p>No layouts yet</p>

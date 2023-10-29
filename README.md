@@ -16,6 +16,8 @@ Live link to [site](https://kandiscer.onrender.com)
 - CSS
 - HTML
 - Redux
+- MapBox
+- Recharts
 
 ## Wiki
 

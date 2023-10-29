@@ -10,7 +10,8 @@
   display: flex;
 }
 
-.home__info {
+.home__info,
+.home__courses {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -28,7 +29,8 @@
   object-fit: cover;
 }
 
-.home__info-btns > button {
+.home__info-btns > button,
+.home__courses-btns > button {
   width: 9rem;
   height: 50px;
   background-color: #284b63;
@@ -38,24 +40,15 @@
   color: #ffffff;
 }
 
-.home__courses {
+.home__courses,
+.home_info {
   height: 500px;
   position: relative;
   text-align: center;
 }
 
-.home__courses > img {
+.home__courses_img > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.courses-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
