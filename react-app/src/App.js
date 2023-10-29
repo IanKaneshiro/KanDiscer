@@ -17,6 +17,7 @@ import CreateCoursePage from "./components/CreateCoursePage";
 import CourseInfoPage from "./components/CourseInfoPage";
 import CourseDetails from "./components/CourseDetails";
 import UpdateCoursePage from "./components/UpdateCoursePage";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,49 +29,53 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/admin">
-            <AdminDashboard />
-          </Route>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/discs">
-            <DiscsLandingPage />
-          </Route>
-          <Route exact path="/courses">
-            <CoursesLandingPage />
-          </Route>
-          <ProtectedRoute exact path="/courses/new">
-            <CreateCoursePage />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/courses/:courseId/rounds">
-            <CourseRound />
-          </ProtectedRoute>
-          <Route exact path="/courses/:courseId/view">
-            <CourseDetails />
-          </Route>
-          <ProtectedRoute exact path="/courses/:courseId/update">
-            <UpdateCoursePage />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/courses/:courseId/review">
-            <UpdateCoursePage />
-          </ProtectedRoute>
-          <Route path="/courses/:courseId">
-            <CourseInfoPage />
-          </Route>
-          <ProtectedRoute path="/bags">
-            <BagsNavigationBar />
-          </ProtectedRoute>
-        </Switch>
-      )}
+      <Layout>
+        {isLoaded && (
+          <>
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="/admin">
+                <AdminDashboard />
+              </Route>
+              <Route path="/login">
+                <LoginFormPage />
+              </Route>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route path="/discs">
+                <DiscsLandingPage />
+              </Route>
+              <Route exact path="/courses">
+                <CoursesLandingPage />
+              </Route>
+              <ProtectedRoute exact path="/courses/new">
+                <CreateCoursePage />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/courses/:courseId/rounds">
+                <CourseRound />
+              </ProtectedRoute>
+              <Route exact path="/courses/:courseId/view">
+                <CourseDetails />
+              </Route>
+              <ProtectedRoute exact path="/courses/:courseId/update">
+                <UpdateCoursePage />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/courses/:courseId/review">
+                <UpdateCoursePage />
+              </ProtectedRoute>
+              <Route path="/courses/:courseId">
+                <CourseInfoPage />
+              </Route>
+              <ProtectedRoute path="/bags">
+                <BagsNavigationBar />
+              </ProtectedRoute>
+            </Switch>
+          </>
+        )}
+      </Layout>
       <Toaster />
     </>
   );
