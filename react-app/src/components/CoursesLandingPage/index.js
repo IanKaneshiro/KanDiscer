@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCourses, allCourses } from "../../store/courses";
 import { Link, useHistory } from "react-router-dom";
 import CourseLandingTile from "../CourseLandingTile";
-
+import LoadingSpinner from "../LoadingSpinner";
 import "./CoursesLandingPage.css";
 
 const CoursesLandingPage = () => {
@@ -15,6 +15,8 @@ const CoursesLandingPage = () => {
   useEffect(() => {
     dispatch(getAllCourses());
   }, [dispatch]);
+
+  if (!courses.length) return <LoadingSpinner />;
 
   return (
     <div className="course-landing__container">

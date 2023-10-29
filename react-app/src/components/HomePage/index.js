@@ -33,12 +33,27 @@ const HomePage = () => {
           />
         </div>
       </div>
-      <div className="home__courses">
-        <h2 className="courses-overlay">Courses coming soon...</h2>
-        <img
-          src="https://res.cloudinary.com/dmkyocbqi/image/upload/v1695947974/Champoeg_nmslqb.jpg"
-          alt="Course map"
-        />
+      <div className="home__info_container">
+        <div className="home__courses_img">
+          <img
+            src="https://res.cloudinary.com/dmkyocbqi/image/upload/v1698600968/Screenshot_2023-10-29_103542_g1mtvx.png"
+            alt="Course map"
+          />
+        </div>
+        <div className="home__courses">
+          <h1>Courses</h1>
+          <p>
+            Check out brand-new score-keeping feature, allowing you to
+            meticulously track your rounds and improve your game. It's the
+            ultimate companion for disc golf enthusiasts, offering an immersive
+            and interactive way to play
+          </p>
+          <div className="home__courses-btns">
+            <button onClick={() => history.push("/courses")}>
+              Browse Courses
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
