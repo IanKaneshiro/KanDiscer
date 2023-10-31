@@ -60,26 +60,35 @@ const CourseInfoPage = () => {
         <div className="course-info__details">
           <h3>About the course</h3>
           <p>
-            <i className="fa-solid fa-person-digging"></i> Established{" "}
-            {course.yearEstablished}
+            <i className="fa-solid fa-flag"></i> {course.holeCount} Holes
           </p>
-          <p>Teepad Types: {course.teeTypes}</p>
+          <p>
+            <i className="fa-solid fa-money-bill-1-wave"></i>{" "}
+            {course.cost === 0 ? "Free to play" : "$" + course.cost}
+          </p>
+          <p>
+            <i className="fa-solid fa-rug"></i> {course.teeTypes}
+          </p>
           <p>
             <i className="fa-solid fa-bullseye"></i> {course.targetTypes}{" "}
             Targets
           </p>
-          <p>{course.holeCount} Holes</p>
-          <p>{course.cost}</p>
+          <p>
+            <i className="fa-solid fa-person-digging"></i> Established{" "}
+            {course.yearEstablished}
+          </p>
         </div>
         <div className="course-info__contact">
           <h3>Contact</h3>
-          <p>{course.courseContact}</p>
+          <p>
+            <i className="fa-solid fa-address-card"></i> {course.courseContact}
+          </p>
           <a
             style={{ fontWeight: "bold" }}
             href={course.courseWebsite}
             target="__blank"
           >
-            {course.courseWebsite}
+            <i className="fa-solid fa-globe"></i> {course.courseWebsite}
           </a>
         </div>
         <div style={{ width: "100%", height: "300px" }}>

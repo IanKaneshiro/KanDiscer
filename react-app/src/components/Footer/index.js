@@ -21,7 +21,7 @@ const Footer = () => {
           <i className="fa-brands fa-github fa-2xl"></i>
         </a>
         <a
-          href="https://github.com/IanKaneshiro/KanDiscer"
+          href="https://iankaneshiro.github.io/"
           rel="noreferrer"
           target="_blank"
         >

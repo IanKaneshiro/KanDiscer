@@ -20,7 +20,7 @@ const CreateDiscForm = () => {
   const [speed, setSpeed] = useState(0);
   const [glide, setGlide] = useState(0);
   const [turn, setTurn] = useState(0.0);
-  const [fade, setFade] = useState(0);
+  const [fade, setFade] = useState(0.0);
   const [height, setHeight] = useState("");
   const [rim_depth, setRimDepth] = useState("");
   const [rim_width, setRimWidth] = useState("");
