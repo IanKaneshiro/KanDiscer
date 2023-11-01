@@ -28,7 +28,6 @@ const Footer = () => {
           <i className="fa-solid fa-earth-americas fa-2xl"></i>
         </a>
       </div>
-      <p>Let Connect!</p>
     </div>
   );
 };

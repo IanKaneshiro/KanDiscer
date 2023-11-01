@@ -1,7 +1,7 @@
 .score-card__container {
   margin: 0 auto;
   overflow-x: auto;
-  width: 100vw;
+  width: 90vw;
 }
 
 .score-card__table {
