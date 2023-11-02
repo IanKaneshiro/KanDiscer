@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+        gap: "20px",
       }}
     >
       <div style={{ flex: 1 }}>{children}</div>
