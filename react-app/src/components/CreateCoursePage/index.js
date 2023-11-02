@@ -146,7 +146,7 @@ const CreateCoursePage = () => {
             <input
               id="headline"
               type="text"
-              placeholder="Headline"
+              placeholder="Summary of course"
               value={headline}
               onChange={(e) => setHeadline(e.target.value)}
               required
@@ -157,7 +157,7 @@ const CreateCoursePage = () => {
               style={{ width: "100%", height: "110px" }}
               id="description"
               type="text"
-              placeholder="Description"
+              placeholder="Short description of course"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
@@ -169,7 +169,7 @@ const CreateCoursePage = () => {
             <input
               id="courseContact"
               type="text"
-              placeholder="Course Contact"
+              placeholder="Email, phone number..."
               value={course_contact}
               onChange={(e) => setCourseContact(e.target.value)}
               required
@@ -207,7 +207,7 @@ const CreateCoursePage = () => {
             <input
               id="holeCount"
               type="number"
-              placeholder="Hole Count"
+              placeholder="18"
               value={hole_count}
               onChange={(e) => setHoleCount(e.target.value)}
               required
@@ -217,7 +217,7 @@ const CreateCoursePage = () => {
             <input
               id="teeTypes"
               type="text"
-              placeholder="Tee Types"
+              placeholder="Concrete, Turf, Pavers.."
               value={tee_types}
               onChange={(e) => setTeeTypes(e.target.value)}
               required
@@ -227,7 +227,7 @@ const CreateCoursePage = () => {
             <input
               id="targetTypes"
               type="text"
-              placeholder="Target Types"
+              placeholder="Type of baskets"
               value={target_types}
               onChange={(e) => setTargetTypes(e.target.value)}
               required
@@ -239,7 +239,7 @@ const CreateCoursePage = () => {
             <input
               id="cost"
               type="number"
-              placeholder="If free put 0"
+              placeholder="Put 0 if free to play"
               value={cost}
               onChange={(e) => setCost(e.target.value)}
               required
