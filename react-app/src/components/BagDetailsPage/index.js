@@ -44,7 +44,7 @@ const BagDetailsPage = ({ setCurrentId }) => {
 
   useEffect(() => {
     dispatch(getBagById(bagId)).then((data) => {
-      if (data.message) return history.push("/bags");
+      if (data?.message) return history.push("/bags");
     });
 
     setCurrentId(bagId);
