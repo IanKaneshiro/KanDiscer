@@ -40,7 +40,6 @@ const FlightChart = ({ discs }) => {
             stroke={disc.color}
             strokeWidth={5}
             legendType="circle"
-            isAnimationActive="true"
             label={disc.info.name}
           />
         ))}
