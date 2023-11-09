@@ -40,6 +40,7 @@ class Course(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            "ownerId": self.owner_id,
             'name': self.name,
             'locationName': self.location_name,
             'lat': self.lat,

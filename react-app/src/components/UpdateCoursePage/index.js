@@ -11,6 +11,7 @@ import {
   updateCourse,
 } from "../../store/courses";
 import "./UpdateCoursePage.css";
+import LoadingSpinner from "../LoadingSpinner";
 
 const UpdateCoursePage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const UpdateCoursePage = () => {
 
   useEffect(() => {
     dispatch(getCourseById(courseId));
+
     return () => dispatch(clearCurrentCourse);
   }, [dispatch, courseId]);
 
@@ -69,8 +71,12 @@ const UpdateCoursePage = () => {
     }
   }, [course]);
 
-  if (!sessionUser) return <Redirect to="/" />;
+  if (!course.id) return <LoadingSpinner />;
 
+  if (!sessionUser) return <Redirect to="/" />;
+  if (!sessionUser.admin && sessionUser.id !== course.ownerId) {
+    return <Redirect to="/" />;
+  }
   const extractCityAndState = (address) => {
     const regex = /([A-Za-z\s]+),\s([A-Za-z\s]+)/;
     const match = address.match(regex);
