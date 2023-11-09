@@ -50,6 +50,11 @@ const CourseInfoPage = () => {
         ) : (
           <p>No layouts yet</p>
         )}
+        {sessionUser?.admin || sessionUser?.id === course.owner?.id ? (
+          <button onClick={() => history.push(`/courses/${course.id}/update`)}>
+            Update
+          </button>
+        ) : null}
         <h1>{course.name}</h1>
         <h3>
           <i className="fa-solid fa-location-dot fa-sm"></i>{" "}
