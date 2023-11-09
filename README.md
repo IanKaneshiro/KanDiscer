@@ -1,6 +1,6 @@
-# Kan Discer
+# KanDiscer
 
-KanDiscer is a companion app for disc golfer to be able to help them improve their game and navigate new courses.
+KanDiscer is a companion app for disc golfer to help them improve their game and discover/navigate new courses.
 
 ## Live Site
 
